@@ -1,8 +1,9 @@
-# `<name of application here>`
+# `TuneNimbus(SoundCloud Clone)`
 
 ## Database Schema Design
 
-`<insert database schema design here>`
+![Imgur](https://i.imgur.com/qPhSjRI.png)
+
 
 ## API Documentation
 
