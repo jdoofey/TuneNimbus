@@ -29,5 +29,15 @@ router.post(
     });
   }
 );
-//M73MXmXl-5GBcatsJa2uOllj2dDnp0w3wW4c
+
+router.delete(
+  '/',
+  (_req, res) => {
+    res.clearCookie('token');
+    return res.json({ message: 'success' });
+  }
+);
+
+//L8PoA3ak-vs9yFyf1aLxjpqUUs-1f5iFtF9k
+
 module.exports = router;
