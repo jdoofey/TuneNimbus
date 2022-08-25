@@ -2,7 +2,7 @@
 
 ## Database Schema Design
 
-![Imgur](https://i.imgur.com/XKw7VpA.png)
+![Imgur](https://i.imgur.com/sLmtrLr.png)
 
 
 ## API Documentation
@@ -52,8 +52,8 @@ Returns the information about the current user that is logged in.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: users/:username ?
   * Body: none
 
 * Successful Response
@@ -79,8 +79,8 @@ information.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: users/
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -238,7 +238,7 @@ Returns all the songs.
 
 * Require Authentication: false
 * Request
-  * Method: ?
+  * Method: GET
   * URL: ?
   * Body: none
 
@@ -272,7 +272,7 @@ Returns all the songs created by the current user.
 
 * Require Authentication: true
 * Request
-  * Method: ?
+  * Method: GET
   * URL: ?
   * Body: none
 
