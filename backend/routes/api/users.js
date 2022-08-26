@@ -38,7 +38,6 @@ const validateSignup = [
 ];
 // backend/routes/api/users.js
 // ...
-
 // Sign up
 router.post(
   '/',
@@ -54,6 +53,5 @@ router.post(
     });
   }
 );
-//c5Xjclxh-NfwNiehVE963hC7oKBIxZB7ySNw
 
 module.exports = router;
