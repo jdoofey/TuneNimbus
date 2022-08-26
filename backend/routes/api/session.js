@@ -38,6 +38,21 @@ router.delete(
   }
 );
 
-//L8PoA3ak-vs9yFyf1aLxjpqUUs-1f5iFtF9k
+// Restore session user
+router.get(
+  '/',
+  restoreUser,
+  (req, res) => {
+    const { user } = req;
+    if (user) {
+      return res.json({
+        user: user.toSafeObject()
+      });
+    } else return res.json({});
+  }
+);
+
+// ...
+
 
 module.exports = router;
