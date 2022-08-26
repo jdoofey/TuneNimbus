@@ -1,0 +1,29 @@
+{
+  "name": "authenticate-me",
+  "version": "1.0.0",
+  "description": "## Database Schema Design",
+  "main": "index.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "npm --prefix backend install backend",
+    "dev:backend": "npm install --prefix backend start",
+    "sequelize": "npm run --prefix backend sequelize",
+    "sequelize-cli": "npm run --prefix backend sequelize-cli",
+    "start": "npm start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakezmat/API-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jakezmat/API-Project/issues"
+  },
+  "homepage": "https://github.com/jakezmat/API-Project#readme"
+}
