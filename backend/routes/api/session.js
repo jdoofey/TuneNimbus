@@ -40,23 +40,15 @@ const router = express.Router();
         check('password')
           .exists({ checkFalsy: true })
           .withMessage('Please provide a password.'),
-          //BELOW IF I NEED TO ADD NAME VALIDATIONS TO LOGIN
-        // check('firstName')
-        //   .exists({ checkFalsy: true })
-        //   .withMessage('Please provide your first name.'),
-        // check('password')
-        //   .exists({ checkFalsy: true })
-        //   .withMessage('Please provide your last name.'),
         handleValidationErrors
       ];
-
       router.post(
         '/',
         validateLogin,
         async (req, res, next) => {
-          const { credential, password} = req.body;
+          const { credential, password } = req.body;
 
-          const user = await User.login({ credential, password});
+          const user = await User.login({ credential, password });
 
           if (!user) {
             const err = new Error('Login failed');
@@ -72,7 +64,7 @@ const router = express.Router();
             user
           });
         }
-        );
-        //nWDgbEur-qTQCWyimvsp02PuOSt7n9_L9xks
+      );
+//nWDgbEur-qTQCWyimvsp02PuOSt7n9_L9xks
 
 module.exports = router;
