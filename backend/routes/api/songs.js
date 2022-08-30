@@ -1,7 +1,27 @@
 const express = require('express')
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song, Album } = require('../../db/models');
+const { User, Song, Album, Comment } = require('../../db/models');
 const router = express.Router();
+
+
+router.get('/:songId/comments', async (req, res)=>{
+  // const song = await Song.findByPk(req.params.songId)
+  const comment = await Comment.findAll({
+    where:{songId:req.params.songId},
+    include:[{model:User, attributes:['id', 'username']}]
+  })
+  if(!comment || comment==''){
+    res.statusCode = 404
+    res.json({
+      statusCode:res.statusCode,
+      message:"Song couldn\'t be found"
+    })
+  }
+  else res.json({Comments:comment})
+})
+
+
+
 
 router.post('/', requireAuth, async (req, res)=> {
   // const user = req.user;
