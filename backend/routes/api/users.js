@@ -53,14 +53,7 @@ router.post(
     });
   }
 );
-router.get('/:userId/songs', async (req, res) => {
-  const songsByUser = await Song.findAll({
-    where:{userId:req.params.userId}
-  })
-  res.json(songsByUser)
-})
-//postman expects this route here, but this get is also
-//found within songs.js
+
 
 
 module.exports = router;

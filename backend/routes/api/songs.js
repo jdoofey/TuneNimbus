@@ -18,14 +18,6 @@ router.get('/current', restoreUser, async (req, res) => {
     res.json(currentUserSongs)
 })
 
-router.get('/:userId', async (req, res) => {
-  const songsByUser = await Song.findAll({
-    where:{userId:req.params.userId}
-  })
-  res.json(songsByUser)
-})
-//implementation intended for get all songs by CURRENT user
-//but works as get all songs from an artist by ID;
-//note there is a difference between docs path and postman
-//tests
+
+
 module.exports = router;
