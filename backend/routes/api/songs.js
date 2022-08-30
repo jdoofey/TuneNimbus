@@ -16,7 +16,14 @@ router.post('/', requireAuth, async (req, res)=> {
 router.delete('/:songId', requireAuth, async (req, res)=> {
   const song = await Song.findByPk(req.params.songId)
   const user=req.user
-  if (!song || song.userId!==user.id) {
+  if(song.userId!==user.id) {
+    res.statusCode = 401
+    res.json({
+      statusCode: res.statusCode,
+      message: 'Unauthorized'
+    })
+  }
+  if (!song) {
     res.statusCode = 404
     res.json({
       statusCode: res.statusCode,
@@ -32,11 +39,19 @@ router.delete('/:songId', requireAuth, async (req, res)=> {
 router.put('/:songId', requireAuth, async(req, res)=>{
   const { title, description, url, previewImage, albumId} = req.body
   const song = await Song.findByPk(req.params.songId)
+  const user=req.user
+  if(song.userId!==user.id) {
+    res.statusCode = 401
+    res.json({
+      statusCode: res.statusCode,
+      message: 'Unauthorized'
+    })
+  }
   if (!song) {
     res.statusCode = 404
     res.json({
       statusCode: res.statusCode,
-      message: 'Artist couldn\'t be found'
+      message: 'Song couldn\'t be found'
     })
   }
   try {

@@ -5,28 +5,28 @@ module.exports = {
     return queryInterface.bulkInsert('Songs', [
       {
         title: 'Song1',
-        artistId: 1,
+        url:'song url here',
         userId: 1,
         albumId:3,
         description:'Sounds that inspire a dev to learn'
       },
       {
         title: 'Song2',
-        artistId: 2,
+        url:'song url here',
         userId: 2,
         albumId: 1,
         description:'Sounds that inspire a dev to learn'
       },
       {
         title: 'Song 3',
-        artistId: 3,
+        url:'song url here',
         userId: 3,
         albumId:2,
         description:'Sounds that inspire a dev to learn'
       },
       {
         title: 'Song4',
-        artistId: 1,
+        url:'song url here',
         userId: 1,
         albumId: 3,
         description:'Sounds that inspire a dev to learn'
