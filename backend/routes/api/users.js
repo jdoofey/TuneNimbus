@@ -66,10 +66,6 @@ router.get('/:artistId/songs', async (req, res) => {
 
 
       },
-      {
-        model:Album,
-        attributes: ['id', 'title', 'previewImage']
-      }
     ]
   })
   if (!songsByArtist || songsByArtist=='') {

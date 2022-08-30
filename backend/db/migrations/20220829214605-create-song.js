@@ -21,9 +21,7 @@ module.exports = {
       previewImage: {
         type: Sequelize.STRING
       },
-      artistId: {
-        type: Sequelize.INTEGER
-      },
+
       userId: {
         type: Sequelize.INTEGER
       },

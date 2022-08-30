@@ -1,6 +1,6 @@
 const express = require('express')
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song } = require('../../db/models');
+const { User, Song, Album } = require('../../db/models');
 const router = express.Router();
 
 
@@ -13,7 +13,19 @@ router.get('/', async (req, res) => {
 
 router.get('/:songId', async (req, res) => {
 
-  const songById =  await Song.findByPk(req.params.songId);
+  const songById =  await Song.findByPk(req.params.songId, {
+    include:[
+      {
+        model:User,
+        as:'Artist',
+        attributes:['id', 'username', 'previewImg']
+      },
+      {
+        model:Album,
+        attributes:['id', 'title', 'previewImage']
+      }
+    ]
+  });
   if (!songById) {
     res.statusCode = 404;
     res.json({
