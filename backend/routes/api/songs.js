@@ -15,7 +15,8 @@ router.post('/', requireAuth, async (req, res)=> {
 
 router.delete('/:songId', requireAuth, async (req, res)=> {
   const song = await Song.findByPk(req.params.songId)
-  if (!song) {
+  const user=req.user
+  if (!song || song.userId!==user.id) {
     res.statusCode = 404
     res.json({
       statusCode: res.statusCode,
