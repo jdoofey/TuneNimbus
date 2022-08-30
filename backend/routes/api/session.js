@@ -30,7 +30,7 @@ const router = express.Router();
           });
         } else return res.json({});
       }
-      );
+    );
 
       const validateLogin = [
         check('credential')
