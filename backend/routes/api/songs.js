@@ -4,7 +4,7 @@ const { User, Song, Album } = require('../../db/models');
 const router = express.Router();
 
 router.post('/', requireAuth, async (req, res)=> {
-  const user = req.user;
+  // const user = req.user;
   const {title, description, url, previewImage, albumId} = req.body
   const newSong = await Song.create({
     title, description, url, previewImage, albumId
