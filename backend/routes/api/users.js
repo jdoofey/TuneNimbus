@@ -55,10 +55,17 @@ router.post(
 );
 
 router.get('/:artistId/songs', async (req, res) => {
-  const songsByUser = await Song.findAll({
+  const songsByArtist = await Song.findAll({
     where:{userId:req.params.artistId}
   })
-  res.json(songsByUser)
+  if (!songsByArtist || songsByArtist=='') {
+    res.statusCode = 404;
+    res.json({
+      message: 'Artist couldn\'t be found',
+      statusCode: res.statusCode
+    })
+  }
+  res.json(songsByArtist)
 })
 
 // Restore session user
