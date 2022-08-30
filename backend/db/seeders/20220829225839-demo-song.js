@@ -7,25 +7,29 @@ module.exports = {
         title: 'Song1',
         artistId: 1,
         userId: 1,
-        albumId:3
+        albumId:3,
+        description:'Sounds that inspire a dev to learn'
       },
       {
         title: 'Song2',
         artistId: 2,
         userId: 2,
-        albumId: 1
+        albumId: 1,
+        description:'Sounds that inspire a dev to learn'
       },
       {
         title: 'Song 3',
         artistId: 3,
         userId: 3,
-        albumId:2
+        albumId:2,
+        description:'Sounds that inspire a dev to learn'
       },
       {
         title: 'Song4',
         artistId: 1,
         userId: 1,
-        albumId: 3
+        albumId: 3,
+        description:'Sounds that inspire a dev to learn'
       },
     ], {})
     /**
