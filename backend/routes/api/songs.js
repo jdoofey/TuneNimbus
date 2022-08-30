@@ -9,7 +9,7 @@ router.post('/', requireAuth, async (req, res)=> {
   const newSong = await Song.create({
     title, description, url, previewImage, albumId
   })
-  //untested NO POSTMAN TEST
+  //tested NO POSTMAN TEST need to add errors
   return res.json(newSong)
 })
 
@@ -19,9 +19,9 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/current', requireAuth, async (req, res)=> {
-  this.User=req.body
+  const userId = req.user.id
   const currUserSongs = await Song.findAll({
-    where:{}
+    where:{userId:userId}
     //get all songs by current user WIP
   })
   res.json(currUserSongs)
