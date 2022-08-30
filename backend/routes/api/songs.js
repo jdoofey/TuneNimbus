@@ -9,4 +9,11 @@ router.get('/', async (req, res) => {
   res.json(songs)
 })
 
+router.get('/:userId', async (req, res) => {
+  const songsByUser = await Song.findAll({
+    where:{userId:req.params.userId}
+  })
+  res.json(songsByUser)
+})
+
 module.exports = router;
