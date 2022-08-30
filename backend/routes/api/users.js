@@ -1,7 +1,7 @@
 // backend/routes/api/users.js
 const express = require('express')
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Song } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
@@ -49,10 +49,17 @@ router.post(
     await setTokenCookie(res, user);
 
     return res.json({
-      user, 
+      user,
     });
   }
 );
+
+router.get('/:artistId/songs', async (req, res) => {
+  const songsByUser = await Song.findAll({
+    where:{userId:req.params.artistId}
+  })
+  res.json(songsByUser)
+})
 
 // Restore session user
 // router.get(
