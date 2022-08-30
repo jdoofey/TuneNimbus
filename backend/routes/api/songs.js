@@ -20,6 +20,24 @@ router.get('/:songId/comments', async (req, res)=>{
   else res.json({Comments:comment})
 })
 
+router.post('/:songId/comments', restoreUser, requireAuth, async(req, res)=>{
+  const {body} = req.body
+  const userId = req.user.id;
+  const songId = req.params.songId
+  const song = await Song.findByPk(songId)
+  if(!song){
+    res.statusCode = 404
+    res.json({
+      statusCode:res.statusCode,
+      message:'Song couldn\'t be found'
+    })
+  }
+  const newComment = await Comment.create({
+    body, userId, songId
+   
+  })
+  res.json(newComment)
+})
 
 
 
