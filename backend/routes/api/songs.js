@@ -3,7 +3,15 @@ const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth')
 const { User, Song, Album } = require('../../db/models');
 const router = express.Router();
 
-
+router.post('/', requireAuth, async (req, res)=> {
+  const user = req.user;
+  const {title, description, url, previewImage, albumId} = req.body
+  const newSong = await Song.create({
+    title, description, url, previewImage, albumId
+  })
+  //untested NO POSTMAN TEST
+  return res.json(newSong)
+})
 
 router.get('/', async (req, res) => {
   const songs = await Song.findAll()
