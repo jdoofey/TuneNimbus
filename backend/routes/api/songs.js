@@ -4,12 +4,20 @@ const { User, Song, Album } = require('../../db/models');
 const router = express.Router();
 
 
+
 router.get('/', async (req, res) => {
   const songs = await Song.findAll()
   res.json(songs)
 })
 
-
+router.get('/current', requireAuth, async (req, res)=> {
+  this.User=req.body
+  const currUserSongs = await Song.findAll({
+    where:{}
+    //get all songs by current user WIP
+  })
+  res.json(currUserSongs)
+})
 
 router.get('/:songId', async (req, res) => {
 
