@@ -1,7 +1,7 @@
 // backend/routes/api/users.js
 const express = require('express')
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song } = require('../../db/models');
+const { User, Song, Album, } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
@@ -55,14 +55,28 @@ router.post(
 );
 
 router.get('/:artistId/songs', async (req, res) => {
-  const songsByArtist = await Song.findAll({
-    where:{userId:req.params.artistId}
+  const songsByArtist = await User.findByPk(req.params.artistId, {
+    attributes:['id', 'username', 'previewImg'],
+    include:[
+
+      {
+        model: Song,
+        attributes: ['id', 'userId', 'albumId', 'title',
+          'description', 'url', 'createdAt', 'updatedAt','previewImage']
+
+
+      },
+      {
+        model:Album,
+        attributes: ['id', 'title', 'previewImage']
+      }
+    ]
   })
   if (!songsByArtist || songsByArtist=='') {
     res.statusCode = 404;
     res.json({
-      message: 'Artist couldn\'t be found',
-      statusCode: res.statusCode
+      statusCode: res.statusCode,
+      message: 'Artist couldn\'t be found'
     })
   }
   res.json(songsByArtist)
