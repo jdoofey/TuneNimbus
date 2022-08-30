@@ -13,6 +13,21 @@ router.post('/', requireAuth, async (req, res)=> {
   return res.json(newSong)
 })
 
+router.delete('/:songId', requireAuth, async (req, res)=> {
+  const song = await Song.findByPk(req.params.songId)
+  if (!song) {
+    res.statusCode = 404
+    res.json({
+      statusCode: res.statusCode,
+      message: 'Song couldn\'t be found'
+    })
+  }
+  await song.destroy()
+  res.statusCode = 200
+  res.json({statusCode:res.statusCode,
+  message:'Successfully deleted'})
+})
+
 router.put('/:songId', requireAuth, async(req, res)=>{
   const { title, description, url, previewImage, albumId} = req.body
   const song = await Song.findByPk(req.params.songId)
