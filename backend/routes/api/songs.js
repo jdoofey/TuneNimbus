@@ -27,6 +27,13 @@ router.get('/current', requireAuth, async (req, res)=> {
   res.json(currUserSongs)
 })
 
+router.put('/:songId', requireAuth, async (req, res) => {
+  const {title, description, url, previewImage, albumId} =req.body
+  const song = await Song.findByPk(req.params.songId)
+  song.update({title, description, url, previewImage, albumId})
+  res.json(song)
+})
+
 router.get('/:songId', async (req, res) => {
 
   const songById =  await Song.findByPk(req.params.songId, {
