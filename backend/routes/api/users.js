@@ -49,23 +49,23 @@ router.post(
     await setTokenCookie(res, user);
 
     return res.json({
-      user,
+      user, 
     });
   }
 );
 
 // Restore session user
-router.get(
-  '/current',
-  restoreUser,
-  (req, res) => {
-    const { user } = req;
-    if (user) {
-      return res.json({
-        user: user.toSafeObject()
-      });
-    } else return res.json({});
-  }
-  );
+// router.get(
+//   '/current',
+//   restoreUser,
+//   (req, res) => {
+//     const { user } = req;
+//     if (user) {
+//       return res.json({
+//         user: user.toSafeObject()
+//       });
+//     } else return res.json({});
+//   }
+//   );
 
 module.exports = router;
