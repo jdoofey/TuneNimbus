@@ -13,6 +13,34 @@ router.post('/', requireAuth, async (req, res)=> {
   return res.json(newSong)
 })
 
+router.put('/:songId', requireAuth, async(req, res)=>{
+  const { title, description, url, previewImage, albumId} = req.body
+  const song = await Song.findByPk(req.params.songId)
+  if (!song) {
+    res.statusCode = 404
+    res.json({
+      statusCode: res.statusCode,
+      message: 'Artist couldn\'t be found'
+    })
+  }
+  try {
+    song.update({
+    title, description, url, previewImage, albumId
+    })
+  return res.json(song)
+  } catch {
+    res.statusCode = 400
+    res.json({
+      message:'Validation Error',
+      statusCode: res.statusCode,
+      errors: {
+         "title": "Song title is required",
+    "url": "Audio is required"
+      }
+    })
+  }
+})
+
 router.get('/', async (req, res) => {
   const songs = await Song.findAll()
   res.json(songs)
