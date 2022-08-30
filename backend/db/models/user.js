@@ -4,8 +4,8 @@ const { Model, Validator } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     toSafeObject() {
-      const { id, username, email } = this; // context will be the User instance
-      return { id, username, email};
+      const { id, username, email, firstName, lastName } = this; // context will be the User instance
+      return { id, username, email, firstName, lastName};
     }
     validatePassword(password) {
       return bcrypt.compareSync(password, this.hashedPassword.toString());
@@ -13,13 +13,13 @@ module.exports = (sequelize, DataTypes) => {
     static getCurrentUserById(id) {
       return User.scope("currentUser").findByPk(id);
     }
-    static async login({ credential, password }) {
+    static async login({ credential, password}) {
       const { Op } = require('sequelize');
       const user = await User.scope('loginUser').findOne({
         where: {
           [Op.or]: {
             username: credential,
-            email: credential
+            email: credential,
           }
         }
       });
@@ -46,6 +46,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      //might need to use strings for models here
+      User.hasMany(models.Comment, {foreignKey:'userId'})
+      User.hasMany(models.Album, {foreignKey:'userId'})
+      User.hasMany(models.Song, {foreignKey:'userId'})
+      User.hasMany(models.Playlist, {foreignKey:'userId'})
     }
   }
   User.init(
@@ -96,7 +101,7 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           len: [60, 60],
         }
-      }
+      },
     },
     {
       sequelize,
