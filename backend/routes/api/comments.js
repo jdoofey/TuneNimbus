@@ -32,6 +32,7 @@ router.delete('/:commentId', restoreUser, requireAuth, async (req, res)=>{
     })
   }
 })
+
 //edit comment
 router.put('/:commentId', restoreUser, requireAuth, async (req, res)=>{
   const {commentId} = req.params
@@ -58,6 +59,7 @@ router.put('/:commentId', restoreUser, requireAuth, async (req, res)=>{
     })
   }
 })
+
 //create comment for song via songId
 router.post('/:songId/comments', async (req, res)=>{
   const {songId} = req.params
@@ -77,6 +79,7 @@ router.post('/:songId/comments', async (req, res)=>{
   }
   res.json(comment)
 })
+
 //coments by song id
 router.get('/:songId/comments', async(req, res)=>{
   const {songId} = req.params
@@ -93,5 +96,6 @@ router.get('/:songId/comments', async(req, res)=>{
   }
   res.json({Comments:comments})
 })
+
 
 module.exports = router;
