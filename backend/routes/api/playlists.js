@@ -66,6 +66,7 @@ router.put('/:playlistId', restoreUser, requireAuth, async (req, res)=> {
   if (playlist.userId === user.id){
     if(name) playlist.name = name
     if(previewImage) playlist.previewImage = previewImage
+    await playlist.save()
     res.json(playlist)
 }
 })

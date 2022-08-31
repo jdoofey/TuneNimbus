@@ -123,6 +123,7 @@ router.put('/:songId', requireAuth, restoreUser, async(req, res)=>{
       song.description = description
       song.albumId = albumId
       song.previewImage = previewImage
+      await song.save()
       return res.json(song)
     }
     else {

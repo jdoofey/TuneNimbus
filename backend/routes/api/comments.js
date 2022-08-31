@@ -5,6 +5,32 @@ const { handleValidationErrors } = require('../../utils/validation');
 const { User, Song, Album, Comment } = require('../../db/models');
 const router = express.Router();
 
+//edit comment
+router.put('/:commentId', restoreUser, requireAuth, async (req, res)=>{
+  const {commentId} = req.params
+  const {user} = req
+  const {body} = req.body
+  const comment = await Comment.findByPk(commentId)
+  if(comment&&comment.userId===user.id){
+    comment.body = body
+    await comment.save()
+    return res.json(comment)
+  }
+  if(!comment){
+    res.statusCode = 404
+    res.json({
+      message: 'Comment couldn\'t be found',
+      statusCode: res.statusCode,
+    })
+  }
+  if (comment.userId!==user.id){
+    res.statusCode = 401
+    res.json({
+      statusCode: res.statusCode,
+      message: 'Unauthorized'
+    })
+  }
+})
 //create comment for song via songId
 router.post('/:songId/comments', async (req, res)=>{
   const {songId} = req.params
