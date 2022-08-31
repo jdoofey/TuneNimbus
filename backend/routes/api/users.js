@@ -110,7 +110,35 @@ router.get('/:artistId/songs', async (req, res) => {
   }
   return res.json(songsByArtist)
 })
-
+//get details of an artist from an id
+router.get('/:artistId', async (req, res)=>{
+    const {artistId} = req.params
+    const songs= await Song.count({
+      where:{userId:artistId}
+    })
+    const albums = await Album.count({
+      where:{userId:artistId}
+    })
+    const artist = await User.findByPk(artistId, {
+      attributes: {
+        exclude:['firstName', 'lastName']
+      }
+    })
+    if(!artist){
+      res.statusCode = 404;
+    return res.json({
+      statusCode: res.statusCode,
+      message: 'Artist couldn\'t be found'
+    })
+    }
+    return res.json({
+      id: artist.id,
+      username: artist.username,
+      totalSongs: songs,
+      totalAlbums: albums,
+      previewImage: artist.previewImg
+    })
+})
 // Restore session user
 router.get(
   '/current',
