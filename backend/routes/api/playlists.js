@@ -3,6 +3,11 @@ const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth')
 const { User, Song, Album, Playlist } = require('../../db/models');
 const router = express.Router();
 
+router.get('/', async (req, res)=>{
+  const playlists = await Playlist.findAll({})
+  res.json({playlists})
+})
+
 router.post('/', requireAuth, async (req, res)=>{
   const {name, imageUrl} = req.body
   try{
