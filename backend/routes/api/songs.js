@@ -126,9 +126,10 @@ router.put('/:songId', requireAuth, restoreUser, async(req, res)=>{
 
 })
 //Get all Songs working
+//sam saves the day
 router.get('/', async (req, res) => {
   const songs = await Song.findAll()
-  res.json(songs)
+  res.json({Songs:songs})
 })
 //Get all Songs created by the Current User working
 router.get('/current', requireAuth, restoreUser,async (req, res)=> {
