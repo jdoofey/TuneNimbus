@@ -9,6 +9,27 @@ router.get('/', async (req, res)=>{
   res.json({playlists})
 })
 
+//edit a playlist
+router.put('/:playlistId', restoreUser, requireAuth, async (req, res)=> {
+  const user = req.user
+  const {playlistId} = req.params
+  const {name, previewImage} = req.body
+  const playlist = await Playlist.findByPk(playlistId)
+
+  if(!playlist){
+    res.statusCode = 404
+    res.json({
+      message:'Playlist couldn\'t be found',
+      statusCode: res.statusCode,
+    })
+  }
+  if (playlist.userId === user.id){
+    if(name) playlist.name = name
+    if(previewImage) playlist.previewImage = previewImage
+    res.json(playlist)
+}
+})
+
 //restore user makes the destructuring possible
 router.post('/:playlistId/songs', restoreUser,requireAuth,async (req, res)=> {
   const {playlistId} = req.params
