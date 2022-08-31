@@ -20,6 +20,11 @@ router.delete('/:playlistId', restoreUser, requireAuth, async (req, res) =>{
       statusCode: res.statusCode,
     })
   }
+  if(playlist.userId===user.id){
+    await playlist.destroy()
+    res.statusCode = 200
+    res.json({message:"Successfully deleted", statusCode:res.statusCode})
+  }
 })
 //edit a playlist
 router.put('/:playlistId', restoreUser, requireAuth, async (req, res)=> {
