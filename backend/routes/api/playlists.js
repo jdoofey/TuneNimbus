@@ -67,7 +67,14 @@ router.put('/:playlistId', restoreUser, requireAuth, async (req, res)=> {
     if(name) playlist.name = name
     if(previewImage) playlist.previewImage = previewImage
     await playlist.save()
-    res.json(playlist)
+    return res.json(playlist)
+}
+if (playlist.userId!==user.id) {
+  res.statusCode = 401
+  res.json({
+    statusCode: res.statusCode,
+    message: 'Unauthorized'
+  })
 }
 })
 

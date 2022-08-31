@@ -19,11 +19,48 @@ router.get('/current', restoreUser, requireAuth, async (req, res)=> {
   }
   res.json({Albums:albums})
 })
+//edit an album
+router.put('/:albumId', restoreUser, requireAuth, async (req, res)=> {
+  const {user} = req
+  const {albumId} = req.params
+  const {title, description, imageUrl} = req.body
+  const album = await Album.findByPk(albumId)
+  if(!album){
+    res.statusCode = 404
+    return res.json({
+      message: 'Album couldn\'t be found',
+      statusCode: res.statusCode,
+    })
+  }
+  if(album.userId === user.id) {
+    if(title===null) {
+      return res.json({
+        "message": "Validation Error",
+        "statusCode": 400,
+        "errors": {
+          "title": "Album title is required"
+        }
+      })
+    }
+    if(title) album.title = title
+    if(description) album.description = description
+    if(imageUrl) album.previewImage = imageUrl
+    await album.save()
+    return res.json(album)
+  }
+  if (album.userId!==user.id) {
+    res.statusCode = 401
+    res.json({
+      statusCode: res.statusCode,
+      message: 'Unauthorized'
+    })
+  }
+})
 //create an album
 router.post('/', restoreUser, requireAuth, async(req, res)=>{
   const {user} = req
   const {title, description, previewImage} = req.body
-
+  //check validation error
   const newAlbum = await Album.create({
     userId:user.id,
     title,
