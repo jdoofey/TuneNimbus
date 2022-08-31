@@ -8,7 +8,7 @@ router.get('/', async (req, res)=>{
   const playlists = await Playlist.findAll({})
   res.json({playlists})
 })
-
+//delete a playlist
 router.delete('/:playlistId', restoreUser, requireAuth, async (req, res) =>{
   const user = req.user
   const {playlistId} = req.params
