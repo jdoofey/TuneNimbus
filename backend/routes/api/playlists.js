@@ -8,6 +8,22 @@ router.get('/', async (req, res)=>{
   const playlists = await Playlist.findAll({})
   res.json({playlists})
 })
+router.get('/current', restoreUser, requireAuth, async (req, res)=>{
+  const user = req.user
+  if(user){
+    const playlists = await Playlist.findAll({
+      where:{userId:user.id}
+    })
+    res.json({Playlists:playlists})
+  }
+  else{
+    res.statusCode = 404
+    res.json({
+      statusCode: res.statusCode,
+      message: 'Playlist not found'
+    })
+  }
+})
 //delete a playlist
 router.delete('/:playlistId', restoreUser, requireAuth, async (req, res) =>{
   const user = req.user
