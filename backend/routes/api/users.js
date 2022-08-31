@@ -53,7 +53,21 @@ router.post('/',validateSignup,async (req, res) => {
     );
   }
 );
-
+//get all albums of artist via id
+router.get('/:artistId/albums', async (req, res)=>{
+  const {artistId} = req.params
+  const albums = await Album.findAll({
+    where:{userId:artistId}
+  })
+  if(!albums.length){
+    res.statusCode = 404;
+    res.json({
+      message: 'Artist couldn\'t be found',
+      statusCode: res.statusCode,
+    })
+  }
+  res.json(albums)
+})
 //Get all Playlists of an Artist from an id
 router.get('/:artistId/playlists', async (req, res) => {
   const artistId = req.params.artistId
