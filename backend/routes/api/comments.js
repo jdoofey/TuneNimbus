@@ -1,7 +1,5 @@
 const express = require('express')
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
 const { User, Song, Album, Comment } = require('../../db/models');
 const router = express.Router();
 
