@@ -72,6 +72,7 @@ router.put('/:playlistId', restoreUser, requireAuth, async (req, res)=> {
 })
 
 //restore user makes the destructuring possible
+
 router.post('/:playlistId/songs', restoreUser,requireAuth,async (req, res)=> {
   const {playlistId} = req.params
   const {songId} = req.body
@@ -135,7 +136,7 @@ router.get('/:playlistId', async (req, res)=>{
   }
   res.json(playlist)
 })
-
+//create a playlist?
 router.post('/', restoreUser, requireAuth, async (req, res)=>{
   const userId = req.user.id
   const {name, previewImage} = req.body
