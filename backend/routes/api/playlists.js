@@ -16,7 +16,7 @@ router.post('/:playlistId/songs', restoreUser,requireAuth,async (req, res)=> {
   const user = req.user
   // const {user:{id}} = req also works, thanks sam and john
   const playlist = await Playlist.findByPk(playlistId)
-  if(!playlist) {
+  if (!playlist) {
     res.statusCode = 404
     res.json({
       message:'Playlist couldn\'t be found',
@@ -24,14 +24,14 @@ router.post('/:playlistId/songs', restoreUser,requireAuth,async (req, res)=> {
     })
   }
   const song = await Song.findByPk(songId)
-  if(!song) {
+  if (!song) {
     res.statusCode = 404
     res.json({
       message:'Song couldn\'t be found',
       statusCode: res.statusCode,
     })
   }
-  if(playlist.userId!==user.id) {
+  if (playlist.userId!==user.id) {
     res.statusCode = 401
     res.json({
       statusCode: res.statusCode,
