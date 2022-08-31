@@ -1,7 +1,7 @@
 // backend/routes/api/users.js
 const express = require('express')
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song, Album, } = require('../../db/models');
+const { User, Song, Album, Playlist } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
@@ -53,6 +53,23 @@ router.post(
     });
   }
 );
+
+//Get all Playlists of an Artist from an id
+router.get('/:artistId/playlists', async (req, res) => {
+  const artistId = req.params.artistId
+  const artist = await User.findAll({
+    where:{id:artistId}
+  })
+  const playlists = await Playlist.findAll({where:{userId:artistId}})
+  if (!artist.length) {
+    res.statusCode = 404;
+    res.json({
+      message: 'Artist couldn\'t be found',
+      statusCode: res.statusCode,
+    })
+  }
+  res.json(playlists)
+})
 // Get all Songs of an Artist from an id
 //check if this is through /artists/.. or /users/..
 router.get('/:artistId/songs', async (req, res) => {
@@ -70,7 +87,7 @@ router.get('/:artistId/songs', async (req, res) => {
       },
     ]
   })
-  if (!songsByArtist || songsByArtist=='') {
+  if (!songsByArtist || !songsByArtist.length) {
     res.statusCode = 404;
     res.json({
       statusCode: res.statusCode,
