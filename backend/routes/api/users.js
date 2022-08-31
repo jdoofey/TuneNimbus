@@ -53,10 +53,12 @@ router.post(
     });
   }
 );
-
+// Get all Songs of an Artist from an id
+//check if this is through /artists/.. or /users/..
 router.get('/:artistId/songs', async (req, res) => {
-  const songsByArtist = await User.findByPk(req.params.artistId, {
-    attributes:['id', 'username', 'previewImg'],
+  const artistId = req.params.artistId
+  const songsByArtist = await User.findByPk(artistId, {
+    attributes:[],
     include:[
 
       {

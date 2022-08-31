@@ -34,21 +34,31 @@ router.post('/:songId/comments', restoreUser, requireAuth, async(req, res)=>{
   }
   const newComment = await Comment.create({
     body, userId, songId
-   
+
   })
   res.json(newComment)
 })
 
 
 
-router.post('/', requireAuth, async (req, res)=> {
-  // const user = req.user;
+router.post('/', requireAuth, restoreUser, async (req, res)=> {
+  const user = req.user;
   const {title, description, url, previewImage, albumId} = req.body
+  const album = await Album.findByPk(albumId)
+  if(album.userId !== user.id) {
+    res.statusCode = 401
+    res.json({
+      statusCode: res.statusCode,
+      message: 'Unauthorized'
+    })
+  }
   const newSong = await Song.create({
     title, description, url, previewImage, albumId
   })
-  //tested NO POSTMAN TEST need to add errors
-  return res.json(newSong)
+  //tested NO POSTMAN TEST need to add errorsNOT DONE YET
+  return res
+    .status(201)
+    .json(newSong)
 })
 
 router.delete('/:songId', requireAuth, async (req, res)=> {
@@ -74,11 +84,11 @@ router.delete('/:songId', requireAuth, async (req, res)=> {
   message:'Successfully deleted'})
 })
 
-router.put('/:songId', requireAuth, async(req, res)=>{
+router.put('/:songId', requireAuth, restoreUser, async(req, res)=>{
+  const userId=req.user.id
   const { title, description, url, previewImage, albumId} = req.body
   const song = await Song.findByPk(req.params.songId)
-  const user=req.user
-  if(song.userId!==user.id) {
+  if(userId!== song.userId) {
     res.statusCode = 401
     res.json({
       statusCode: res.statusCode,
@@ -92,41 +102,54 @@ router.put('/:songId', requireAuth, async(req, res)=>{
       message: 'Song couldn\'t be found'
     })
   }
-  try {
-    song.update({
-    title, description, url, previewImage, albumId
-    })
-  return res.json(song)
-  } catch {
-    res.statusCode = 400
-    res.json({
-      message:'Validation Error',
-      statusCode: res.statusCode,
-      errors: {
-         "title": "Song title is required",
-    "url": "Audio is required"
-      }
-    })
-  }
-})
 
+    if (title && url) {
+      song.title = title
+      song.url = url
+      song.description = description
+      song.albumId = albumId
+      song.previewImage = previewImage
+      return res.json(song)
+    }
+    else {
+      res.statusCode = 400
+      res.json({
+        message:'Validation Error',
+        statusCode: res.statusCode,
+        errors: {
+           title: "Song title is required",
+            url: "Audio is required"
+        }
+      })
+
+    }
+
+})
+//Get all Songs working
 router.get('/', async (req, res) => {
   const songs = await Song.findAll()
   res.json(songs)
 })
-
-router.get('/current', requireAuth, async (req, res)=> {
-  const userId = req.user.id
+//Get all Songs created by the Current User working
+router.get('/current', requireAuth, restoreUser,async (req, res)=> {
+  const currUserId = req.user.id
   const currUserSongs = await Song.findAll({
-    where:{userId:userId}
+    where:{userId:currUserId}
     //get all songs by current user WIP
   })
+  if(!currUserSongs){
+    res.statusCode = 404;
+    res.json({
+      statusCode: res.statusCode,
+      message: 'You haven\'t uploaded any songs yet',
+    })
+  }
   res.json(currUserSongs)
 })
 
 router.get('/:songId', async (req, res) => {
-
-  const songById =  await Song.findByPk(req.params.songId, {
+  const {songId} = req.params
+  const songById =  await Song.findByPk(songId, {
     include:[
       {
         model:User,

@@ -3,6 +3,7 @@
 const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
+const artistsRouter = require('./users.js')
 const songsRouter = require('./songs.js')
 const playlistsRouter = require('./playlists.js')
 const commentsRouter = require('./comments.js')
@@ -16,6 +17,8 @@ router.use(restoreUser);
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
+
+router.use('/artists', artistsRouter)
 
 router.use('/songs', songsRouter)
 
