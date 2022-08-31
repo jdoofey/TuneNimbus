@@ -13,6 +13,13 @@ router.delete('/:playlistId', restoreUser, requireAuth, async (req, res) =>{
   const user = req.user
   const {playlistId} = req.params
   const playlist = await Playlist.findByPk(playlistId)
+  if (playlist.userId!==user.id) {
+    res.statusCode = 401
+    res.json({
+      statusCode: res.statusCode,
+      message: 'Unauthorized'
+    })
+  }
   if(!playlist){
     res.statusCode = 404
     res.json({
