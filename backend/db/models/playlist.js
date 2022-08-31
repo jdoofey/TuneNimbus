@@ -35,6 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     imageUrl: DataTypes.STRING,
     userId: DataTypes.INTEGER
   }, {
+ 
     sequelize,
     modelName: 'Playlist',
   });

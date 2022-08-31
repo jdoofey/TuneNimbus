@@ -49,6 +49,30 @@ router.post('/:playlistId/songs', restoreUser,requireAuth,async (req, res)=> {
   res.json(playlistSong)
 })
 
+router.get('/:playlistId', async (req, res)=>{
+  const {playlistId} = req.params
+  const playlist = await Playlist.findByPk(playlistId, {
+    attributes:{exlude:[{model:PlaylistSong}]},
+    include:[{
+      model:Song,
+      attributes:[
+        'id','userId','albumId','title',
+        'description','url','createdAt',
+        'updatedAt','previewImage'
+      ],
+//try using scopes to not return playlistsong
+    }],
+
+  })
+  if(!playlist){
+    res.statusCode = 404
+    res.json({
+      message:'Playlist couldn\'t be found',
+      statusCode: res.statusCode,
+    })
+  }
+  res.json(playlist)
+})
 
 router.post('/', restoreUser, requireAuth, async (req, res)=>{
   const userId = req.user.id
