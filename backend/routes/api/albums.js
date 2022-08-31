@@ -22,10 +22,10 @@ router.get('/current', restoreUser, requireAuth, async (req, res)=> {
 //get details of an album from an id
 router.get('/:albumId', async (req, res)=>{
   const {albumId} = req.params
-  const album = await Album.findByPk(id, {
+  const album = await Album.findByPk(albumId, {
     include:[
       {model:User, as:'Artist',
-        attributes:['id', 'username','previewImage']
+        attributes:['id', 'username','previewImg']
       },
       {model:Song}
     ]
