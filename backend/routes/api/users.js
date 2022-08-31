@@ -68,7 +68,7 @@ router.get('/:artistId/playlists', async (req, res) => {
       statusCode: res.statusCode,
     })
   }
-  res.json(playlists)
+  res.json({Playlists:playlists})
 })
 // Get all Songs of an Artist from an id
 //check if this is through /artists/.. or /users/..
