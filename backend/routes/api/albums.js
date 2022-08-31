@@ -19,6 +19,33 @@ router.get('/current', restoreUser, requireAuth, async (req, res)=> {
   }
   res.json({Albums:albums})
 })
+//delete an album
+router.delete('/:albumId', restoreUser, requireAuth, async(req,res)=>{
+  const {user} = req
+  const {albumId} = req.params
+  const album = await Album.findByPk(albumId)
+  if (album.userId!==user.id) {
+    res.statusCode = 401
+    res.json({
+      statusCode: res.statusCode,
+      message: 'Unauthorized'
+    })
+  }
+  if (!album){
+    res.statusCode = 404
+    return res.json({
+      message: 'Album couldn\'t be found',
+      statusCode: res.statusCode,
+    })
+  }
+  if (album.userId === user.id) {
+    await album.destroy()
+    res.statusCode = 200
+      res.json({
+        message:"Successfully deleted",
+        statusCode:res.statusCode})
+  }
+})
 //edit an album
 router.put('/:albumId', restoreUser, requireAuth, async (req, res)=> {
   const {user} = req
