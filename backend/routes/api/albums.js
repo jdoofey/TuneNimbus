@@ -3,7 +3,6 @@ const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth')
 const { User, Song, Album, Comment } = require('../../db/models');
 const router = express.Router();
 
-//get all albums via artistId
 
 //all albums by current user
 router.get('/current', restoreUser, requireAuth, async (req, res)=> {
@@ -19,6 +18,26 @@ router.get('/current', restoreUser, requireAuth, async (req, res)=> {
     })
   }
   res.json({Albums:albums})
+})
+//get details of an album from an id
+router.get('/:albumId', async (req, res)=>{
+  const {albumId} = req.params
+  const album = await Album.findByPk(id, {
+    include:[
+      {model:User, as:'Artist',
+        attributes:['id', 'username','previewImage']
+      },
+      {model:Song}
+    ]
+  })
+  if(!album) {
+    res.statusCode = 404
+    res.json({
+      message: 'Album couldn\'t be found',
+      statusCode: res.statusCode,
+    })
+  }
+  return res.json(album)
 })
 //get all albums
 router.get('/', async (req, res) =>{

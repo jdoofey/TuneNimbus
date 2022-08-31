@@ -61,7 +61,7 @@ router.get('/:artistId/albums', async (req, res)=>{
   })
   if(!albums.length){
     res.statusCode = 404;
-    res.json({
+    return res.json({
       message: 'Artist couldn\'t be found',
       statusCode: res.statusCode,
     })
@@ -77,7 +77,7 @@ router.get('/:artistId/playlists', async (req, res) => {
   const playlists = await Playlist.findAll({where:{userId:artistId}})
   if (!artist.length) {
     res.statusCode = 404;
-    res.json({
+    return res.json({
       message: 'Artist couldn\'t be found',
       statusCode: res.statusCode,
     })
@@ -103,12 +103,12 @@ router.get('/:artistId/songs', async (req, res) => {
   })
   if (!songsByArtist || !songsByArtist.length) {
     res.statusCode = 404;
-    res.json({
+    return res.json({
       statusCode: res.statusCode,
       message: 'Artist couldn\'t be found'
     })
   }
-  res.json(songsByArtist)
+  return res.json(songsByArtist)
 })
 
 // Restore session user
