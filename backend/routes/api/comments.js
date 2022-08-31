@@ -5,6 +5,33 @@ const { handleValidationErrors } = require('../../utils/validation');
 const { User, Song, Album, Comment } = require('../../db/models');
 const router = express.Router();
 
+//delete comment
+router.delete('/:commentId', restoreUser, requireAuth, async (req, res)=>{
+  const {commentId} = req.params
+  const {user} = req
+  const comment = await Comment.findByPk(commentId)
+  if(!comment) {
+    res.statusCode = 404
+    res.json({
+      message: 'Comment couldn\'t be found',
+      statusCode: res.statusCode,
+    })
+  }
+  if(comment && comment.userId===user.id){
+    await comment.destroy()
+    res.statusCode = 200
+    res.json({
+      message:"Successfully deleted",
+      statusCode:res.statusCode})
+  }
+  if (comment.userId!==user.id){
+    res.statusCode = 401
+    res.json({
+      statusCode: res.statusCode,
+      message: 'Unauthorized'
+    })
+  }
+})
 //edit comment
 router.put('/:commentId', restoreUser, requireAuth, async (req, res)=>{
   const {commentId} = req.params
