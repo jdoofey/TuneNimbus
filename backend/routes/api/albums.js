@@ -21,7 +21,16 @@ router.get('/current', restoreUser, requireAuth, async (req, res)=> {
 })
 //create an album
 router.post('/', restoreUser, requireAuth, async(req, res)=>{
-  
+  const {user} = req
+  const {title, description, previewImage} = req.body
+
+  const newAlbum = await Album.create({
+    userId:user.id,
+    title,
+    description,
+    previewImage
+  })
+  res.json(newAlbum)
 })
 //get details of an album from an id
 router.get('/:albumId', async (req, res)=>{
