@@ -13,7 +13,13 @@ router.delete('/:playlistId', restoreUser, requireAuth, async (req, res) =>{
   const user = req.user
   const {playlistId} = req.params
   const playlist = await Playlist.findByPk(playlistId)
-  
+  if(!playlist){
+    res.statusCode = 404
+    res.json({
+      message:'Playlist couldn\'t be found',
+      statusCode: res.statusCode,
+    })
+  }
 })
 //edit a playlist
 router.put('/:playlistId', restoreUser, requireAuth, async (req, res)=> {
