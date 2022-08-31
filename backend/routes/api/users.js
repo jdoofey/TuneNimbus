@@ -4,6 +4,7 @@ const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth')
 const { User, Song, Album, Playlist } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+
 const router = express.Router();
 
 
@@ -39,18 +40,17 @@ const validateSignup = [
 // backend/routes/api/users.js
 // ...
 // Sign up
-router.post(
-  '/',
-  validateSignup,
-  async (req, res) => {
+router.post('/',validateSignup,async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
-    const user = await User.signup({ email, username, password, firstName, lastName });
 
-    await setTokenCookie(res, user);
+    const newUser = await User.signup({ email, username, password, firstName, lastName });
 
-    return res.json({
-      user,
-    });
+    const token = await setTokenCookie(res, newUser);
+    const user = newUser.toSafeObject()
+    user.token = token
+    return res.json(
+      user
+    );
   }
 );
 

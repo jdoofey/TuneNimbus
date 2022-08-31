@@ -43,22 +43,36 @@ router.post('/:songId/comments', restoreUser, requireAuth, async(req, res)=>{
 
 router.post('/', requireAuth, restoreUser, async (req, res)=> {
   const user = req.user;
-  const {title, description, url, previewImage, albumId} = req.body
+  const {title, description, url, previewImage, albumId, } = req.body
   const album = await Album.findByPk(albumId)
-  if(album.userId !== user.id) {
-    res.statusCode = 401
+
+  //create song if album specified and album exists
+  //if album not specified create song without album
+  if(album){
+    if(album.userId !== user.id) {
+      res.statusCode = 401
+      res.json({
+        statusCode: res.statusCode,
+        message: 'Unauthorized'
+      })
+    }
+  }
+  if(album!==null) {
+    res.statusCode = 404
     res.json({
-      statusCode: res.statusCode,
-      message: 'Unauthorized'
+      statusCode:res.statusCode,
+      message:'Album couldn\'t be found'
     })
   }
-  const newSong = await Song.create({
-    title, description, url, previewImage, albumId
-  })
-  //tested NO POSTMAN TEST need to add errorsNOT DONE YET
-  return res
-    .status(201)
-    .json(newSong)
+  if((album!==null&&album) ||album===null){
+
+    const newSong = await Song.create({
+      title, description, url, previewImage, albumId,
+    })
+    return res
+      .status(201)
+      .json(newSong)
+  }
 })
 
 router.delete('/:songId', requireAuth, async (req, res)=> {

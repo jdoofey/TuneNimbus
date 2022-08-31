@@ -25,9 +25,9 @@ const router = express.Router();
       (req, res) => {
         const { user } = req;
         if (user) {
-          return res.json({
-            user: user.toSafeObject()
-          });
+          return res.json(
+            user.toSafeObject()
+          );
         } else return res.json({});
       }
       );
@@ -48,7 +48,10 @@ const router = express.Router();
         async (req, res, next) => {
           const { credential, password } = req.body;
 
-          const user = await User.login({ credential, password });
+          const thisUser = await User.login({ credential, password });
+          const token = await setTokenCookie(res, thisUser);
+          const user = thisUser.toSafeObject();
+          user.token = token
 
           if (!user) {
             const err = new Error('Login failed');
@@ -58,11 +61,11 @@ const router = express.Router();
             return next(err);
           }
 
-          await setTokenCookie(res, user);
 
-          return res.json({
+
+          return res.json(
             user
-          });
+          );
         }
       );
 //nWDgbEur-qTQCWyimvsp02PuOSt7n9_L9xks
