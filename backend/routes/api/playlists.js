@@ -9,6 +9,12 @@ router.get('/', async (req, res)=>{
   res.json({playlists})
 })
 
+router.delete('/:playlistId', restoreUser, requireAuth, async (req, res) =>{
+  const user = req.user
+  const {playlistId} = req.params
+  const playlist = await Playlist.findByPk(playlistId)
+  
+})
 //edit a playlist
 router.put('/:playlistId', restoreUser, requireAuth, async (req, res)=> {
   const user = req.user
