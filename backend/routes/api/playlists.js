@@ -9,10 +9,12 @@ router.get('/', async (req, res)=>{
   res.json({playlists})
 })
 
+//restore user makes the destructuring possible
 router.post('/:playlistId/songs', restoreUser,requireAuth,async (req, res)=> {
   const {playlistId} = req.params
   const {songId} = req.body
-  const {user:{id}} = req
+  const user = req.user
+  // const {user:{id}} = req also works, thanks sam and john
   const playlist = await Playlist.findByPk(playlistId)
   if(!playlist) {
     res.statusCode = 404
@@ -29,7 +31,7 @@ router.post('/:playlistId/songs', restoreUser,requireAuth,async (req, res)=> {
       statusCode: res.statusCode,
     })
   }
-  if(playlist.userId!==id) {
+  if(playlist.userId!==user.id) {
     res.statusCode = 401
     res.json({
       statusCode: res.statusCode,
@@ -44,7 +46,6 @@ router.post('/:playlistId/songs', restoreUser,requireAuth,async (req, res)=> {
       exclude:['createdAt','updatedAt']
     }
   })
-
   res.json(playlistSong)
 })
 
