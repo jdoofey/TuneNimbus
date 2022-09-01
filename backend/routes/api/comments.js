@@ -53,7 +53,7 @@ router.put('/:commentId', restoreUser, requireAuth, async (req, res)=>{
       statusCode: res.statusCode,
     })
   }
-  if (comment.userId!==user.id){
+  if (comment.userId!==userId){
     res.statusCode = 401
     return res.json({
       statusCode: res.statusCode,

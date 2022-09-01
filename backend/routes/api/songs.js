@@ -11,7 +11,7 @@ router.get('/:songId/comments', async (req, res)=>{
     where:{songId:req.params.songId},
     include:[{model:User, attributes:['id', 'username']}]
   })
-  if(!comment || comment==''){
+  if(!comment || comment=='' ){
     res.statusCode = 404
     res.json({
       statusCode:res.statusCode,
@@ -145,7 +145,7 @@ router.put('/:songId', requireAuth, restoreUser, async(req, res)=>{
       song.albumId = albumId
       song.previewImage = imageUrl
       await song.save()
-      
+
       return res.json(song)
     }
 })
