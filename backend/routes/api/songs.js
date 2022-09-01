@@ -167,12 +167,12 @@ router.get('/', async (req, res) => {
   if(title) where.title = {[Op.substring]:title}
   //functioning properly thanks john
   if(createdAt) {
-    resCreatedAt = new Date(createdAt)
-    const year =newCreatedAt.getFullYear()
-    const month = newCreatedAt.getMonth()
-    const prevDay = newCreatedAt.getDate()
-    const day= newCreatedAt.getDate()+1
-    const nextDay = newCreatedAt.getDate()+2
+    date = new Date(createdAt)
+    const prevDay = date.getDate()
+    const month = date.getMonth()
+    const year =date.getFullYear()
+    const day= date.getDate()+1
+    const nextDay = date.getDate()+2
     const before = new Date(year,month,prevDay)
     const after = new Date(year,month,nextDay)
     where.createdAt = {[Op.between]:[before,after]}
