@@ -27,7 +27,7 @@ module.exports = {
         defaultValue: 0,
         allowNull: false
       },
-      previewImg: {
+      previewImage: {
         type:Sequelize.STRING(256),
         //might want to define default value for preview image
       },

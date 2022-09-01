@@ -40,14 +40,38 @@ const validateSignup = [
 // backend/routes/api/users.js
 // ...
 // Sign up
-router.post('/',validateSignup,async (req, res) => {
-    const { email, password, username, firstName, lastName } = req.body;
+// router.get('/allusers', async (req, res)=>{
+//   const allusers = await User.findAll()
+//   res.json(allusers)
+// })
+router.post('/',validateSignup, async (req, res, next) => {
+    const {email,password,username,firstName,lastName} = req.body;
 
-    const newUser = await User.signup({ email, username, password, firstName, lastName });
+    const usernameExists = await User.scope('currentUser').findOne({
+      where:{username}
+    })
+    const emailExists = await User.scope('currentUser').findOne({
+      where:{email}
+    })
+    const err = new Error("User already exists");
+    err.status = 403
+    const errors = {}
+    err.errors = errors
+
+    if(emailExists){
+      errors.email = "User with that email already exists"
+      next(err)
+    }
+    if(usernameExists){
+      errors.username = "User with that username already exists"
+      next(err)
+    }
+    const newUser = await User.signup({email,username,password,firstName,lastName})
 
     const token = await setTokenCookie(res, newUser);
     const user = newUser.toSafeObject()
     user.token = token
+    //user id included, but is needed for postman test to take in an id
     return res.json(
       user
     );
@@ -98,7 +122,7 @@ router.get('/:artistId/songs', restoreUser, requireAuth, async (req, res) => {
       },
     ]
   })
-  if (!songsByArtist && songsByArtist=='') {
+  if (!songsByArtist || songsByArtist=='') {
     res.statusCode = 404;
     return res.json({
       statusCode: res.statusCode,
@@ -133,7 +157,7 @@ router.get('/:artistId', async (req, res)=>{
       username: artist.username,
       totalSongs: songs,
       totalAlbums: albums,
-      previewImage: artist.previewImg
+      previewImage: artist.previewImage
     })
 })
 // Restore session user

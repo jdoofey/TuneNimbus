@@ -99,7 +99,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         defaultValue: 0,
       },
-      previewImg: {
+      previewImage: {
         type: DataTypes.STRING
         //might want to set a default value
       },
@@ -127,12 +127,17 @@ module.exports = (sequelize, DataTypes) => {
           exclude: ["hashedPassword", "email", "createdAt", "updatedAt"]
         }
       },
+      defaultScope: {
+        attributes: {
+          exclude: [ "hashedPassword", "email", "createdAt", "updatedAt" ]
+        }
+      },
       scopes: {
         currentUser: {
-          attributes: { exclude: ["hashedPassword"] }
+          attributes: { exclude: [ "hashedPassword", 'createdAt', 'updatedAt'  ] }
         },
         loginUser: {
-          attributes: {}
+          attributes: { }
         }
       }
     }

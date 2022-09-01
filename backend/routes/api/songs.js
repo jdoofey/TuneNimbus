@@ -46,29 +46,33 @@ router.post('/', requireAuth, restoreUser, async (req, res)=> {
   const user = req.user;
   const {title, description, url, previewImage, albumId, } = req.body
   const album = await Album.findByPk(albumId)
-
-  //create song if album specified and album exists
-  //if album not specified create song without album
-  if(album){
+  if(albumId){
+    if(album===null) {
+      res.statusCode = 404
+      res.json({
+        statusCode:res.statusCode,
+        message:'Album couldn\'t be found'
+      })
+    }
     if(album.userId !== user.id) {
       res.statusCode = 401
       res.json({
         statusCode: res.statusCode,
         message: 'Unauthorized'
       })
+    } else {
+      const newSong = await Song.create({
+        userId:user.id, title, description, url, previewImage, albumId
+      })
+      return res
+      .status(201)
+      .json(newSong)
     }
   }
-  if(album!==null) {
-    res.statusCode = 404
-    res.json({
-      statusCode:res.statusCode,
-      message:'Album couldn\'t be found'
-    })
-  }
-  if((album!==null&&album) ||album===null){
+  if(!albumId){
 
     const newSong = await Song.create({
-      title, description, url, previewImage, albumId,
+      userId:user.id,title, description, url, previewImage, albumId,
     })
     return res
       .status(201)
@@ -79,18 +83,18 @@ router.post('/', requireAuth, restoreUser, async (req, res)=> {
 router.delete('/:songId', requireAuth, async (req, res)=> {
   const song = await Song.findByPk(req.params.songId)
   const user=req.user
-  if(song.userId!==user.id) {
-    res.statusCode = 401
-    res.json({
-      statusCode: res.statusCode,
-      message: 'Unauthorized'
-    })
-  }
   if (!song) {
     res.statusCode = 404
     res.json({
       statusCode: res.statusCode,
       message: 'Song couldn\'t be found'
+    })
+  }
+  if(song.userId!==user.id) {
+    res.statusCode = 401
+    res.json({
+      statusCode: res.statusCode,
+      message: 'Unauthorized'
     })
   }
   await song.destroy()
@@ -101,13 +105,15 @@ router.delete('/:songId', requireAuth, async (req, res)=> {
 
 router.put('/:songId', requireAuth, restoreUser, async(req, res)=>{
   const userId=req.user.id
-  const { title, description, url, previewImage, albumId} = req.body
-  const song = await Song.findByPk(req.params.songId)
+  const { title, description, url, imageUrl, albumId} = req.body
+  const song = await Song.findByPk(req.params.songId,
+
+    )
   if (!song) {
     res.statusCode = 404
     res.json({
+      message: 'Song couldn\'t be found',
       statusCode: res.statusCode,
-      message: 'Song couldn\'t be found'
     })
   }
   if(userId!== song.userId) {
@@ -137,8 +143,9 @@ router.put('/:songId', requireAuth, restoreUser, async(req, res)=>{
       song.url = url
       song.description = description
       song.albumId = albumId
-      song.previewImage = previewImage
+      song.previewImage = imageUrl
       await song.save()
+      
       return res.json(song)
     }
 })
@@ -179,25 +186,25 @@ router.get('/', async (req, res) => {
   }
   const songs = await Song.findAll({
     where,
-    ...pagination
+    ...pagination,
+    attributes:{exclude:['userId', 'albumId']}
   })
   res.json({Songs:songs, page, size})
 })
 //Get all Songs created by the Current User working
 router.get('/current', requireAuth, restoreUser,async (req, res)=> {
-  const currUserId = req.user.id
+  const currUser = req.user
   const currUserSongs = await Song.findAll({
-    where:{userId:currUserId}
-    //get all songs by current user WIP
+    where:{userId:currUser.id}
   })
-  if(!currUserSongs){
+  if(!currUserSongs.length){
     res.statusCode = 404;
     res.json({
       statusCode: res.statusCode,
       message: 'You haven\'t uploaded any songs yet',
     })
   }
-  res.json(currUserSongs)
+  res.json({Songs:currUserSongs})
 })
 
 router.get('/:songId', async (req, res) => {
@@ -207,7 +214,7 @@ router.get('/:songId', async (req, res) => {
       {
         model:User,
         as:'Artist',
-        attributes:['id', 'username', 'previewImg']
+        attributes:['id', 'username', 'previewImage']
       },
       {
         model:Album,

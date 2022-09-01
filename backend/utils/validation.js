@@ -9,13 +9,27 @@ const handleValidationErrors = (req, _res, next) => {
   if (!validationErrors.isEmpty()) {
     const errors = validationErrors
       .array()
-      .map((error) => `${error.msg}`);
+      // .map((error) => {
+      //   console.log(err)
+      //   `${error.msg}`
+      // })
+      .reduce((e, err) =>  {
+        e[err.param] = err.msg
+        return e;
+      }, {});
 
-    const err = Error('Bad request.');
-    err.errors = errors;
-    err.status = 400;
-    err.title = 'Bad request.';
-    next(err);
+
+    _res.status(400)
+    _res.json({
+        "message":"Validation error",
+        "statusCode": 400,
+        "error": errors
+      })
+    // const err = Error('My error');
+    // err.errors = errors;
+    // err.status = 400;
+    // err.title = 'My error';
+    // next(err);
   }
   next();
 };

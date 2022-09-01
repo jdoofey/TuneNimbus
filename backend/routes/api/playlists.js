@@ -30,18 +30,18 @@ router.delete('/:playlistId', restoreUser, requireAuth, async (req, res) =>{
   const user = req.user
   const {playlistId} = req.params
   const playlist = await Playlist.findByPk(playlistId)
+  if(!playlist||playlist===null){
+    res.statusCode = 404
+    res.json({
+      message:'Playlist couldn\'t be found',
+      statusCode: res.statusCode,
+    })
+  }
   if (playlist.userId!==user.id) {
     res.statusCode = 401
     res.json({
       statusCode: res.statusCode,
       message: 'Unauthorized'
-    })
-  }
-  if(!playlist){
-    res.statusCode = 404
-    res.json({
-      message:'Playlist couldn\'t be found',
-      statusCode: res.statusCode,
     })
   }
   if(playlist.userId===user.id){
@@ -109,7 +109,7 @@ router.post('/:playlistId/songs', restoreUser,requireAuth,async (req, res)=> {
       message: 'Unauthorized'
     })
   }
-  const addSong = await PlaylistSong.create({songId,playlistId})
+  const addSong = await PlaylistSong.create({songId,playlistId,})
   await addSong.save();
   const playlistSong = await PlaylistSong.findOne({
     where:{playlistId, songId},
@@ -118,6 +118,7 @@ router.post('/:playlistId/songs', restoreUser,requireAuth,async (req, res)=> {
       exclude:['createdAt','updatedAt']
     }
   })
+
   res.json(playlistSong)
 })
 
@@ -161,7 +162,7 @@ router.post('/', restoreUser, requireAuth, async (req, res)=>{
   }
   else {
     res.status(201)
-    res.json({playlist})
+    res.json(playlist)
   }
 })
 
