@@ -8,6 +8,7 @@ router.get('/', async (req, res)=>{
   const playlists = await Playlist.findAll({})
   res.json({playlists})
 })
+
 router.get('/current', restoreUser, requireAuth, async (req, res)=>{
   const user = req.user
   if(user){
@@ -123,14 +124,14 @@ router.post('/:playlistId/songs', restoreUser,requireAuth,async (req, res)=> {
 router.get('/:playlistId', async (req, res)=>{
   const {playlistId} = req.params
   const playlist = await Playlist.findByPk(playlistId, {
-    attributes:{exlude:[{model:PlaylistSong}]},
     include:[{
-      model:Song,through: {attributes: []},
+      model:Song,
+      through: {attributes: []},
       attributes:[
         'id','userId','albumId','title',
         'description','url','createdAt',
         'updatedAt','previewImage'],
-//try using scopes to not return playlistsong
+//schaeffer is a g
     }],
 
   })

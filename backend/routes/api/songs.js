@@ -2,6 +2,7 @@ const express = require('express')
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
 const { User, Song, Album, Comment } = require('../../db/models');
 const router = express.Router();
+const {Op} = require('sequelize')
 
 
 router.get('/:songId/comments', async (req, res)=>{
@@ -147,8 +148,40 @@ router.put('/:songId', requireAuth, restoreUser, async(req, res)=>{
 //Get all Songs working
 //sam saves the day
 router.get('/', async (req, res) => {
-  const songs = await Song.findAll()
-  res.json({Songs:songs})
+  let {page,size,createdAt, title} = req.query
+
+  const pagination = {};
+  const where = {};
+
+  if(page)page=parseInt(page);
+  if(size)size=parseInt(size);
+
+  if(!page||page<0)page=1;
+  if(!size||size<0)size=20;
+  if(page>10)page=10;
+  if(size>20)size=20;
+
+  pagination.limit=size;
+  pagination.offset=size*(page-1);
+
+  if(title) where.title = {[Op.substring]:title}
+  //functioning properly thanks john
+  if(createdAt) {
+    resCreatedAt = new Date(createdAt)
+    const year =newCreatedAt.getFullYear()
+    const month = newCreatedAt.getMonth()
+    const prevDay = newCreatedAt.getDate()
+    const day= newCreatedAt.getDate()+1
+    const nextDay = newCreatedAt.getDate()+2
+    const before = new Date(year,month,prevDay)
+    const after = new Date(year,month,nextDay)
+    where.createdAt = {[Op.between]:[before,after]}
+  }
+  const songs = await Song.findAll({
+    where,
+    ...pagination
+  })
+  res.json({Songs:songs, page, size})
 })
 //Get all Songs created by the Current User working
 router.get('/current', requireAuth, restoreUser,async (req, res)=> {
