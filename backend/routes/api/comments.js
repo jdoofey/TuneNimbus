@@ -6,7 +6,7 @@ const router = express.Router();
 //delete comment
 router.delete('/:commentId', restoreUser, requireAuth, async (req, res)=>{
   const {commentId} = req.params
-  const {user} = req
+  const user = req
   const comment = await Comment.findByPk(commentId)
   if(!comment) {
     res.statusCode = 404
@@ -34,8 +34,8 @@ router.delete('/:commentId', restoreUser, requireAuth, async (req, res)=>{
 //edit comment
 router.put('/:commentId', restoreUser, requireAuth, async (req, res)=>{
   const {commentId} = req.params
-  const {user} = req
-  const {body} = req.body
+  const user = req
+  const body = req.body
   const comment = await Comment.findByPk(commentId)
   if(comment&&comment.userId===user.id){
     comment.body = body
@@ -61,10 +61,10 @@ router.put('/:commentId', restoreUser, requireAuth, async (req, res)=>{
 //create comment for song via songId
 router.post('/:songId/comments', async (req, res)=>{
   const {songId} = req.params
-  const {user} = req
+  const user = req.user
   const {body} = req.body
   const song = await Song.findByPk(songId)
-  const comment = await Song.createComment({
+  const comment = await Comment.create({
     userId: user.id,
     body
   })
