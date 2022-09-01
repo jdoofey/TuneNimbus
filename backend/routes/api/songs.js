@@ -117,6 +117,20 @@ router.put('/:songId', requireAuth, restoreUser, async(req, res)=>{
     })
   }
 
+  if(title===null) {
+    res.json({
+      message:'Validation Error',
+    statusCode: 400,
+    errors: {url: "Title is required"}
+    })
+  }
+  if(url===null) {
+    res.json({
+      message:'Validation Error',
+    statusCode: 400,
+    errors: {url: "Audio is required"}
+    })
+  }
     if (title && url) {
       song.title = title
       song.url = url
@@ -126,20 +140,10 @@ router.put('/:songId', requireAuth, restoreUser, async(req, res)=>{
       await song.save()
       return res.json(song)
     }
-    else {
-      res.statusCode = 400
-      res.json({
-        message:'Validation Error',
-        statusCode: res.statusCode,
-        errors: {
-           title: "Song title is required",
-            url: "Audio is required"
-        }
-      })
-
-    }
-
 })
+
+
+
 //Get all Songs working
 //sam saves the day
 router.get('/', async (req, res) => {

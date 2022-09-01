@@ -125,12 +125,11 @@ router.get('/:playlistId', async (req, res)=>{
   const playlist = await Playlist.findByPk(playlistId, {
     attributes:{exlude:[{model:PlaylistSong}]},
     include:[{
-      model:Song,
+      model:Song,through: {attributes: []},
       attributes:[
         'id','userId','albumId','title',
         'description','url','createdAt',
-        'updatedAt','previewImage'
-      ],
+        'updatedAt','previewImage'],
 //try using scopes to not return playlistsong
     }],
 
