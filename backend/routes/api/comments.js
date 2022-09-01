@@ -5,8 +5,8 @@ const router = express.Router();
 
 //delete comment
 router.delete('/:commentId', restoreUser, requireAuth, async (req, res)=>{
-  const {commentId} = req.params
-  const user = req
+  const commentId = req.params.commentId
+  const userId = req.user.id
   const comment = await Comment.findByPk(commentId)
   if(!comment) {
     res.statusCode = 404
@@ -15,32 +15,36 @@ router.delete('/:commentId', restoreUser, requireAuth, async (req, res)=>{
       statusCode: res.statusCode,
     })
   }
-  if(comment && comment.userId===user.id){
-    await comment.destroy()
-    res.statusCode = 200
-    return res.json({
-      message:"Successfully deleted",
-      statusCode:res.statusCode})
-  }
-  if (comment.userId!==user.id){
+  if (userId!==comment.userId){
     res.statusCode = 401
     return res.json({
       statusCode: res.statusCode,
       message: 'Unauthorized'
     })
   }
+
+    await comment.destroy()
+    res.statusCode = 200
+    return res.json({
+      message:"Successfully deleted",
+      statusCode:res.statusCode})
+
 })
 
 //edit comment
 router.put('/:commentId', restoreUser, requireAuth, async (req, res)=>{
-  const {commentId} = req.params
-  const user = req
-  const body = req.body
+  const commentId = req.params.commentId
+  const userId = req.user.id
+  const {body} = req.body
   const comment = await Comment.findByPk(commentId)
-  if(comment&&comment.userId===user.id){
-    comment.body = body
-    await comment.save()
-    return res.json(comment)
+  if (!body) {
+    return res.status(400).json({
+        message: "Validation error",
+        statusCode: 400,
+        errors: {
+            body: "Comment body text is required"
+        }
+    })
   }
   if(!comment){
     res.statusCode = 404
@@ -56,6 +60,11 @@ router.put('/:commentId', restoreUser, requireAuth, async (req, res)=>{
       message: 'Unauthorized'
     })
   }
+  if(body){
+    comment.body = body
+    await comment.save()
+  }
+  return res.json(comment)
 })
 
 //create comment for song via songId
