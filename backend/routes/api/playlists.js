@@ -108,7 +108,8 @@ router.post('/:playlistId/songs', restoreUser,requireAuth,async (req, res)=> {
       message: 'Unauthorized'
     })
   }
-  await playlist.addSong(song)
+  const addSong = await PlaylistSong.create({songId,playlistId})
+  await addSong.save();
   const playlistSong = await PlaylistSong.findOne({
     where:{playlistId, songId},
     attributes:{

@@ -101,7 +101,7 @@ router.get('/:artistId/songs', async (req, res) => {
       },
     ]
   })
-  if (!songsByArtist || !songsByArtist.length) {
+  if (!songsByArtist && !songsByArtist.length) {
     res.statusCode = 404;
     return res.json({
       statusCode: res.statusCode,
