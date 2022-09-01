@@ -19,7 +19,7 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-router.use('/artists', artistsRouter)
+router.use('/artists', usersRouter)
 
 router.use('/albums', albumsRouter)
 

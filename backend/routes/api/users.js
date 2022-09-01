@@ -86,22 +86,19 @@ router.get('/:artistId/playlists', async (req, res) => {
 })
 // Get all Songs of an Artist from an id
 //check if this is through /artists/.. or /users/..
-router.get('/:artistId/songs', async (req, res) => {
+router.get('/:artistId/songs', restoreUser, requireAuth, async (req, res) => {
   const artistId = req.params.artistId
   const songsByArtist = await User.findByPk(artistId, {
-    attributes:[],
     include:[
-
       {
         model: Song,
         attributes: ['id', 'userId', 'albumId', 'title',
-          'description', 'url', 'createdAt', 'updatedAt','previewImage']
-
-
+          'description', 'url', 'createdAt', 'updatedAt',
+          'previewImage']
       },
     ]
   })
-  if (!songsByArtist && !songsByArtist.length) {
+  if (!songsByArtist && songsByArtist=='') {
     res.statusCode = 404;
     return res.json({
       statusCode: res.statusCode,

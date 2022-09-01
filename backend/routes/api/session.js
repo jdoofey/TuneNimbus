@@ -42,32 +42,22 @@ const router = express.Router();
           .withMessage('Please provide a password.'),
         handleValidationErrors
       ];
-      router.post(
-        '/',
-        validateLogin,
-        async (req, res, next) => {
-          const { credential, password } = req.body;
 
-          const thisUser = await User.login({ credential, password });
-          const token = await setTokenCookie(res, thisUser);
-          const user = thisUser.toSafeObject();
-          user.token = token
+      router.post('/', validateLogin, async (req, res, next) => {
+        const {credential, password} = req.body;
+        const user = await User.login({credential, password});
 
-          if (!user) {
+        if (!user) {
             const err = new Error('Login failed');
             err.status = 401;
             err.title = 'Login failed';
             err.errors = ['The provided credentials were invalid.'];
             return next(err);
-          }
-
-
-
-          return res.json(
-            user
-          );
         }
-      );
+
+        await setTokenCookie(res, user);
+        return res.json({user});
+    });
 //nWDgbEur-qTQCWyimvsp02PuOSt7n9_L9xks
 
 module.exports = router;

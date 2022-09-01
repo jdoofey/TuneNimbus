@@ -103,18 +103,18 @@ router.put('/:songId', requireAuth, restoreUser, async(req, res)=>{
   const userId=req.user.id
   const { title, description, url, previewImage, albumId} = req.body
   const song = await Song.findByPk(req.params.songId)
-  if(userId!== song.userId) {
-    res.statusCode = 401
-    res.json({
-      statusCode: res.statusCode,
-      message: 'Unauthorized'
-    })
-  }
   if (!song) {
     res.statusCode = 404
     res.json({
       statusCode: res.statusCode,
       message: 'Song couldn\'t be found'
+    })
+  }
+  if(userId!== song.userId) {
+    res.statusCode = 401
+    res.json({
+      statusCode: res.statusCode,
+      message: 'Unauthorized'
     })
   }
 
