@@ -10,7 +10,7 @@ router.delete('/:commentId', restoreUser, requireAuth, async (req, res)=>{
   const comment = await Comment.findByPk(commentId)
   if(!comment) {
     res.statusCode = 404
-    res.json({
+    return res.json({
       message: 'Comment couldn\'t be found',
       statusCode: res.statusCode,
     })
@@ -18,13 +18,13 @@ router.delete('/:commentId', restoreUser, requireAuth, async (req, res)=>{
   if(comment && comment.userId===user.id){
     await comment.destroy()
     res.statusCode = 200
-    res.json({
+    return res.json({
       message:"Successfully deleted",
       statusCode:res.statusCode})
   }
   if (comment.userId!==user.id){
     res.statusCode = 401
-    res.json({
+    return res.json({
       statusCode: res.statusCode,
       message: 'Unauthorized'
     })
@@ -44,14 +44,14 @@ router.put('/:commentId', restoreUser, requireAuth, async (req, res)=>{
   }
   if(!comment){
     res.statusCode = 404
-    res.json({
+    return res.json({
       message: 'Comment couldn\'t be found',
       statusCode: res.statusCode,
     })
   }
   if (comment.userId!==user.id){
     res.statusCode = 401
-    res.json({
+    return res.json({
       statusCode: res.statusCode,
       message: 'Unauthorized'
     })
@@ -70,12 +70,12 @@ router.post('/:songId/comments', async (req, res)=>{
   })
   if (!song) {
     res.statusCode = 404
-    res.json({
+    return res.json({
       message: 'Song couldn\'t be found',
       statusCode: res.statusCode,
     })
   }
-  res.json(comment)
+  return res.json(comment)
 })
 
 //coments by song id
@@ -87,12 +87,12 @@ router.get('/:songId/comments', async(req, res)=>{
   })
   if (!song) {
     res.statusCode = 404
-    res.json({
+    return res.json({
       message: 'Song couldn\'t be found',
       statusCode: res.statusCode,
     })
   }
-  res.json({Comments:comments})
+  return res.json({Comments:comments})
 })
 
 
