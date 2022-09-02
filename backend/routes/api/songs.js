@@ -138,11 +138,21 @@ router.put('/:songId', requireAuth, restoreUser, async(req, res)=>{
     errors: {url: "Audio is required"}
     })
   }
-    if (title && url) {
+    if (title && url && albumId) {
       song.title = title
       song.url = url
       song.description = description
       song.albumId = albumId
+      song.previewImage = imageUrl
+      await song.save()
+
+      return res.json(song)
+    }
+    if (title && url && !albumId) {
+      song.title = title
+      song.url = url
+      song.description = description
+      song.albumId = null
       song.previewImage = imageUrl
       await song.save()
 
@@ -187,7 +197,7 @@ router.get('/', async (req, res) => {
   const songs = await Song.findAll({
     where,
     ...pagination,
-    attributes:{exclude:['userId', 'albumId']}
+
   })
   res.json({Songs:songs, page, size})
 })
