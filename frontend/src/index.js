@@ -7,15 +7,20 @@ import App from './App';
 import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 
+
+//PHASE1 sessions actions and reducer
+import * as sessionActions from './store/session';
+
 const store = configureStore();
 
-if (process.env.NODE_ENV !== "production") {
-  restoreCSRF()
+if (process.env.NODE_ENV !== 'production') {
+  restoreCSRF();
 
   window.csrfFetch = csrfFetch;
   window.store = store;
+  window.sessionActions = sessionActions;
 }
-
+//PHASE1 session actions and reducer END
 function Root() {
   return (
     <ReduxProvider store={store}>
