@@ -1,12 +1,12 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-
+//PHASE1 session actions and reducer
 import sessionReducer from './session';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
 });
-
+//PHASE1 session actions and reducer END
 let enhancer;
 
 if (process.env.NODE_ENV === "production") {
