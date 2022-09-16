@@ -19,6 +19,23 @@ const removeUser = () => {
 };
 //PHASE1 session actions and reducer END
 
+export const signup = (user) => async (dispatch) => {
+  const { username, email, password, firstName, lastName } = user;
+  const response = await csrfFetch("/api/users", {
+    method: "POST",
+    body: JSON.stringify({
+      username,
+      email,
+      password,
+      firstName,
+      lastName
+    }),
+  });
+  const data = await response.json();
+  dispatch(setUser(data));
+  return response;
+};
+
 export const restoreUser = () => async dispatch => {
   const response = await csrfFetch('/api/session');
   const data = await response.json();

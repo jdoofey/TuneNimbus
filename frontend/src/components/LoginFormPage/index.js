@@ -12,7 +12,9 @@ function LoginFormPage() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return (
+
+  //john saves day, session user returns empty object which is truthy
+  if (sessionUser&&(Object.keys(sessionUser).length)) return (
     <Redirect to="/" />
   );
 
