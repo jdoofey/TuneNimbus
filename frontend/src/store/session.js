@@ -18,7 +18,13 @@ const removeUser = () => {
   };
 };
 //PHASE1 session actions and reducer END
-
+export const logout = () => async (dispatch) => {
+  const response = await csrfFetch('/api/session', {
+    method: 'DELETE',
+  });
+  dispatch(removeUser());
+  return response;
+};
 export const signup = (user) => async (dispatch) => {
   const { username, email, password, firstName, lastName } = user;
   const response = await csrfFetch("/api/users", {
