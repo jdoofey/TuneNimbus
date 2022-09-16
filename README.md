@@ -13,4 +13,4 @@ TuneNimbus is a SoundCloud clone. Here's their website: [SoundCloud](https://sou
 ![postgresql](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=PostgreSQL&logoColor=white)
 
 ### Hosting:
-![imgur](https://img.shields.io/badge/Imgur-1BB76E?style=for-the-badge&logo=Imgur&logoColor=white)![heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=Heroku&logoColor=white)
+![imgur](https://img.shields.io/badge/Imgur-1BB76E?style=for-the-badge&logo=Imgur&logoColor=white) ![heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=Heroku&logoColor=white)
