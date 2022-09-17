@@ -3,6 +3,12 @@
 
 TuneNimbus is a SoundCloud clone. Here's their website: [SoundCloud](https://soundcloud.com/). On TuneNimbus, you can listen to more than -1 songs, upload music, and create your own playlists, at NO COST. By uploading your music to this site, you give me consent to use your creative material for FREE!
 
+## Wiki Links
+* [Backend Routes (API Documentation)](https://github.com/jakezmat/API-Project/wiki/API-Documentation)
+* [Database Schema](https://github.com/jakezmat/API-Project/wiki#database-schema)
+* [Feature List](https://github.com/jakezmat/API-Project/wiki#feature-list)
+* [Redux Store Shape](https://github.com/jakezmat/API-Project/wiki#redux-state-shape)
+
 ## Tech Stack
 
 ### Frameworks, Platforms, and Libararies:
