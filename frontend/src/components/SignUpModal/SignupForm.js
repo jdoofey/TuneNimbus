@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignUpForm.css'
-function SignupFormPage() {
+function SignupForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser&&(Object.keys(sessionUser).length)) return <Redirect to="/" />;
+  // if (sessionUser&&(Object.keys(sessionUser).length)) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,63 +34,72 @@ function SignupFormPage() {
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label>
+      <div id='bigbox'>
+      <img id='logo' src='https://i.imgur.com/OHysOUL.png'></img>
+      <label id='email-label'>
         Email
         <input
+          id='email'
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </label>
-      <label>
+      <label id='first-name-label'>
         First Name
         <input
+          id='first-name'
           type="text"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
         />
       </label>
-      <label>
+      <label id='last-name-label'>
         Last Name
         <input
+          id='last-name'
           type="text"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
         />
       </label>
-      <label>
+      <label id='username-label'>
         Username
         <input
+          id='username'
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
       </label>
-      <label>
+      <label id='password-label'>
         Password
         <input
+          id='password'
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
-      <label>
+      <label id='confirm-password-label'>
         Confirm Password
         <input
+          id='confirm-password'
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
       </label>
-      <button type="submit">Sign Up</button>
+      <button id='submit-btn' type="submit">Sign Up</button>
+      </div>
     </form>
   );
 }
 
-export default SignupFormPage;
+export default SignupForm;

@@ -1,0 +1,45 @@
+#email{
+  display:flex;
+  width:250px;
+}
+#first-name{
+  display:flex;
+  width:250px;
+}
+#last-name{
+  display:flex;
+  width:250px;
+}
+#username{
+  display:flex;
+  width:250px;
+}
+#password{
+  display:flex;
+  width:250px;
+}
+#confirm-password {
+  display:flex;
+  width:250px;
+}
+#bigbox {
+  height: 365px;
+  border:red 1px solid;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-between;
+  justify-content: space-around;
+  width:300px;
+}
+#submit-btn {
+  font-size: 16px;
+  display:flex;
+  height: 23px;
+  width: 258px;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff7f50;
+  border:none;
+  border-radius: 5px;
+}

@@ -3,10 +3,16 @@
   top: 0;
   right: 0;
   left: 0;
-  bottom: 0;
+  bottom: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: slide;
+  animation-duration: .75s;
+}
+
+@keyframes slide {
+  0% {bottom:800px};
 }
 
 #modal-background {
@@ -16,9 +22,35 @@
   left: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
+
 }
 
 #modal-content {
   position: absolute;
   background-color:white;
+  height:410px;
+  width:300px;
+  /* border: blue 1px solid; */
+  display:flex;
+  flex-direction: column;
+}
+
+
+
+#close-modal {
+  padding-left: 3px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5px;
+  border:none;
+}
+
+#close-modal:hover {
+  cursor: pointer;
+}
+
+#top-modal {
+  display:flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
