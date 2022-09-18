@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSongs } from "../../store/songs";
+import { getSongsByCurrentUser } from "../../store/songs";
 
 import Song from "../Song/song";
 
@@ -10,7 +10,7 @@ export const SongsList = () => {
   const songs = useSelector((state) => state.song);
 
   useEffect(() => {
-    dispatch(getSongs());
+    dispatch(getSongsByCurrentUser());
   }, [dispatch]);
 
   if (!songs) return null;

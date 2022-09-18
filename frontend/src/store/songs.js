@@ -5,11 +5,12 @@ const LOAD_ALL = 'songs/LOAD_ALL'
 // const REMOVE_ONE = 'songs/REMOVE_ONE'
 // const EDIT_ONE = 'songs/EDIT_ONE'
 
-const load = (songs, songId) => ({
+const load = (songs) => ({
   type: LOAD_ALL,
-  songs,
-  songId
+  songs
+
 })
+//USER ID NOT NECESSARY HERE
 // const addOneSong = (songs) => ({
 //   type: ADD_ONE,
 //   songs
@@ -28,15 +29,18 @@ const load = (songs, songId) => ({
 //   payload
 // })
 
-export const getSongs = () => async dispatch => {
-  const response = await fetch('/api/songs')
+export const getSongsByCurrentUser = () => async dispatch => {
+  const response = await fetch('/api/songs/current')
 
+  //TODO ADD PARAMS TO SHOW MORE
   if (response.ok){
     const data = await response.json();
     dispatch(load(data))
     return data
   }
 }
+
+
 
 const initialState = {};
 // songsList:{songId:{}}

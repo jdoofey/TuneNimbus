@@ -7,7 +7,7 @@ import SignupFormPage from "./components/SignUpModal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import { SongsList } from "./components/SongsPage/songs";
-
+import HomePage from "./components/HomePage/HomePage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -20,7 +20,10 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path ='/'>
+          <Route exact path='/'>
+            <HomePage />
+          </Route>
+          <Route path='/songs/current'>
             <SongsList />
           </Route>
           <Route path="/login">
