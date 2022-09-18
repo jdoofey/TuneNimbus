@@ -1,12 +1,30 @@
 #nav-container {
   display: flex;
 	background-color: #555555;
-  justify-content: space-between;
+  justify-content: space-evenly;
+
 }
 
 #nav-container ul {
   list-style-type: none;
   display:flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content:center;
+  align-items: center;
+}
+
+#logo {
+  display:flex;
+  height:30px;
+}
+
+#li-ele {
+  display:flex;
+  justify-content: center;
+  align-items: ;
+}
+
+#nav-home {
+  display:flex;
+
 }

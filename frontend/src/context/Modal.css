@@ -9,6 +9,7 @@
   align-items: center;
   animation: slide;
   animation-duration: .75s;
+  z-index:5;
 }
 
 @keyframes slide {
