@@ -1,0 +1,21 @@
+#list-ele {
+  list-style-type: none;
+  display:flex;
+  flex-direction: column;
+  border:red 1px solid;
+  width:150px;
+  height:130px;
+
+}
+
+#list-container {
+  display: grid;
+  border: 1px blue solid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-row-gap: 50px;
+  justify-items: center;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-top: 50px;
+  padding-bottom: 25px;
+}

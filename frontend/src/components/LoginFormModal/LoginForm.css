@@ -1,0 +1,34 @@
+#input-container {
+  height: 250px;
+  /* border:red 1px solid; */
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width:300px;
+}
+#logo{
+  height:50px;
+}
+
+#user {
+  display:flex;
+  width:250px;
+}
+
+#pass {
+  display:flex;
+  width:250px;
+}
+
+#submit-btn {
+  font-size: 16px;
+  display:flex;
+  height: 23px;
+  width: 258px;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff7f50;
+  border:none;
+  border-radius: 5px;
+}
