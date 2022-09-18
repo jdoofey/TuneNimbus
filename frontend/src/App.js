@@ -8,6 +8,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import { SongsList } from "./components/SongsPage/songs";
 import HomePage from "./components/HomePage/HomePage";
+import AddSongForm from "./components/SongForm/index.js";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -22,6 +23,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <HomePage />
+          </Route>
+          <Route exact path='/addsong'>
+            <AddSongForm />
           </Route>
           <Route path='/songs/current'>
             <SongsList />

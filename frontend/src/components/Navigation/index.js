@@ -17,6 +17,9 @@ function Navigation({ isLoaded }) {
         <NavLink id="current-songs" to="/songs/current">
           My Songs
         </NavLink>
+        <NavLink to="/addsong">
+          Add Song
+        </NavLink>
 
         <ProfileButton user={sessionUser} />
       </>
@@ -33,16 +36,14 @@ function Navigation({ isLoaded }) {
   return (
     <div id="nav-container">
       <span>
-      <img id="logo" src="https://i.imgur.com/OHysOUL.png"></img>
+        <img id="logo" src="https://i.imgur.com/OHysOUL.png"></img>
       </span>
       <span>
-      <NavLink id="nav-home" exact to="/">
-        Home
-      </NavLink>
+        <NavLink id="nav-home" exact to="/">
+          Home
+        </NavLink>
       </span>
-      <div className="something">
-      {isLoaded && sessionLinks}
-      </div>
+      <div className="something">{isLoaded && sessionLinks}</div>
     </div>
   );
 }

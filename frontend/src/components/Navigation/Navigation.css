@@ -2,24 +2,11 @@
   display: flex;
 	background-color: #555555;
   justify-content: space-between;
-
-}
-
-#ul-ele {
-  list-style-type: none;
-  display:flex;
-  justify-content: space-between;
-
 }
 
 #logo {
   display:flex;
   height:30px;
-}
-
-#li-ele {
-  display:flex;
-  justify-content: space-evenly;
 }
 
 #nav-home {

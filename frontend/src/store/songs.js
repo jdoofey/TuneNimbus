@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf"
 const LOAD_ALL = 'songs/LOAD_ALL'
 // const LOAD_ONE = 'songs/LOAD_ONE'
-// const ADD_ONE ='songs/ADD_ONE'
+const ADD_ONE ='songs/ADD_ONE'
 // const REMOVE_ONE = 'songs/REMOVE_ONE'
 // const EDIT_ONE = 'songs/EDIT_ONE'
 
@@ -10,11 +10,12 @@ const load = (songs) => ({
   songs
 
 })
-//USER ID NOT NECESSARY HERE
-// const addOneSong = (songs) => ({
-//   type: ADD_ONE,
-//   songs
-// })
+//USER ID NOT NECESSARY HERE?
+
+const addOneSong = (songs) => ({
+  type: ADD_ONE,
+  songs
+})
 // const editOneSong = (song) => ({
 //   type: EDIT_ONE,
 //   song
@@ -31,8 +32,7 @@ const load = (songs) => ({
 
 export const getSongsByCurrentUser = () => async dispatch => {
   const response = await fetch('/api/songs/current')
-
-  //TODO ADD PARAMS TO SHOW MORE
+  //TODO ADD PARAMS TO SHOW RELATED ARTIST
   if (response.ok){
     const data = await response.json();
     dispatch(load(data))
@@ -40,10 +40,22 @@ export const getSongsByCurrentUser = () => async dispatch => {
   }
 }
 
+export const addSong = song => async dispatch => {
+  const res = await csrfFetch('/api/songs/', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(song)
+  });
+  if (res.ok) {
+    const data = await res.json()
+    dispatch(addOneSong(data))
+    return data
+  }
+}
 
 
 const initialState = {};
-// songsList:{songId:{}}
+
 const songReducer = (state=initialState, action) => {
   switch (action.type) {
     case LOAD_ALL:
