@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSongs } from "../../store/songs";
-import "./songs.css";
+
+import Song from "../Song/song";
 
 export const SongsList = () => {
   const dispatch = useDispatch();
@@ -18,9 +19,8 @@ export const SongsList = () => {
         <ul id='list-container'>
           {Object.values(songs).map((song) => {
             return (
-              <li id='list-ele' key={song.id}>
-                <div>{song.title}</div>
-                <div>{song.description}</div>
+              <li id='list-ele'key={song.id}>
+                <Song song={song} />
               </li>
             );
           })}
