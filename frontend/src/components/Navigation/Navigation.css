@@ -1,16 +1,15 @@
 #nav-container {
   display: flex;
 	background-color: #555555;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
 }
 
-#nav-container ul {
+#ul-ele {
   list-style-type: none;
   display:flex;
-  flex-direction: column;
-  justify-content:center;
-  align-items: center;
+  justify-content: space-between;
+
 }
 
 #logo {
@@ -20,11 +19,20 @@
 
 #li-ele {
   display:flex;
-  justify-content: center;
-  align-items: ;
+  justify-content: space-evenly;
 }
 
 #nav-home {
   display:flex;
+  font-size:15px;
+}
 
+#current-songs {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+/* amanda saves my css */
+.something {
+  display:flex
 }
