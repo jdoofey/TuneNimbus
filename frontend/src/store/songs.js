@@ -62,7 +62,7 @@ export const getSongDeets = (songId) => async dispatch => {
     return data
   }
 }
-export const songForm = song => async dispatch => {
+export const editSongForm = song => async dispatch => {
   const res = await fetch(`/api/songs${song.id}`, {
     method: "PUT",
     headers:{"Content-Type":"application/json"},
