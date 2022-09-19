@@ -49,7 +49,34 @@ const EditSongForm = ({ song }) => {
           }
         })}
       </ul>
-      
+      <h3>New Title</h3>
+      <input
+        type="text"
+        required
+        value={title}
+        onChange={e=> setTitle(e.target.value)}
+      />
+      <h3>New Description</h3>
+      <input
+        type="text"
+        value={description}
+        onChange={e=> setDescription(e.target.value)}
+      />
+      <h3>New Audio URL</h3>
+      <input
+        type="text"
+        required
+        value={url}
+        onChange={e=> setUrl(e.target.value)}
+      />
+      <h3>New Cover Image</h3>
+      <input
+        type="text"
+        value={previewImage}
+        onChange={e=> setPreviewImage(e.target.value)}
+      />
+      <button type="submit" onClick={handleSubmit}></button>
+
     </form>
   );
 };
