@@ -17,7 +17,7 @@ const EditSongForm = ({ song }) => {
 
   useEffect(() => {
     dispatch(getSongDeets(songId));
-  }, [dispatch, title, description, url, previewImage, errors, showModal]);
+  }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +30,7 @@ const EditSongForm = ({ song }) => {
       url,
       previewImage,
     };
+    console.log("PAYLOAD IN MODAL", payload)
     if (!title || !url || title === "" || url === "") {
       setErrors([]);
       return dispatch(editSongForm(payload)).catch(async (res) => {
@@ -40,7 +41,7 @@ const EditSongForm = ({ song }) => {
     const exitMenu = () => {
       setShowModal(false);
     };
-    let songEdit = await dispatch(editSongForm);
+    let songEdit = await dispatch(editSongForm(payload));
     if (songEdit) {
       exitMenu()
       window.alert("Your song has been updated.");
@@ -89,7 +90,10 @@ const EditSongForm = ({ song }) => {
             value={previewImage}
             onChange={(e) => setPreviewImage(e.target.value)}
             />
-          <button type="submit" onClick={handleSubmit}></button>
+            <div>
+              <br></br>
+          <button type="submit" onClick={handleSubmit}>Submit</button>
+            </div>
         </form>
       </Modal>
     )}
