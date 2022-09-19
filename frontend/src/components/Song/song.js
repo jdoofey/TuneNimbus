@@ -12,10 +12,10 @@ function Song(song) {
             ? song.song.previewImage
             : "https://i.imgur.com/QwtY70m.jpg"
           }
-          alt="404"
         ></img>
         <div id="title">{song.song.title}</div>
       </div>
+      {/* <audio id="player"controls src=""></audio> */}
     </Link>
   );
 }

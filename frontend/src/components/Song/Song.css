@@ -6,6 +6,9 @@
 
 }
 
+#player {
+  width:200px;
+}
 
 #list-container {
   display: grid;
