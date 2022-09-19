@@ -34,15 +34,6 @@ const editSong = (song) => ({
 //   songId
 // })
 
-export const songForm = song => async dispatch => {
-  const res = await fetch(`/api/songs${song.id}`, {
-    method: "PUT",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify(song)
-  })
-  const data= await res.json()
-  dispatch(editSong(data))
-}
 export const getAllSongs = () => async dispatch => {
   const res = await csrfFetch('/api/songs')
 
@@ -71,6 +62,16 @@ export const getSongDeets = (songId) => async dispatch => {
     return data
   }
 }
+export const songForm = song => async dispatch => {
+  const res = await fetch(`/api/songs${song.id}`, {
+    method: "PUT",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify(song)
+  })
+  const data= await res.json()
+  dispatch(editSong(data))
+}
+
 
 export const addSong = song => async dispatch => {
   const res = await csrfFetch('/api/songs/', {
@@ -106,8 +107,8 @@ const songReducer = (state=initialState, action) => {
         return {newState}
       }
     case LOAD_ONE:
-      const song = action.oneSong
-      return {...state, song}
+      const song = action.song
+      return {...song}
     case LOAD_ALL: {
       const newState = {}
       action.songs.Songs.forEach(song => {

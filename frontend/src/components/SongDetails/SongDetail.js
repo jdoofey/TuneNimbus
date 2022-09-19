@@ -8,10 +8,8 @@ export default function SongDetails() {
 
   const dispatch = useDispatch();
   const { songId } = useParams();
-  console.log("use params", songId)
-  const songState = useSelector((state) => state.song);
-  console.log("THIS IS SONG STATE", songState);
-  
+  const song = useSelector((state) => state.song);
+  console.log("THISISSONG",song)
   useEffect(() => {
 
     dispatch(getSongDeets(songId));
@@ -28,30 +26,30 @@ export default function SongDetails() {
         <div>
           <img id="preview"
           src={
-            songState[songId].previewImage!==null && songState[songId].previewImage!==""
-            ? songState[songId].previewImage
+            song.previewImage!==null && song.previewImage!==""
+            ? song.previewImage
             : "https://i.imgur.com/QwtY70m.jpg"
           }
           alt="404"
           ></img>
         </div>
 
-          <h1>{songState[songId].title}</h1>
-          <h3>By: {songState[songId].userId}</h3>
-          <h4>Album: {songState[songId].albumId!==(null||"")
-          ? songState[songId].albumId
+          <h1>{song.title}</h1>
+          <h3>By: {song.userId}</h3>
+          <h4>Album: {song.albumId!==(null||"")
+          ? song.albumId
           : "Not asssociated to an album"
           }</h4>
-          <h4>Description: {songState[songId].description}</h4>
+          <h4>Description: {song.description}</h4>
           <h4>
-            Date Uploaded:{" "}
+            Date Uploaded:{"   "}{song.createdAt}{"  "}
             {
-              //songState[songId].createdAt.toDateString() DATESTRING NOT WORKING
-              songState[songId].createdAt.split("T")[0].split("-")[1] +
+              // song.createdAt.toDateString()
+              song.createdAt.split("T")[0].split("-")[1] +
                 "/" +
-                songState[songId].createdAt.split("T")[0].split("-")[2] +
+                song.createdAt.split("T")[0].split("-")[2] +
                 "/" +
-                songState[songId].createdAt.split("T")[0].split("-")[0]
+                song.createdAt.split("T")[0].split("-")[0]
             }
           </h4>
       </div>
