@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getSongDeets } from "../../store/songs";
 import React, { useEffect } from "react";
 import "./SongDetail.css";
@@ -15,7 +16,7 @@ export default function SongDetails() {
     dispatch(getSongDeets(songId));
   }, []);
 
-  // const sessionUser = useSelector(state=> state.session.user)
+  const sessionUser = useSelector(state=> state.session.user)
   // if(!sessionUser) {
   //   // TODO ADD CSS
   // }
@@ -54,6 +55,11 @@ export default function SongDetails() {
               // but .split still returns undefined
             }
           </h4>
+          {(sessionUser.username === song?.Artist?.username)&& (
+            <Link path="/songs/:songId/edit">
+              <button>Edit Song</button>
+            </Link>
+          )}
       </div>
     </div>
   );

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { editSongForm } from "../../store/songs";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getSongDeets } from "../../store/songs";
-const EditSongForm = ({ song }) => {
+  const EditSongForm = ({ song }) => {
   const dispatch = useDispatch();
   const { songId } = useParams();
   const [title, setTitle] = useState(song.title);
@@ -29,7 +30,7 @@ const EditSongForm = ({ song }) => {
     };
     if (!title || !url || title === "" || url === "") {
       setErrors([]);
-      return dispatch(songForm(payload)).catch(async (res) => {
+      return dispatch(editSongForm(payload)).catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       });
@@ -80,3 +81,5 @@ const EditSongForm = ({ song }) => {
     </form>
   );
 };
+
+export default EditSongForm
