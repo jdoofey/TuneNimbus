@@ -5,7 +5,9 @@ import { useEffect } from "react";
 import { Modal } from "../../context/Modal";
 import { useParams } from "react-router-dom";
 import { getSongDeets } from "../../store/songs";
+import { useHistory } from "react-router-dom";
 const EditSongForm = ({ song }) => {
+  const history = useHistory()
   const dispatch = useDispatch();
   const { songId } = useParams();
   const [title, setTitle] = useState(song.title);
@@ -17,7 +19,7 @@ const EditSongForm = ({ song }) => {
 
   useEffect(() => {
     dispatch(getSongDeets(songId));
-  }, [dispatch]);
+  }, [dispatch, showModal]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,8 +44,10 @@ const EditSongForm = ({ song }) => {
       setShowModal(false);
     };
     let songEdit = await dispatch(editSongForm(payload));
+
     if (songEdit) {
       exitMenu()
+      history.push(`/songs/${songId}`)
       window.alert("Your song has been updated.");
   };
 }

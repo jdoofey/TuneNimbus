@@ -68,8 +68,12 @@ export const editSongForm = song => async dispatch => {
     headers:{"Content-Type":"application/json"},
     body:JSON.stringify(song)
   })
-  const data= await res.json()
-  dispatch(editSong(data))
+  if(res.ok) {
+
+    const data= await res.json()
+    dispatch(editSong(data))
+    return data
+  }
 }
 
 
