@@ -18,6 +18,7 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
   const sessionUser = useSelector((state) => state.session.user);
   if (sessionUser) {
     return (
@@ -37,9 +38,10 @@ function App() {
             <Route exact path="/songs/current">
               <SongsList />
             </Route>
-            <Route exact path="/songs/:songId/details">
+            <Route path="/songs/:songId">
               <SongDetails />
             </Route>
+
             <Route exact path="/login">
               <LoginForm />
             </Route>

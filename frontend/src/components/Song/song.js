@@ -3,7 +3,7 @@ import "./Song.css";
 
 function Song(song) {
   return (
-    <Link to={`/songs/${song.song.id}/details`}>
+    <Link to={`/songs/${song.song.id}`}>
       <div id="test">
         <img
           id="placeholder-img"

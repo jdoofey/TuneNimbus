@@ -29,11 +29,13 @@
 #modal-content {
   position: absolute;
   background-color:white;
-  height:410px;
-  width:300px;
+  height:fit-content;
+  width:fit-content;
   /* border: blue 1px solid; */
   display:flex;
   flex-direction: column;
+  padding:30px;
+  border-radius: 20px;
 }
 
 
