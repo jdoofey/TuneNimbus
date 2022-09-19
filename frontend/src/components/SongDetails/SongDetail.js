@@ -45,11 +45,13 @@ export default function SongDetails() {
             Date Uploaded:{"   "}{song.createdAt}{"  "}
             {
               // song.createdAt.toDateString()
-              song.createdAt.split("T")[0].split("-")[1] +
-                "/" +
-                song.createdAt.split("T")[0].split("-")[2] +
-                "/" +
-                song.createdAt.split("T")[0].split("-")[0]
+              // song.createdAt.split("T")[0].split("-")[1] +
+              //   "/" +
+              //   song.createdAt.split("T")[0].split("-")[2] +
+              //   "/" +
+              //   song.createdAt.split("T")[0].split("-")[0]
+              // type of check shows createdAt is a string
+              // but .split still returns undefined
             }
           </h4>
       </div>

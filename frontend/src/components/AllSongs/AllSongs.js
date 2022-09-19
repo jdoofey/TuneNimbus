@@ -12,7 +12,7 @@ export default function AllSongs ()  {
   useEffect(()=> {
     dispatch(getAllSongs())
   }, [dispatch])
-  if(!songs) return null
+  // if(!songs) return null
   return (
     <ul id='list-container'>
       {Object.values(songs).map(song =>{
