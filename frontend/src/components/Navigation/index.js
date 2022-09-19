@@ -13,20 +13,27 @@ function Navigation({ isLoaded }) {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <>
-        <NavLink id="current-songs" to="/songs/current">
-          My Songs
+      <div className="container">
+        <NavLink className="nav-ele" to="/songs">
+          <button>All Music</button>
         </NavLink>
-        <NavLink to="/addsong">
-          Add Song
+        <NavLink className="nav-ele" to="/songs/current">
+          <button>Your Music</button>
+        </NavLink>
+        <NavLink className="nav-ele" to="/addsong">
+          <button>Upload</button>
         </NavLink>
 
         <ProfileButton user={sessionUser} />
-      </>
+      </div>
+
     );
   } else {
     sessionLinks = (
       <>
+        <NavLink className="nav-ele" to="/songs">
+          <button>All Music</button>
+        </NavLink>
         <LoginFormModal />
         <SignupFormModal />
       </>
@@ -38,9 +45,9 @@ function Navigation({ isLoaded }) {
       <span>
         <img id="logo" src="https://i.imgur.com/OHysOUL.png"></img>
       </span>
-      <span>
-        <NavLink id="nav-home" exact to="/">
-          Home
+      <span className="container">
+        <NavLink className="nav-ele" exact to="/">
+          <button>Home</button>
         </NavLink>
       </span>
       <div className="something">{isLoaded && sessionLinks}</div>

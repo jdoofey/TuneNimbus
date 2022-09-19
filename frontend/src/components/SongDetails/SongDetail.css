@@ -1,0 +1,10 @@
+#container-div {
+  margin-top: 50px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#preview {
+  height:500px;
+}

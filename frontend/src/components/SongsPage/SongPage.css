@@ -2,30 +2,30 @@
   list-style-type: none;
   display:flex;
   flex-direction: column;
-  /* border:red 1px solid; */
+  border:blue 1px solid;
 
 }
 
 
 #list-container {
   display: grid;
-  /* border: 1px blue solid; */
+  border: 1px red solid;
   grid-template-columns: repeat(6, 1fr);
   grid-row-gap: 50px;
+  grid-column-gap: 50px;
   justify-items: center;
-  padding-left: 200px;
-  padding-right: 200px;
+  margin-left: 150px;
+  margin-right: 150px;
   padding-top: 50px;
   padding-bottom: 25px;
+  justify-content: center;
 }
 
-/* #test {
-  border:green 1px solid
-} */
+
 
 #placeholder-img {
-  width:200px;
-  height:200px;
+  width:154px;
+  height:154px;
 }
 
 #title {

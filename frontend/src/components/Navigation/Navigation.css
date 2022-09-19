@@ -4,6 +4,11 @@
   justify-content: space-between;
 }
 
+.container{
+  display:flex;
+  justify-content: space-between;
+  width:500px;
+}
 #logo {
   display:flex;
   height:30px;
@@ -14,7 +19,7 @@
   font-size:15px;
 }
 
-#current-songs {
+.nav-ele {
   display:flex;
   justify-content: center;
   align-items: center;

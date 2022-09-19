@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSongsByCurrentUser } from "../../store/songs";
-
+import "./SongPage.css"
 import Song from "../Song/song";
 
 export const SongsList = () => {
@@ -15,7 +15,7 @@ export const SongsList = () => {
 
   if (!songs) return null;
   return (
-    <div className="container">
+
         <ul id='list-container'>
           {Object.values(songs).map((song) => {
             return (
@@ -26,6 +26,6 @@ export const SongsList = () => {
             );
           })}
         </ul>
-    </div>
+   
   );
 };
