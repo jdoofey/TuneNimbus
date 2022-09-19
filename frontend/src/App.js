@@ -37,9 +37,10 @@ function App() {
             <Route exact path="/songs/current">
               <SongsList />
             </Route>
-            <Route exact path="/songs/:songId/details">
+            <Route path="/songs/:songId">
               <SongDetails />
             </Route>
+
             <Route exact path="/login">
               <LoginForm />
             </Route>

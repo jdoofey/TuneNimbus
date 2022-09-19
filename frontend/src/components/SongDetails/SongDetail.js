@@ -1,16 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getSongDeets } from "../../store/songs";
 import React, { useEffect } from "react";
 import "./SongDetail.css";
 export default function SongDetails() {
+
   const dispatch = useDispatch();
   const { songId } = useParams();
+  console.log("use params", songId)
   const songState = useSelector((state) => state.song);
-  console.log("THIS IS SONG STATE", songState[songId]);
+  console.log("THIS IS SONG STATE", songState);
+  
   useEffect(() => {
+
     dispatch(getSongDeets(songId));
-  }, [dispatch, songId]);
+  }, []);
 
   // const sessionUser = useSelector(state=> state.session.user)
   // if(!sessionUser) {
