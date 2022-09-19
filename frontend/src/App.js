@@ -12,14 +12,13 @@ import HomePage from "./components/HomePage/HomePage";
 import AddSongForm from "./components/SongForm/index.js";
 import SongDetails from "./components/SongDetails/SongDetail";
 import AllSongs from "./components/AllSongs/AllSongs";
-import EditSongForm from "./components/EditSongForm/EditSongForm";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
-  const song = useSelector(state=>state.song)
+
   const sessionUser = useSelector((state) => state.session.user);
   if (sessionUser) {
     return (
@@ -41,9 +40,6 @@ function App() {
             </Route>
             <Route path="/songs/:songId">
               <SongDetails />
-            </Route>
-            <Route>
-              <EditSongForm song={song} exact path="/songs/:songId/edit" />
             </Route>
 
             <Route exact path="/login">

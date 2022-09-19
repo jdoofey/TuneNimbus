@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { getSongDeets } from "../../store/songs";
 import React, { useEffect } from "react";
 import "./SongDetail.css";
+import EditSongForm from "../EditSongForm/EditSongForm";
 export default function SongDetails() {
 
   const dispatch = useDispatch();
@@ -55,10 +56,10 @@ export default function SongDetails() {
               // but .split still returns undefined
             }
           </h4>
-          {(sessionUser.username === song?.Artist?.username)&& (
-            <Link path="/songs/:songId/edit">
-              <button>Edit Song</button>
-            </Link>
+          {(sessionUser.username === song?.Artist?.username) && (
+            <div>
+              <EditSongForm song={song}/>
+            </div>
           )}
       </div>
     </div>
