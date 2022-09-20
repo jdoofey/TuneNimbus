@@ -75,7 +75,13 @@ const playlistReducer = (state = initialState, action) => {
       const newState = {...state, singlePlaylist};
       return newState
     }
-    case RESET_PLAYLISTS:{
+    case DELETE_ONE: {
+      const newState = {...state, allPlaylists:{...state.allPlaylists}}
+      delete newState.allPlaylists[action.playlistId]
+      newState.singlePlaylist = {}
+      return newState
+    }
+    case RESET_PLAYLISTS: {
       return initialState
     }
     default:
