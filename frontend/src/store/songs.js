@@ -70,7 +70,7 @@ export const getSongDeets = (songId) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json();
     dispatch(loadOneSong(data));
-    return data;
+    // return data;
   }
 };
 export const editSongForm = (song) => async (dispatch) => {
@@ -113,13 +113,14 @@ const songReducer = (state = initialState, action) => {
       console.log("LOAD CURRENT", newState)
       return newState;
     case ADD_ONE: {
-      const newState = { ...state, allSongs:{...state.allSongs, [action.song.id]: action.song}};
+      const singleSong = action.song
+      const newState = { ...state, singleSong};
       console.log("ADD SONG",newState)
       return  newState ;
     }
     case LOAD_ONE:
       const song = action.song;
-      return { ...song };
+      return { ...state, ...song };
     case LOAD_ALL: {
       const newState = {};
       action.songs.Songs.forEach((song) => {

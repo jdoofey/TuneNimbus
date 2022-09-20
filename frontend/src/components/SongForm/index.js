@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { addSong } from "../../store/songs";
 import { useHistory } from "react-router-dom";
 import "./SongForm.css";
+
 const AddSongForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -27,9 +28,9 @@ const AddSongForm = () => {
     setErrors([]);
 
 
-    const createdSong = dispatch(addSong(payload));
+    const createdSong = await dispatch(addSong(payload));
     if (createdSong) {
-      history.push(`/songs/current`);
+      history.push(`/songs/${createdSong.id}`);
     }
   };
   return (
