@@ -75,6 +75,9 @@ const playlistReducer = (state = initialState, action) => {
       const newState = {...state, singlePlaylist};
       return newState
     }
+    case RESET_PLAYLISTS:{
+      return initialState
+    }
     default:
       return state;
   }
