@@ -7,12 +7,12 @@ import './AllSongs.css'
 export default function AllSongs ()  {
   const dispatch = useDispatch()
 
-  const songs=useSelector((state)=> Object.values(state.song))
+  const songs=useSelector((state)=> state.song.allSongs)
 
   useEffect(()=> {
     dispatch(getAllSongs())
   }, [dispatch])
-  // if(!songs) return null
+  if(!songs) return null
   return (
     <ul id='list-container'>
       {Object.values(songs).map(song =>{
