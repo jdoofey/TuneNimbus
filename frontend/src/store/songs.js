@@ -5,7 +5,7 @@ const LOAD_ONE = "songs/LOAD_ONE";
 const ADD_ONE = "songs/ADD_ONE";
 const EDIT_ONE = "songs/EDIT_ONE";
 const DELETE_ONE = 'songs/DELETE_ONE'
-
+const RESET_SONGS ='songs/RESET_SONGS'
 const loadCurrent = (songs) => ({
   type: LOAD_CURRENT,
   songs,
@@ -32,7 +32,9 @@ const deleteSong = (songId) => ({
   type: DELETE_ONE,
   songId
 })
-
+export const resetSongs = () => ({
+  type: RESET_SONGS,
+})
 export const eviscerateSong = songId => async dispatch => {
   const res = await csrfFetch(`/api/songs/${songId}`, {
     method: "DELETE"
@@ -98,15 +100,14 @@ export const addSong = (song) => async (dispatch) => {
 
 const initialState = {
     allSongs: {},
-    singleSong: {},
-  }
-
+    singleSong: {}
+}
 
 const songReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CURRENT:
       let newState = {...state, allSongs:{...state.allSongs}};
-      console.log("MEH",newState)
+
       action.songs.Songs.forEach((song) => (newState.allSongs[song.id] = song));
       console.log("LOAD CURRENT", newState)
       return newState;
@@ -130,9 +131,13 @@ const songReducer = (state = initialState, action) => {
         [action.song.id]: action.song,
       };
     case DELETE_ONE:{
-
-      const newState = {...state}
+      const newState = {...state, allSongs:{...state.allSongs}}
+      delete newState.allSongs[action.songId]
+      newState.singleSong = {}
       return newState
+    }
+    case RESET_SONGS:{
+      return initialState
     }
     default:
       return state;

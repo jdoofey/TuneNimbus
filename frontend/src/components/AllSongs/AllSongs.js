@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllSongs } from "../../store/songs";
+import { getAllSongs, resetSongs } from "../../store/songs";
 import Song from "../Song/song";
 import './AllSongs.css'
 
@@ -11,8 +11,11 @@ export default function AllSongs ()  {
 
   useEffect(()=> {
     dispatch(getAllSongs())
+    return () => dispatch(resetSongs())
+    //cleanup
   }, [dispatch])
-  if(!songs) return null
+  if(!Object.values(songs).length) return (<p>loading...</p>)
+  //TODO ADD LOADING PAGE INTO ALL COMPONENTS- NOT PRIO
   return (
     <ul id='list-container'>
       {Object.values(songs).map(song =>{
