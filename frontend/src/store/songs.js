@@ -35,14 +35,11 @@ const deleteSong = (songId) => ({
 
 export const eviscerateSong = songId => async dispatch => {
   const res = await csrfFetch(`/api/songs/${songId}`, {
-    method: "DELETE",
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(songId)
+    method: "DELETE"
   })
   if (res.ok) {
-    const data = res.json()
     await dispatch(deleteSong(songId))
-    return data
+    return res
   }
 }
 export const getAllSongs = () => async (dispatch) => {
@@ -61,10 +58,10 @@ export const getSongsByCurrentUser = () => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(loadCurrent(data));
-    return data;
+    // return data;
   }
 };
-
+//TODO GET RIGHT RETURN FROM BROWSER-- ONLY WORKS ON REFRESH
 export const getSongDeets = (songId) => async (dispatch) => {
   const res = await csrfFetch(`/api/songs/${songId}`);
   if (res.ok) {
@@ -109,6 +106,7 @@ const songReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CURRENT:
       let newState = {...state, allSongs:{...state.allSongs}};
+      console.log("MEH",newState)
       action.songs.Songs.forEach((song) => (newState.allSongs[song.id] = song));
       console.log("LOAD CURRENT", newState)
       return newState;
@@ -131,10 +129,9 @@ const songReducer = (state = initialState, action) => {
         ...state,
         [action.song.id]: action.song,
       };
-    case DELETE_ONE:
-    {
-      const newState={...state}
-      delete newState[action.songId]
+    case DELETE_ONE:{
+
+      const newState = {...state}
       return newState
     }
     default:

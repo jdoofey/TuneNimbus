@@ -17,12 +17,21 @@ const EditSongForm = ({ song }) => {
   const [previewImage, setPreviewImage] = useState(song.previewImage);
   const [errors, setErrors] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const songState = useSelector(state => state.song)
 
+  const handleEviscerate = async e => {
+    e.preventDefault();
+    console.log("DELETE", songState)
+
+    dispatch(eviscerateSong(songState.id))
+    history.push(`/songs/current`)
+
+  }
   useEffect(() => {
     dispatch(getSongDeets(songId));
   }, [dispatch, showModal]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     const payload = {
@@ -98,6 +107,7 @@ const EditSongForm = ({ song }) => {
             <div>
               <br></br>
           <button type="submit" onClick={handleSubmit}>Submit</button>
+          <button type="button" onClick={handleEviscerate}>Delete Song</button>
             </div>
         </form>
       </Modal>

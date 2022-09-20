@@ -11,6 +11,7 @@ export const SongsList = () => {
   console.log("urmom",songs)
   useEffect(() => {
     dispatch(getSongsByCurrentUser());
+
   }, [dispatch]);
 
   if (!songs) return null;
