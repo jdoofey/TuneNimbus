@@ -29,7 +29,7 @@ const editSong = (song) => ({
   song,
 });
 const deleteSong = (songId) => ({
-  type: REMOVE_ONE,
+  type: DELETE_ONE,
   songId
 })
 
@@ -100,20 +100,22 @@ export const addSong = (song) => async (dispatch) => {
 };
 
 const initialState = {
-  allSongs: {},
-  oneSong: {},
-};
+    allSongs: {},
+    singleSong: {},
+  }
+
 
 const songReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CURRENT:
-      let newState = {};
-      console.log("this is the action", action.songs.Songs);
-      action.songs.Songs.forEach((song) => (newState[song.id] = song));
+      let newState = {...state, allSongs:{...state.allSongs}};
+      action.songs.Songs.forEach((song) => (newState.allSongs[song.id] = song));
+      console.log("LOAD CURRENT", newState)
       return newState;
     case ADD_ONE: {
-      const newState = { ...state, [action.songs.id]: action.song };
-      return { newState };
+      const newState = { ...state, allSongs:{...state.allSongs, [action.song.id]: action.song}};
+      console.log("ADD SONG",newState)
+      return  newState ;
     }
     case LOAD_ONE:
       const song = action.song;

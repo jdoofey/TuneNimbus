@@ -25,11 +25,11 @@ const AddSongForm = () => {
       previewImage,
     };
     setErrors([]);
-    let createdSong;
 
-    createdSong = dispatch(addSong(payload));
+
+    const createdSong = dispatch(addSong(payload));
     if (createdSong) {
-      history.push(`/songs/${createdSong.id}`);
+      history.push(`/songs/current`);
     }
   };
   return (

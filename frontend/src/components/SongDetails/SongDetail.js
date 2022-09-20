@@ -15,7 +15,7 @@ export default function SongDetails() {
   useEffect(() => {
 
     dispatch(getSongDeets(songId));
-  }, []);
+  }, [songId, dispatch]);
 
   const sessionUser = useSelector(state=> state.session.user)
   // if(!sessionUser) {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { editSongForm } from "../../store/songs";
+import { editSongForm, eviscerateSong } from "../../store/songs";
+
 import { useEffect } from "react";
 import { Modal } from "../../context/Modal";
 import { useParams } from "react-router-dom";
@@ -20,7 +21,7 @@ const EditSongForm = ({ song }) => {
   useEffect(() => {
     dispatch(getSongDeets(songId));
   }, [dispatch, showModal]);
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -43,7 +44,7 @@ const EditSongForm = ({ song }) => {
     const exitMenu = () => {
       setShowModal(false);
     };
-    let songEdit = await dispatch(editSongForm(payload));
+    let songEdit = dispatch(editSongForm(payload));
 
     if (songEdit) {
       exitMenu()

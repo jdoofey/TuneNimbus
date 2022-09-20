@@ -7,8 +7,8 @@ import Song from "../Song/song";
 export const SongsList = () => {
   const dispatch = useDispatch();
 
-  const songs = useSelector((state) => Object.values(state.song));
-
+  const songs = useSelector((state) => state.song.allSongs);
+  console.log("urmom",songs)
   useEffect(() => {
     dispatch(getSongsByCurrentUser());
   }, [dispatch]);
