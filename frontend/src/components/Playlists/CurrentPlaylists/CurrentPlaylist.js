@@ -11,5 +11,20 @@ export const CurrentPlaylists = () => {
   useEffect(() => {
     dispatch(getPlaylistsByCurrentUser())
     return () => dispatch(resetPLaylists())
-  })
+  }, [dispatch])
+
+  if (!playlists) return null; //add loading page
+
+  return (
+    <ul id="curr-playlist-container">
+      {Object.values(playlists).map((playlist) => {
+        return (
+          <li id="list-ele" key={playlist.id}>
+            
+          </li>
+        )
+      })}
+    </ul>
+
+  )
 }

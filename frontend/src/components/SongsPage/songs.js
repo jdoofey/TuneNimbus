@@ -14,7 +14,7 @@ export const SongsList = () => {
     return () => dispatch(resetSongs())
   }, [dispatch]);
 
-  if (!songs) return null;
+  if (!songs) return null; //add loading page
   return (
 
         <ul id='list-container'>
