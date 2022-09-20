@@ -55,4 +55,18 @@ export const removePlaylist = playlistId => async dispatch => {
     await dispatch(deletePlaylist(songId))
     return res
   }
+};
+
+const initialState = {
+  allPlaylists: {},
+  singlePlaylist: {}
 }
+
+const playlistReducer = (state = initialState, action) => {
+  switch(action.type) {
+    default:
+      return state;
+  }
+}
+
+export default playlistReducer
