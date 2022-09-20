@@ -28,9 +28,9 @@ export const resetPLaylists = () => ({
 export const getPlaylistsByCurrentUser = () => async (dispatch) => {
   const res = await csrfFetch("/api/playlists/current");
   if (res.ok) {
-    const data = res.json();
+    const data = await res.json();
     dispatch(loadCurrent(data));
-    //return data
+    return data;
   }
 };
 
@@ -47,46 +47,50 @@ export const createPlaylist = (playlist) => async (dispatch) => {
   }
 };
 
-export const removePlaylist = playlistId => async dispatch => {
+export const removePlaylist = (playlistId) => async (dispatch) => {
   const res = await csrfFetch(`/api/playlists/${playlistId}`, {
-    method: "DELETE"
-  })
+    method: "DELETE",
+  });
   if (res.ok) {
-    await dispatch(deletePlaylist(songId))
-    return res
+    await dispatch(deletePlaylist(playlistId));
+    return res;
   }
 };
 
 const initialState = {
   allPlaylists: {},
-  singlePlaylist: {}
-}
+  singlePlaylist: {},
+};
 
 const playlistReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case LOAD_CURRENT:
       let newState = {...state, allPlaylists:{...state.allPlaylists}}
-      action.playlists.Playlists.forEach((playlist)=> {
-        return (newState.allPlaylists[playlist.id] = playlist
-        )})
+      action.playlists.Playlists.forEach((playlist)=> newState.allPlaylists[playlist.id] = playlist)
       return newState;
-    case ADD_ONE: {
-      const singlePlaylist = action.playlist
-      const newState = {...state, singlePlaylist};
-      return newState
-    }
-    case DELETE_ONE: {
-      const newState = {...state, allPlaylists:{...state.allPlaylists}}
-      delete newState.allPlaylists[action.playlistId]
-      newState.singlePlaylist = {}
-      return newState
-    }
-    case RESET_PLAYLISTS: {
-      return initialState
-    }
-    default:
-      return state;
-  }
-}
+      case ADD_ONE: {
+        const singlePlaylist = action.playlist;
+        const newState = { ...state, singlePlaylist };
+        return newState;
+      }
+      case DELETE_ONE: {
+        const newState = { ...state, allPlaylists: { ...state.allPlaylists } };
+        delete newState.allPlaylists[action.playlistId];
+        newState.singlePlaylist = {};
+        return newState;
+      }
+      case RESET_PLAYLISTS: {
+        return initialState;
+      }
+      default:
+        return state;
+      }
+    };
 
-export default playlistReducer
+export default playlistReducer;
+    //REDUCER LOAD CURRENT REDUCE INSTEAD OF FOREACH
+    // const allPlaylists = {};
+    // action.playlists.Playlists.reduce((accum, current) => {
+    //   accum[current.id] = current;
+    //   return accum;
+    // }, allPlaylists);

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Playlist(playlist) {
+function SinglePlaylist(playlist) {
   return (
     <Link to={`/playlists/${playlist.playlist.id}`}>
       <div id="playlist-container">
@@ -18,4 +18,4 @@ function Playlist(playlist) {
   )
 }
 
-export default Playlist
+export default SinglePlaylist

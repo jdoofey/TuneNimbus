@@ -20,6 +20,9 @@ function Navigation({ isLoaded }) {
         <NavLink className="nav-ele" to="/songs/current">
           <button>Your Music</button>
         </NavLink>
+        <NavLink className="nav-ele" to="/playlists/current">
+          <button>Your Playlists</button>
+        </NavLink>
         <NavLink className="nav-ele" to="/addsong">
           <button>Upload</button>
         </NavLink>

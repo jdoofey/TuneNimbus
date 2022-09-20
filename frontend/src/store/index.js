@@ -7,7 +7,7 @@ import playlistReducer from "./playlist";
 const rootReducer = combineReducers({
   session: sessionReducer,
   song: songReducer,
-  playlist: playlistReducer
+  playlists: playlistReducer
 });
 //PHASE1 session actions and reducer END
 let enhancer;

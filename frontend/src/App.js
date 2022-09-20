@@ -12,6 +12,7 @@ import HomePage from "./components/HomePage/HomePage";
 import AddSongForm from "./components/SongForm/index.js";
 import SongDetails from "./components/SongDetails/SongDetail";
 import AllSongs from "./components/AllSongs/AllSongs";
+import { CurrentPlaylists } from "./components/Playlists/CurrentPlaylists/CurrentPlaylist";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -41,7 +42,9 @@ function App() {
             <Route path="/songs/:songId">
               <SongDetails />
             </Route>
-
+            <Route path="/playlists/current">
+              <CurrentPlaylists />
+            </Route>
             <Route exact path="/login">
               <LoginForm />
             </Route>
