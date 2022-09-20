@@ -4,7 +4,7 @@ const LOAD_ALL = "songs/LOAD_ALL";
 const LOAD_ONE = "songs/LOAD_ONE";
 const ADD_ONE = "songs/ADD_ONE";
 const EDIT_ONE = "songs/EDIT_ONE";
-// const REMOVE_ONE = 'songs/REMOVE_ONE'
+const DELETE_ONE = 'songs/DELETE_ONE'
 
 const loadCurrent = (songs) => ({
   type: LOAD_CURRENT,
@@ -28,11 +28,23 @@ const editSong = (song) => ({
   type: EDIT_ONE,
   song,
 });
-// const removeSong = (songId) => ({
-//   type: REMOVE_ONE,
-//   songId
-// })
+const deleteSong = (songId) => ({
+  type: REMOVE_ONE,
+  songId
+})
 
+export const eviscerateSong = songId => async dispatch => {
+  const res = await csrfFetch(`/api/songs/${songId}`, {
+    method: "DELETE",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(songId)
+  })
+  if (res.ok) {
+    const data = res.json()
+    await dispatch(deleteSong(songId))
+    return data
+  }
+}
 export const getAllSongs = () => async (dispatch) => {
   const res = await csrfFetch("/api/songs");
 
@@ -118,7 +130,12 @@ const songReducer = (state = initialState, action) => {
         ...state,
         [action.song.id]: action.song,
       };
-
+    case DELETE_ONE:
+    {
+      const newState={...state}
+      delete newState[action.songId]
+      return newState
+    }
     default:
       return state;
   }
