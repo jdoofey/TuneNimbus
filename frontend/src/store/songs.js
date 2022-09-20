@@ -4,8 +4,8 @@ const LOAD_ALL = "songs/LOAD_ALL";
 const LOAD_ONE = "songs/LOAD_ONE";
 const ADD_ONE = "songs/ADD_ONE";
 const EDIT_ONE = "songs/EDIT_ONE";
-// const REMOVE_ONE = 'songs/REMOVE_ONE'
-
+const DELETE_ONE = 'songs/DELETE_ONE'
+const RESET_SONGS ='songs/RESET_SONGS'
 const loadCurrent = (songs) => ({
   type: LOAD_CURRENT,
   songs,
@@ -28,11 +28,22 @@ const editSong = (song) => ({
   type: EDIT_ONE,
   song,
 });
-// const removeSong = (songId) => ({
-//   type: REMOVE_ONE,
-//   songId
-// })
-
+const deleteSong = (songId) => ({
+  type: DELETE_ONE,
+  songId
+})
+export const resetSongs = () => ({
+  type: RESET_SONGS,
+})
+export const eviscerateSong = songId => async dispatch => {
+  const res = await csrfFetch(`/api/songs/${songId}`, {
+    method: "DELETE"
+  })
+  if (res.ok) {
+    await dispatch(deleteSong(songId))
+    return res
+  }
+}
 export const getAllSongs = () => async (dispatch) => {
   const res = await csrfFetch("/api/songs");
 
@@ -49,16 +60,16 @@ export const getSongsByCurrentUser = () => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(loadCurrent(data));
-    return data;
+    // return data;
   }
 };
-
+//TODO GET RIGHT RETURN FROM BROWSER-- ONLY WORKS ON REFRESH
 export const getSongDeets = (songId) => async (dispatch) => {
   const res = await csrfFetch(`/api/songs/${songId}`);
   if (res.ok) {
     const data = await res.json();
     dispatch(loadOneSong(data));
-    return data;
+    // return data;
   }
 };
 export const editSongForm = (song) => async (dispatch) => {
@@ -88,37 +99,46 @@ export const addSong = (song) => async (dispatch) => {
 };
 
 const initialState = {
-  allSongs: {},
-  oneSong: {},
-};
+    allSongs: {},
+    singleSong: {}
+}
 
 const songReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CURRENT:
-      let newState = {};
-      console.log("this is the action", action.songs.Songs);
-      action.songs.Songs.forEach((song) => (newState[song.id] = song));
+      let newState = {...state, allSongs:{...state.allSongs}};
+
+      action.songs.Songs.forEach((song) => (newState.allSongs[song.id] = song));
+      console.log("LOAD CURRENT", newState)
       return newState;
     case ADD_ONE: {
-      const newState = { ...state, [action.songs.id]: action.song };
-      return { newState };
+      const singleSong = action.song
+      const newState = { ...state, singleSong};
+      console.log("ADD SONG",newState)
+      return  newState ;
     }
     case LOAD_ONE:
       const song = action.song;
-      return { ...song };
+      return { ...state, ...song };
     case LOAD_ALL: {
-      const newState = {};
-      action.songs.Songs.forEach((song) => {
-        newState[song.id] = song;
-      });
-      return { ...newState };
+      const newState = {...state, allSongs:{...state.allSongs}};
+      action.songs.Songs.forEach((song) => (newState.allSongs[song.id] = song));
+      return newState;
     }
     case EDIT_ONE:
       return {
         ...state,
         [action.song.id]: action.song,
       };
-
+    case DELETE_ONE:{
+      const newState = {...state, allSongs:{...state.allSongs}}
+      delete newState.allSongs[action.songId]
+      newState.singleSong = {}
+      return newState
+    }
+    case RESET_SONGS:{
+      return initialState
+    }
     default:
       return state;
   }

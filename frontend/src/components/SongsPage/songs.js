@@ -1,16 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSongsByCurrentUser } from "../../store/songs";
+import { getSongsByCurrentUser, resetSongs } from "../../store/songs";
 import "./SongPage.css"
 import Song from "../Song/song";
 
 export const SongsList = () => {
   const dispatch = useDispatch();
 
-  const songs = useSelector((state) => Object.values(state.song));
+  const songs = useSelector((state) => state.song.allSongs);
 
   useEffect(() => {
     dispatch(getSongsByCurrentUser());
+    return () => dispatch(resetSongs())
   }, [dispatch]);
 
   if (!songs) return null;
