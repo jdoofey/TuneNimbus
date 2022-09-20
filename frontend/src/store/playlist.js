@@ -25,11 +25,26 @@ export const resetPlaylists = () => ({
 })
 //use to clean up stale state
 
+
+
 export const getPlaylistsByCurrentUser = () => async dispatch =>{
-  const res = await fetch("/api/playlists/current")
+  const res = await csrfFetch("/api/playlists/current")
   if (res.ok) {
     const data = res.json()
     dispatch(loadCurrent(data))
     //return data
+  }
+}
+
+export const createPlaylist = playlist => async dispatch => {
+  const res = await csrfFetch("/api/songs/", {
+    method: "POST",
+    headers: {"Content-Type" : "application/json"},
+    body: JSON.stringify(playlist)
+  });
+  if (res.ok) {
+    const data = await res.json()
+    dispatch(addPlaylist(data))
+    return data
   }
 }
