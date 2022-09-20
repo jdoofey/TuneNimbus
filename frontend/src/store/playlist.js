@@ -64,6 +64,17 @@ const initialState = {
 
 const playlistReducer = (state = initialState, action) => {
   switch(action.type) {
+    case LOAD_CURRENT:
+      let newState = {...state, allPlaylists:{...state.allPlaylists}}
+      action.playlists.Playlists.forEach((playlist)=> {
+        return (newState.allPlaylists[playlist.id] = playlist
+        )})
+      return newState;
+    case ADD_ONE: {
+      const singlePlaylist = action.playlist
+      const newState = {...state, singlePlaylist};
+      return newState
+    }
     default:
       return state;
   }
