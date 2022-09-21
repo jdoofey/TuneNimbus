@@ -11,7 +11,7 @@ export default function SongDetails() {
   const dispatch = useDispatch();
   const { songId } = useParams();
   const song = useSelector((state) => state.song);
-  console.log("THISISSONG",song)
+  console.log("THIS IS SONG",song)
   useEffect(() => {
 
     dispatch(getSongDeets(songId));

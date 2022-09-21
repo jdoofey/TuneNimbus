@@ -19,6 +19,7 @@ import "./App.css"
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [audioUrl, setAudioUrl] = useState("")
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -34,13 +35,13 @@ function App() {
               <HomePage />
             </Route>
             <Route exact path="/songs">
-              <AllSongs />
+              <AllSongs setAudioUrl={setAudioUrl}/>
             </Route>
             <Route exact path="/addsong">
               <AddSongForm />
             </Route>
             <Route exact path="/songs/current">
-              <SongsList />
+              <SongsList setAudioUrl={setAudioUrl}/>
             </Route>
             <Route path="/songs/:songId">
               <SongDetails />
@@ -57,7 +58,7 @@ function App() {
           </Switch>
         )}
         <div id="player-container">
-          <AudioPlayer />
+          <AudioPlayer src={audioUrl}/>
         </div>
       </>
     );
