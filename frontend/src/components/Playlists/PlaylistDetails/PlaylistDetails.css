@@ -1,0 +1,7 @@
+#song-container {
+  display:flex;
+  justify-content: space-around;
+  margin: 50px;
+  background-color: bisque;
+  height: 50px;
+}

@@ -6,15 +6,15 @@ import SinglePlaylist from "../SinglePlaylist/SinglePlaylist";
 import "./CurrentPlaylist.css"
 export const CurrentPlaylists = () => {
   const dispatch = useDispatch()
-  const stateState = useSelector(state=> state)
-  console.log("IS THIS WORKING", stateState)
+ 
+
   const playlists = useSelector((state)=> state.playlists.allPlaylists)
 
   useEffect(() => {
     dispatch(getPlaylistsByCurrentUser())
     return () => dispatch(resetPLaylists())
   }, [dispatch])
-  console.log("current playlists spot", playlists)
+
   if (!playlists) return null; //add loading page
 
   return (

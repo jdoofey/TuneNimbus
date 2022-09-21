@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import "./SinglePlaylist.css"
+
 function SinglePlaylist(playlist) {
-  console.log(playlist.playlist)
+
   return (
     <Link to={`/playlists/${playlist.playlist.id}`}>
       <div id="playlist-container">
@@ -14,7 +15,7 @@ function SinglePlaylist(playlist) {
           }
           ></img>
         <div id="playlist-title">{playlist.playlist.title}</div>
-    
+
       </div>
     </Link>
   )

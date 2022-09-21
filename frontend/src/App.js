@@ -14,6 +14,7 @@ import SongDetails from "./components/SongDetails/SongDetail";
 import AllSongs from "./components/AllSongs/AllSongs";
 import { CurrentPlaylists } from "./components/Playlists/CurrentPlaylists/CurrentPlaylist";
 import AudioPlayer from 'react-h5-audio-player'
+import PlaylistDetails from "./components/Playlists/PlaylistDetails/PlaylistDetails";
 import 'react-h5-audio-player/lib/styles.css'
 import "./App.css"
 function App() {
@@ -48,6 +49,9 @@ function App() {
             </Route>
             <Route path="/playlists/current">
               <CurrentPlaylists />
+            </Route>
+            <Route path="/playlists/:playlistId">
+              <PlaylistDetails setAudioUrl={setAudioUrl}/>
             </Route>
             <Route exact path="/login">
               <LoginForm />
