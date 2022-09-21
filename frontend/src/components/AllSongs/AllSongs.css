@@ -1,3 +1,38 @@
 #list-ele {
   width:fit-content;
 }
+
+#play-button {
+  display:none;
+  width:40px;
+  height:40px;
+  border-radius: 100px;
+  border: rgb(223, 145, 0) 2px solid;
+  font-weight: bold;
+  background-image: url(https://i.imgur.com/5vs8qrA.png);
+  background-size: cover;
+  transition:.5s;
+}
+
+@keyframes fade-in {
+  0%    { opacity: 0; }
+  100%  { opacity: 1; }
+}
+
+#list-ele:hover #play-button {
+  display: inline-block;
+  position:fixed;
+  align-self: center;
+  margin-top: 50px;
+  transition:.5s;
+  animation: fade-in .5s ;
+}
+
+#play-button:hover {
+  cursor:pointer;
+  opacity:.4;
+}
+
+#play-button:active {
+  offset-position: bottom 5px;
+}

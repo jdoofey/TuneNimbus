@@ -1,0 +1,22 @@
+#create-container{
+  display:flex;
+  flex-direction: column;
+}
+
+#create-form {
+  display:flex;
+  flex-direction: column;
+  align-items: center
+}
+
+.submit-btn {
+  font-size: 16px;
+  display:flex;
+  height: 23px;
+  width: 258px;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff7f50;
+  border:none;
+  border-radius: 5px;
+}

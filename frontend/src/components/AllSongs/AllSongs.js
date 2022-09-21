@@ -8,7 +8,7 @@ export default function AllSongs ({setAudioUrl})  {
   const dispatch = useDispatch()
 
   const songs=useSelector((state)=> state.song.allSongs)
- 
+
   useEffect(()=> {
     dispatch(getAllSongs())
     return () => dispatch(resetSongs())
@@ -17,18 +17,18 @@ export default function AllSongs ({setAudioUrl})  {
   if(!Object.values(songs).length) return (<p>loading...</p>)
   //TODO ADD LOADING PAGE INTO ALL COMPONENTS- NOT PRIO
   return (
-    <ul id='list-container'>
+    <div id='list-container'>
       {Object.values(songs).map(song =>{
         return (
-          <li id='list-ele' key={song.id}>
+          <div id='list-ele' key={song.id}>
             <Song song={song}/>
-            <button onClick={e=>{
+            <button id="play-button" onClick={e=>{
               e.preventDefault()
               setAudioUrl(song.url)
-            }}>Play</button>
-          </li>
+            }}></button>
+          </div>
         )
       })}
-    </ul>
+    </div>
   )
 }

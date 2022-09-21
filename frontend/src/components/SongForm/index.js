@@ -38,6 +38,7 @@ const AddSongForm = () => {
       <div className="bg-div2">
         <div id="container">
           <form id="song-form" onSubmit={handleSubmit}>
+          <br></br><br></br>
             <h1>Upload Your Music</h1>
             <ul>
               {/* TO DO ERROR HANDLING */}

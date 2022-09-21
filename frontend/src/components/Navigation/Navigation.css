@@ -1,13 +1,16 @@
 #nav-container {
   display: flex;
-	background-color: #555555;
+	background-color: #383838;
   justify-content: space-between;
+  height:50px
 }
 
 .container{
   display:flex;
   justify-content: space-between;
   width:500px;
+  position: relative;
+  margin-left: 10px;
 }
 #logo {
   display:flex;
@@ -21,8 +24,30 @@
 
 .nav-ele {
   display:flex;
+  position: absolute;
   justify-content: center;
   align-items: center;
+  background-color: #383838; ;
+  color: rgb(153, 153, 153);
+  /* font-size: small; */
+  border: none;
+  height:98%;
+  width:fit-content;
+  border-left: black 1px solid;
+  border-right: black 1px solid;
+}
+.nav-link {
+  /* border-left:black 1px solid;
+  border-right: black 1px solid;
+  border-top: none;
+  border-bottom: none; */
+
+  align-items: center;
+  align-content: center;
+}
+.nav-ele:focus {
+  background-color: rgba(21, 21, 21, 0.966);
+  color: white
 }
 /* amanda saves my css */
 .something {

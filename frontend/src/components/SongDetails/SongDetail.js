@@ -11,7 +11,7 @@ export default function SongDetails() {
   const dispatch = useDispatch();
   const { songId } = useParams();
   const song = useSelector((state) => state.song);
-  console.log("THIS IS SONG",song)
+  console.log("THIS IS SONG",songId)
   useEffect(() => {
 
     dispatch(getSongDeets(songId));
@@ -54,7 +54,7 @@ export default function SongDetails() {
             }
           </h4>
           {(sessionUser.username === song?.Artist?.username) && (
-            <div>
+            <div id="edit-song-container">
               <EditSongForm song={song}/>
             </div>
           )}
