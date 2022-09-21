@@ -37,11 +37,8 @@ export default function SongDetails() {
         </div>
 
           <h1>{song.title}</h1>
-          <h3>By: {song.userId}</h3>
-          <h4>Album: {song.albumId!==(null||"")
-          ? song.albumId
-          : "Not asssociated to an album"
-          }</h4>
+          <h3>By: {song?.Artist?.username}</h3>
+          <h4>Album: {song?.Album?.title}</h4>
           <h4>Description: {song.description}</h4>
           <h4>
             Date Uploaded:{"   "}{song.createdAt}{"  "}

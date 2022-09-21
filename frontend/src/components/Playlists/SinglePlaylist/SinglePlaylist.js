@@ -14,6 +14,7 @@ function SinglePlaylist(playlist) {
           }
           ></img>
         <div id="playlist-title">{playlist.playlist.title}</div>
+    
       </div>
     </Link>
   )
