@@ -13,6 +13,9 @@ import AddSongForm from "./components/SongForm/index.js";
 import SongDetails from "./components/SongDetails/SongDetail";
 import AllSongs from "./components/AllSongs/AllSongs";
 import { CurrentPlaylists } from "./components/Playlists/CurrentPlaylists/CurrentPlaylist";
+import AudioPlayer from 'react-h5-audio-player'
+import 'react-h5-audio-player/lib/styles.css'
+import "./App.css"
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -53,6 +56,9 @@ function App() {
             </Route>
           </Switch>
         )}
+        <div id="player-container">
+          <AudioPlayer />
+        </div>
       </>
     );
   } else {
@@ -69,6 +75,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <SignupFormPage />
+            </Route>
+            <Route exact path="/songs">
+              <AllSongs />
             </Route>
           </Switch>
         )}
