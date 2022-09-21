@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./Song.css";
 
 function Song(song) {
+  console.log(song.song.url)
   return (
     <Link to={`/songs/${song.song.id}`}>
       <div id="test">
@@ -14,8 +15,9 @@ function Song(song) {
           }
         ></img>
         <div id="title">{song.song.title}</div>
+        <div>{song.song.albumId}</div>
       </div>
-      {/* <audio id="player"controls src=""></audio> */}
+      <audio id="player"controls src={song.song.url}></audio>
     </Link>
   );
 }
