@@ -13,14 +13,16 @@ import AddSongForm from "./components/SongForm/index.js";
 import SongDetails from "./components/SongDetails/SongDetail";
 import AllSongs from "./components/AllSongs/AllSongs";
 import { CurrentPlaylists } from "./components/Playlists/CurrentPlaylists/CurrentPlaylist";
-import AudioPlayer from 'react-h5-audio-player'
+import AudioPlayer from "react-h5-audio-player";
+import Song from "./components/Song/song";
 import PlaylistDetails from "./components/Playlists/PlaylistDetails/PlaylistDetails";
-import 'react-h5-audio-player/lib/styles.css'
-import "./App.css"
+import CreatePlaylist from "./components/Playlists/CreatePlaylist/CreatePlaylist";
+import "react-h5-audio-player/lib/styles.css";
+import "./App.css";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [audioUrl, setAudioUrl] = useState("")
+  const [audioUrl, setAudioUrl] = useState("");
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -36,13 +38,13 @@ function App() {
               <HomePage />
             </Route>
             <Route exact path="/songs">
-              <AllSongs setAudioUrl={setAudioUrl}/>
+              <AllSongs setAudioUrl={setAudioUrl} />
             </Route>
             <Route exact path="/addsong">
               <AddSongForm />
             </Route>
             <Route exact path="/songs/current">
-              <SongsList setAudioUrl={setAudioUrl}/>
+              <SongsList setAudioUrl={setAudioUrl} />
             </Route>
             <Route path="/songs/:songId">
               <SongDetails />
@@ -50,8 +52,11 @@ function App() {
             <Route path="/playlists/current">
               <CurrentPlaylists />
             </Route>
+            <Route path="/addplaylist">
+              <CreatePlaylist />
+            </Route>
             <Route path="/playlists/:playlistId">
-              <PlaylistDetails setAudioUrl={setAudioUrl}/>
+              <PlaylistDetails setAudioUrl={setAudioUrl} />
             </Route>
             <Route exact path="/login">
               <LoginForm />
@@ -62,7 +67,7 @@ function App() {
           </Switch>
         )}
         <div id="player-container">
-          <AudioPlayer src={audioUrl}/>
+          <AudioPlayer src={audioUrl} />
         </div>
       </>
     );

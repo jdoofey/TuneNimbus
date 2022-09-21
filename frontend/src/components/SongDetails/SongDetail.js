@@ -54,7 +54,7 @@ export default function SongDetails() {
             }
           </h4>
           {(sessionUser.username === song?.Artist?.username) && (
-            <div>
+            <div id="edit-song-container">
               <EditSongForm song={song}/>
             </div>
           )}

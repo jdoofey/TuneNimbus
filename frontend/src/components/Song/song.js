@@ -4,6 +4,7 @@ import "./Song.css";
 function Song(song) {
   // console.log(song.song.url)
   return (
+
     <Link to={`/songs/${song.song.id}`}>
       <div id="test">
         <img
