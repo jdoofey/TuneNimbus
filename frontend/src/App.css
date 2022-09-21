@@ -5,3 +5,9 @@
   z-index: 5;
 }
 
+
+#navigation {
+  position: fixed;
+  width:99%;
+  
+}
