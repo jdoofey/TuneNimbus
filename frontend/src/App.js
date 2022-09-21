@@ -13,9 +13,13 @@ import AddSongForm from "./components/SongForm/index.js";
 import SongDetails from "./components/SongDetails/SongDetail";
 import AllSongs from "./components/AllSongs/AllSongs";
 import { CurrentPlaylists } from "./components/Playlists/CurrentPlaylists/CurrentPlaylist";
+import AudioPlayer from 'react-h5-audio-player'
+import 'react-h5-audio-player/lib/styles.css'
+import "./App.css"
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [audioUrl, setAudioUrl] = useState("")
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -31,13 +35,13 @@ function App() {
               <HomePage />
             </Route>
             <Route exact path="/songs">
-              <AllSongs />
+              <AllSongs setAudioUrl={setAudioUrl}/>
             </Route>
             <Route exact path="/addsong">
               <AddSongForm />
             </Route>
             <Route exact path="/songs/current">
-              <SongsList />
+              <SongsList setAudioUrl={setAudioUrl}/>
             </Route>
             <Route path="/songs/:songId">
               <SongDetails />
@@ -53,6 +57,9 @@ function App() {
             </Route>
           </Switch>
         )}
+        <div id="player-container">
+          <AudioPlayer src={audioUrl}/>
+        </div>
       </>
     );
   } else {
@@ -69,6 +76,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <SignupFormPage />
+            </Route>
+            <Route exact path="/songs">
+              <AllSongs />
             </Route>
           </Switch>
         )}

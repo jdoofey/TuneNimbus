@@ -45,7 +45,7 @@ export const eviscerateSong = songId => async dispatch => {
   }
 }
 export const getAllSongs = () => async (dispatch) => {
-  const res = await csrfFetch("/api/songs");
+  const res = await fetch("/api/songs");
 
   if (res.ok) {
     const data = await res.json();
