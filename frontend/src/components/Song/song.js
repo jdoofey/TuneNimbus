@@ -13,6 +13,7 @@ function Song(song) {
             ? song.song.previewImage
             : "https://i.imgur.com/QwtY70m.jpg"
           }
+          
         ></img>
         <div id="title">{song.song.title}</div>
         <div>{song.song.albumId}</div>

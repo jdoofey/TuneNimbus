@@ -81,63 +81,63 @@ module.exports = {
         albumId: 3,
         description:'The first person convicted of speeding was going eight mph.',
         previewImage:"https://i.imgur.com/aecQvEW.jpg",
-        url:""
+        url:"https://cdn.pixabay.com/download/audio/2022/08/19/audio_783a242e3a.mp3?filename=toxic-love-117607.mp3"
       },
       {
-        title: '',
+        title: 'Lychee Blossom',
         userId: 1,
         albumId: 3,
-        description:'',
-        previewImage:"",
-        url:""
+        description:'A nybble, sometimes spelled nibble, is a set of four bits. There are eight bits in a byte, so a byte is two nybbles.',
+        previewImage:"https://i.imgur.com/jDvuAiK.jpg",
+        url:"https://cdn.pixabay.com/download/audio/2022/06/05/audio_be5160e400.mp3?filename=hip-hop-is-112772.mp3"
       },
       {
-        title: '',
+        title: 'Granite Fire',
         userId: 1,
         albumId: 3,
-        description:'',
-        previewImage:"",
-        url:""
+        description:'A computer as powerful as the human brain would be able to perform 38,000 trillion operations per second, and hold more than 3580 terabytes of memory.',
+        previewImage:"https://i.imgur.com/cI0l3Vp.png",
+        url:"https://cdn.pixabay.com/download/audio/2022/02/07/audio_f972decc9f.mp3?filename=vlog-groovy-hip-hop-18304.mp3"
       },
       {
-        title: '',
+        title: 'Let It All Go',
         userId: 1,
         albumId: 3,
-        description:'',
-        previewImage:"",
-        url:""
+        description:'HP, Apple, and Microsoft all began developing their computers in a garage.',
+        previewImage:"https://i.imgur.com/dGIlsHH.jpg",
+        url:"https://cdn.pixabay.com/download/audio/2021/12/16/audio_232a4bdedf.mp3?filename=let-it-go-12279.mp3"
       },
       {
-        title: '',
+        title: '3:30pm',
         userId: 1,
         albumId: 3,
-        description:'',
+        description:'I feel comfortable using legal jargon in everyday life. I object!',
         previewImage:"",
-        url:""
+        url:"https://cdn.pixabay.com/download/audio/2022/03/21/audio_5e478e5065.mp3?filename=for-food-99185.mp3"
       },
       {
-        title: '',
+        title: 'The Message',
         userId: 1,
         albumId: 3,
-        description:'',
-        previewImage:"",
-        url:""
+        description:'Don\t shoot the messenger',
+        previewImage:"https://i.imgur.com/dD7JAEt.jpg",
+        url:"https://cdn.pixabay.com/download/audio/2022/05/09/audio_1198075180.mp3?filename=boom-bap-hip-hop-110865.mp3"
       },
       {
-        title: '',
+        title: 'Now this. Is podracing!',
         userId: 1,
         albumId: 3,
-        description:'',
-        previewImage:"",
-        url:""
+        description:'I don\'t like sand. It\'s coarse and rough and irritating and it gets everywhere. Not like here. Here everything is soft and smooth',
+        previewImage:"https://i.imgur.com/LTt0KZI.jpg",
+        url:"https://cdn.pixabay.com/download/audio/2022/03/07/audio_cad577028a.mp3?filename=better-days-22163.mp3"
       },
       {
-        title: '',
+        title: 'Mountains',
         userId: 1,
         albumId: 3,
-        description:'',
-        previewImage:"",
-        url:""
+        description:'The best view comes after the hardest climb',
+        previewImage:"https://i.imgur.com/8VbheO0.jpg",
+        url:"https://cdn.pixabay.com/download/audio/2022/06/22/audio_f2bea0e284.mp3?filename=fashion-hip-hop-113774.mp3"
       },
 
     ], {})
