@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPlaylistsByCurrentUser,
          resetPLaylists } from "../../../store/playlist";
 import SinglePlaylist from "../SinglePlaylist/SinglePlaylist";
-
+import "./CurrentPlaylist.css"
 export const CurrentPlaylists = () => {
   const dispatch = useDispatch()
   const stateState = useSelector(state=> state)
