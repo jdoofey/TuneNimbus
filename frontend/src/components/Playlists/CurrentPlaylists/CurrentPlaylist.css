@@ -3,11 +3,11 @@
   display:flex;
   flex-direction: column;
   border:blue 1px solid;
-  width: fit-content;
+
 }
 
 
-#list-container {
+#curr-playlist-container {
   display: grid;
   border: 1px red solid;
   grid-template-columns: repeat(6, 1fr);

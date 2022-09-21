@@ -1,10 +1,15 @@
 import { csrfFetch } from "./csrf";
 
+const LOAD_ONE = "playlists/LOAD_ONE"
 const LOAD_CURRENT = "playlists/LOAD_CURENT";
 const ADD_ONE = "playlists/ADD_ONE";
 const DELETE_ONE = "playlists/DELETE_ONE";
 const RESET_PLAYLISTS = "playlists/RESET_PLAYLISTS";
 
+const loadOnePlaylist = playlist => ({
+  type: LOAD_ONE,
+  playlist
+})
 const loadCurrent = (playlists) => ({
   type: LOAD_CURRENT,
   playlists,
@@ -24,6 +29,14 @@ export const resetPLaylists = () => ({
   type: RESET_PLAYLISTS,
 });
 //use to clean up stale state
+
+export const getOnePlaylist = playlistId => async dispatch => {
+  const res = await csrfFetch(`/api/songs/${playlistId}`)
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(loadOnePlaylist(data))
+  }
+}
 
 export const getPlaylistsByCurrentUser = () => async (dispatch) => {
   const res = await csrfFetch("/api/playlists/current");
@@ -94,3 +107,4 @@ export default playlistReducer;
     //   accum[current.id] = current;
     //   return accum;
     // }, allPlaylists);
+    //JOHN DEBUG
