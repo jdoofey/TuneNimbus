@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { editSongForm, eviscerateSong } from "../../store/songs";
-
 import { useEffect } from "react";
 import { Modal } from "../../context/Modal";
 import { useParams } from "react-router-dom";
 import { getSongDeets } from "../../store/songs";
 import { useHistory } from "react-router-dom";
+import "./EditSong.css"
 const EditSongForm = ({ song }) => {
   const history = useHistory()
   const dispatch = useDispatch();
@@ -65,10 +65,12 @@ const EditSongForm = ({ song }) => {
   return (
     <>
       <button onClick={()=> setShowModal(true)}>Edit Song</button>
-      {showModal && (
 
+      {showModal && (
+          <div id="edit-container">
         <Modal onClose={()=> setShowModal(false)}>
-        <form hidden={!showModal}>
+
+        <form id="edit-song-form"hidden={!showModal}>
           <h1>Edit Your Song</h1>
           <h3>{song.title}</h3>
           <ul>
@@ -111,6 +113,7 @@ const EditSongForm = ({ song }) => {
             </div>
         </form>
       </Modal>
+            </div>
     )}
     </>
   );

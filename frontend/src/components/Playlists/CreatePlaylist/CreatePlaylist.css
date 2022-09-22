@@ -16,9 +16,10 @@
   width: 258px;
   align-items: center;
   justify-content: center;
-  background-color: #ff7f50;
+  background-color: #ff7847;
   border:none;
   border-radius: 5px;
+  color:rgb(246, 246, 246);
 }
 
 #create-playlist-btn {

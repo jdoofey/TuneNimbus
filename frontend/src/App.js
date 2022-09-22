@@ -37,9 +37,6 @@ function App() {
       </div>
         {isLoaded && (
           <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
             <Route exact path="/songs">
               <AllSongs setAudioUrl={setAudioUrl} />
             </Route>
@@ -67,6 +64,7 @@ function App() {
             <Route exact path="/signup">
               <SignupFormPage />
             </Route>
+
           </Switch>
         )}
         <div id="player-container">
@@ -80,13 +78,13 @@ function App() {
         <Navigation isLoaded={isLoaded} />
         {isLoaded && (
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/home">
               <HomePage />
             </Route>
             <Route exact path="/songs">
               <AllSongs setAudioUrl={setAudioUrl} />
             </Route>
-          
+
 
             <Route path="/songs/:songId">
               <SongDetails />

@@ -7,7 +7,16 @@ function SignupFormModal() {
 
   return (
     <>
-      <button id="submit-btn"onClick={() => setShowModal(true)}>Sign Up</button>
+      <button style={{
+          backgroundColor: "#ff7f50",
+          color: "white",
+          border:"none",
+          height:"fit-content",
+          padding:"7px",
+          borderRadius:"3px",
+          alignSelf:"center",
+          margin:"5px"
+      }}onClick={() => setShowModal(true)}>Create account</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <SignupForm />
