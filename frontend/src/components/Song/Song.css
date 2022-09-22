@@ -1,14 +1,19 @@
 
+#test {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #placeholder-img {
   width:250px;
   height:250px;
 }
 
 #title {
+  display: flex;
+  align-self: center;
   font-size: 16px;
   width:200px;
-}
-
-#player {
-  width:150px;
 }

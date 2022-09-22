@@ -1,11 +1,21 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Song.css";
 
 function Song(song) {
   // console.log(song.song.url)
   return (
 
-    <Link to={`/songs/${song.song.id}`}>
+    <NavLink
+    to={`/songs/${song.song.id}`}
+    // style={isActive => ({
+    //   color: isActive ? "black" : "black"
+    // })}
+    style={{ textDecoration: 'none',
+              color:"black" }}
+    activeStyle={isActive => ({
+    color: isActive? "black" : "black"
+    })}
+    >
       <div id="test">
         <img
           id="placeholder-img"
@@ -17,9 +27,9 @@ function Song(song) {
 
         ></img>
         <div id="title">{song.song.title}</div>
-        <div>{song.song.albumId}</div>
+
       </div>
-    </Link>
+    </NavLink>
   );
 }
 

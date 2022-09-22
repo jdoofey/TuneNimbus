@@ -2,7 +2,7 @@
   list-style-type: none;
   display:flex;
   flex-direction: column;
-  border:blue 1px solid;
+  /* border:blue 1px solid; */
 
 }
 
@@ -11,8 +11,8 @@
   display: grid;
   border: 1px red solid;
   grid-template-columns: repeat(6, 1fr);
-  grid-row-gap: 50px;
-  grid-column-gap: 50px;
+  grid-row-gap: 30px;
+  grid-column-gap: 30px;
   justify-items: center;
   margin-left: 150px;
   margin-right: 150px;

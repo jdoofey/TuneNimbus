@@ -4,8 +4,8 @@
 
 #play-button {
   display:none;
-  width:40px;
-  height:40px;
+  width:50px;
+  height:50px;
   border-radius: 100px;
   border: rgb(223, 145, 0) 2px solid;
   font-weight: bold;
@@ -23,7 +23,7 @@
   display: inline-block;
   position:fixed;
   align-self: center;
-  margin-top: 50px;
+  margin-top: 100px;
   transition:.5s;
   animation: fade-in .5s ;
 }
