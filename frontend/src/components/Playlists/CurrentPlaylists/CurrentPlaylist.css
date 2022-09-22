@@ -9,13 +9,13 @@
 
 #curr-playlist-container {
   display: grid;
-  border: 1px red solid;
+  /* border: 1px red solid; */
   grid-template-columns: repeat(6, 1fr);
   grid-row-gap: 30px;
   grid-column-gap: 30px;
   justify-items: center;
-  margin-left: 150px;
-  margin-right: 150px;
+  margin-left: 250px;
+  margin-right: 250px;
   padding-top: 50px;
   padding-bottom: 25px;
   justify-content: center;
@@ -39,5 +39,5 @@
 
 #your-playlist-master-container {
   padding-top: 50px;
-  
+
 }

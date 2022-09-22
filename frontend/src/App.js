@@ -79,7 +79,7 @@ function App() {
         {isLoaded && (
           <Switch>
             <Route exact path="/home">
-              <HomePage />
+              <HomePage setAudioUrl={setAudioUrl}/>
             </Route>
             <Route exact path="/songs">
               <AllSongs setAudioUrl={setAudioUrl} />

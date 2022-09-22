@@ -42,7 +42,7 @@ const EditSongForm = ({ song }) => {
       url,
       previewImage,
     };
-    console.log("PAYLOAD IN MODAL", payload)
+    
     if (!title || !url || title === "" || url === "") {
       setErrors([]);
       return dispatch(editSongForm(payload)).catch(async (res) => {

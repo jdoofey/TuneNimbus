@@ -13,7 +13,9 @@
   background-size: cover;
   transition:.5s;
 }
+@media screen and (width<1200px){
 
+}
 @keyframes fade-in {
   0%    { opacity: 0; }
   100%  { opacity: 1; }
@@ -37,3 +39,4 @@
 #play-button:active {
   offset-position: bottom 5px;
 }
+

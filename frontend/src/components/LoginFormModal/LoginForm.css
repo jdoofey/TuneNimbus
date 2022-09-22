@@ -7,8 +7,16 @@
   justify-content: space-around;
   width:300px;
 }
-#logo{
-  height:50px;
+#login-logo {
+  position: relative;
+
+}
+#login-logo img {
+  /* position: flex-start; */
+  height: 70px;
+  width: 350px;
+
+  background-repeat: no-repeat;
 }
 
 #user {
@@ -32,4 +40,10 @@
   color:white;
   border:none;
   border-radius: 5px;
+}
+
+#login-container {
+  display:flex;
+  justify-content: center;
+
 }
