@@ -33,13 +33,10 @@
   width:300px;
 }
 #submit-btn {
-  font-size: 16px;
-  display:flex;
-  height: 23px;
-  width: 258px;
-  align-items: center;
-  justify-content: center;
-  background-color: #ff7f50;
-  border:none;
-  border-radius: 5px;
+
+  padding:10px;
+  border-radius: 20px;
+  border:#ff7f50 1px solid;
+  background-color:#ff7847;
+  color:white;
 }

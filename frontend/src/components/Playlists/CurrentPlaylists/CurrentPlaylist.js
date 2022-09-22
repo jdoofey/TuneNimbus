@@ -20,7 +20,7 @@ export const CurrentPlaylists = () => {
   if (!playlists) return null; //add loading page
 
   return (
-    <div>
+    <div id="your-playlist-master-container">
       <CreatePlaylist />
     <ul id="curr-playlist-container">
       {Object.values(playlists).map((playlist) => {

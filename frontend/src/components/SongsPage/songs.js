@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSongsByCurrentUser, resetSongs } from "../../store/songs";
-import "./SongPage.css";
+import "../AllSongs/AllSongs.css";
+import "./SongPage.css"
 import Song from "../Song/song";
 
 export const SongsList = ({ setAudioUrl }) => {
@@ -16,22 +17,21 @@ export const SongsList = ({ setAudioUrl }) => {
 
   if (!songs) return null; //add loading page
   return (
-    <ul id="list-container">
+    <div id="list-container">
       {Object.values(songs).map((song) => {
         return (
-          <li id="list-ele" key={song.id}>
+          <div id="list-ele" key={song.id}>
             <Song song={song} />
-            <button
+            <button id="play-button"
               onClick={(e) => {
                 e.preventDefault();
                 setAudioUrl(song.url);
               }}
             >
-              Play
             </button>
-          </li>
+          </div>
         );
       })}
-    </ul>
+    </div>
   );
 };

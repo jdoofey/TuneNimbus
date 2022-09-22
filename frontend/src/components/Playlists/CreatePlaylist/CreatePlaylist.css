@@ -20,3 +20,12 @@
   border:none;
   border-radius: 5px;
 }
+
+#create-playlist-btn {
+  margin-left: 150px;
+  padding:10px;
+  border-radius: 20px;
+  border:#ff7f50 1px solid;
+  background-color:#ff7f50;
+  color:white;
+}

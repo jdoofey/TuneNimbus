@@ -15,18 +15,23 @@ export default function PlaylistDetails({setAudioUrl}) {
   }, [playlistId, dispatch]);
 
   return (
-    <div>
+    <div id="playlist-details-master-container">
       <h1>{playlist.name}</h1>
-      {playlist?.Songs?.map((song) => {
+      {playlist?.Songs?.map((song, i) => {
         return (
           <div id="song-container">
+
             <img src={song.previewImage} width="50"></img>
+            <div className="playlist-details-spacer"></div>
+            <h3>{i+1}</h3>
+            <div className="playlist-details-spacer"></div>
             <h3>{song.title}</h3>
-            <h3>{song.userId}</h3>
+            <div className="playlist-details-spacer"></div>
             <button onClick={e=>{
               e.preventDefault()
               setAudioUrl(song.url)
             }}>Play</button>
+
           </div>
         );
       })}
