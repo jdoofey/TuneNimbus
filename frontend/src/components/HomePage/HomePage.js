@@ -8,12 +8,12 @@ import { getAllSongs, resetSongs } from "../../store/songs";
 import Song from "../Song/song";
 const HomePage = ({ setAudioUrl }) => {
   const dispatch = useDispatch();
+  const songs = useSelector((state) => state.song.allSongs);
   useEffect(() => {
     dispatch(getAllSongs());
     return () => dispatch(resetSongs());
     //cleanup
   }, [dispatch]);
-  const songs = useSelector((state) => state.song.allSongs);
 
     return (
       <div id="page-container">
@@ -33,18 +33,18 @@ const HomePage = ({ setAudioUrl }) => {
           <div id="list-container">
             {Object.values(songs).map((song) => {
               return (
-                <div id="list-ele" key={song.id}>
+                <div id="list-el" key={song.id}>
                   <Song song={song} />
 
-                  <h1>hello</h1>
+              
+
                   <button
-                    id="play-button"
+                    id="play-btn"
                     onClick={(e) => {
                       e.preventDefault();
                       setAudioUrl(song.url);
                     }}
-                    >where</button>
-
+                    ></button>
                 </div>
               );
             })}
