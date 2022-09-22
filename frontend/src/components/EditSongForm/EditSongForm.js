@@ -42,14 +42,14 @@ const EditSongForm = ({ song }) => {
       url,
       previewImage,
     };
-    
-    if (!title || !url || title === "" || url === "") {
-      setErrors([]);
-      return dispatch(editSongForm(payload)).catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      });
-    }
+
+    // if (!title || !url || title === "" || url === "") {
+    //   setErrors([]);
+    //   return dispatch(editSongForm(payload)).catch(async (res) => {
+    //     const data = await res.json();
+    //     if (data && data.errors) setErrors(data.errors);
+    //   });
+    // }
     const exitMenu = () => {
       setShowModal(false);
     };
@@ -64,37 +64,48 @@ const EditSongForm = ({ song }) => {
 
   return (
     <>
-      <button onClick={()=> setShowModal(true)}>Edit Song</button>
+
+      <button
+        className="song-edit-btn"
+        onClick={()=> setShowModal(true)}>
+        Edit Song
+      </button>
 
       {showModal && (
           <div id="edit-container">
         <Modal onClose={()=> setShowModal(false)}>
-
+        <button id='close-modal' onClick={()=> setShowModal(false)}>X</button>
         <form id="edit-song-form"hidden={!showModal}>
           <h1>Edit Your Song</h1>
-          <h3>{song.title}</h3>
-          <ul>
+          {/* <ul>
             {errors.map((e, i) => {
               if (e !== "Invalid value") {
                 return <li key={i}>{e}</li>;
               }
             })}
-          </ul>
+          </ul> */}
+          <h2>{song.title}</h2>
           <h3>New Title</h3>
           <input
+            className="edit-song-inputs"
             type="text"
             required
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             />
           <h3>New Description</h3>
-          <input
+          <textarea
+            className="edit-song-inputs"
+            style={{fontFamily: "sans-serif",
+                    cols:3
+                    }}
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             />
           <h3>New Audio URL</h3>
           <input
+            className="edit-song-inputs"
             type="text"
             required
             value={url}
@@ -102,14 +113,17 @@ const EditSongForm = ({ song }) => {
             />
           <h3>New Cover Image</h3>
           <input
+            className="edit-song-inputs"
             type="text"
             value={previewImage}
             onChange={(e) => setPreviewImage(e.target.value)}
             />
             <div>
               <br></br>
-          <button type="submit" onClick={handleSubmit}>Submit</button>
-          <button type="button" onClick={handleEviscerate}>Delete Song</button>
+              <div id="edit-btn-container">
+          <button className="song-edit-btn" type="submit" onClick={handleSubmit}>Add Changes</button>
+          <button className="song-edit-btn" type="button" onClick={handleEviscerate}>Delete Song</button>
+              </div>
             </div>
         </form>
       </Modal>

@@ -70,7 +70,7 @@ function SignupForm() {
         {errors.map((error, idx) => <li id="errors-ul" key={idx}>{error}</li>)}
       </div>)}
       <div id='bigbox'>
-      <img id='logo' src='https://i.imgur.com/OHysOUL.png'></img>
+      <img style={{height:"60px"}} src='https://i.imgur.com/OHysOUL.png'></img>
       <label id='email-label'>
         Email
         <input
@@ -131,7 +131,8 @@ function SignupForm() {
           required
         />
       </label>
-      <button id='submit-btn' type="submit">Sign Up</button>
+      <br></br>
+      <button id='signup-submit-btn' type="submit">Sign Up</button>
       </div>
     </form>
   );

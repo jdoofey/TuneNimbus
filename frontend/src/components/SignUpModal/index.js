@@ -20,6 +20,7 @@ function SignupFormModal() {
       }}onClick={() => setShowModal(true)}>Create account</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
+          <button id='close-modal' onClick={()=> setShowModal(false)}>X</button>
           <SignupForm />
         </Modal>
       )}

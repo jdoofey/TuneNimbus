@@ -38,7 +38,7 @@ const CreatePlaylist = () => {
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <div id="create-container">
-          <button id='close-modal'>FIX ME X</button>
+          <button id='close-modal' onClick={()=> setShowModal(false)}>X</button>
             <form id="create-form" onSubmit={handleSubmit}>
               <h1>Create Your Playlist</h1>
               <label>Playlist Title</label>
