@@ -40,3 +40,7 @@
   background-color:#ff7847;
   color:white;
 }
+
+#errors-ul {
+  list-style: circle;
+}

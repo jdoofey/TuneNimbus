@@ -17,20 +17,28 @@ function LoginForm() {
     return dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        console.log(data)
+        if (data && data.message) {
+          setErrors([data.message]);
+        }
       }
     );
   };
 
   return (
+    <div id="login-container">
+
     <form onSubmit={handleSubmit}>
-      <ul>
+      <div>
         {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
+          <h4 key={idx}>{error}</h4>
+          ))}
+      </div>
       <div id='input-container'>
-      <img id='logo' src='https://i.imgur.com/OHysOUL.png'></img>
+        <div id='login-logo'>
+
+      <img  src='https://i.imgur.com/OHysOUL.png'></img>
+        </div>
       <label id='user-label'>
         Username or Email
         <input
@@ -39,7 +47,7 @@ function LoginForm() {
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
-        />
+          />
       </label>
       <label id='pass-label'>
         Password
@@ -49,11 +57,12 @@ function LoginForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-        />
+          />
       </label>
       <button id='submit-btn' type="submit">Log In</button>
       </div>
     </form>
+          </div>
   );
 }
 

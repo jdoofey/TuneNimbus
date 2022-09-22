@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
@@ -6,34 +6,69 @@ import './SignUpForm.css'
 function SignupForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [errors, setErrors] = useState([])
+  const [displayErrors, setDisplayErrors] = useState(false)
 
   // if (sessionUser&&(Object.keys(sessionUser).length)) return <Redirect to="/" />;
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (password === confirmPassword) {
-      setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password, firstName, lastName }))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
+  const validations = () => {
+    let errorsArray = []
+    if (password !== confirmPassword) {
+      errorsArray.push("Your passwords didn't match")
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
+    if (password.length < 6) {
+      errorsArray.push("Password must be at least 6 characters")
+    }
+    if (!email.includes("@")||!email.includes(".")) {
+
+      errorsArray.push("Please provide a valid email")
+    }
+    if (username.length<4) {
+      errorsArray.push("Username must be at least 4 characters")
+    }
+    if(username.length>20) {
+      errorsArray.push("Username must be less than 20 characters")
+    }
+    if (firstName.length<2) {
+      errorsArray.push("Names must be 2 characters or more")
+    }
+    if (lastName.length<2) {
+      errorsArray.push("Names must be 2 characters or more")
+    }
+    setErrors(errorsArray)
+    if (errorsArray.length) setDisplayErrors(true)
+    return errorsArray
+  }
+  useEffect(()=> {
+    if(displayErrors)validations()
+  }, [password,email,username,firstName,lastName])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setDisplayErrors(false)
+   let errorsArray = validations()
+
+   if (errorsArray.length) return
+   const res = await dispatch(sessionActions.signup({
+      firstName, lastName, email, username, password
+      }))
+      .catch(async res=> {
+        const data= await res.json()
+        if (data&&data.errors) setErrors(Object.values(data.errors))
+      })
+      return res
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
+      {errors.length>0 && (<div id="errors-ul">
+        {errors.map((error, idx) => <li id="errors-ul" key={idx}>{error}</li>)}
+      </div>)}
       <div id='bigbox'>
       <img id='logo' src='https://i.imgur.com/OHysOUL.png'></img>
       <label id='email-label'>
