@@ -27,7 +27,7 @@
   position: absolute;
   justify-content: center;
   align-items: center;
-  background-color: #383838; ;
+  background-color: #383838;
   color: rgb(153, 153, 153);
   /* font-size: small; */
   border: none;
@@ -52,4 +52,8 @@
 /* amanda saves my css */
 .something {
   display:flex
+}
+
+test{
+  color:rgb(215, 215, 215)
 }

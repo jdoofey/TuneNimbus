@@ -24,13 +24,14 @@
   position:fixed;
   align-self: center;
   margin-top: 50px;
-  transition:.5s;
-  animation: fade-in .5s ;
+  transition:.15s;
+  animation: fade-in .15s ;
 }
 
 #play-button:hover {
   cursor:pointer;
-  opacity:.4;
+  border:red 1px solid;
+  background-image:url(https://i.imgur.com/O0N9ZpT.png)
 }
 
 #play-button:active {

@@ -35,8 +35,8 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <div className="container">
-        <NavLink className="nav-link" to="/songs">
-          <button  className="nav-ele">All Music</button>
+        <NavLink className="nav-link" to="/home">
+          <button  className="nav-ele">Home</button>
         </NavLink>
         <LoginFormModal />
         <SignupFormModal />
@@ -46,14 +46,10 @@ function Navigation({ isLoaded }) {
 
   return (
     <div id="nav-container">
-      <span>
+
         <img id="logo" src="https://i.imgur.com/OHysOUL.png"></img>
-      </span>
-      <span className="container">
-        <NavLink className="nav-link" exact to="/">
-          <button className="nav-ele">Home</button>
-        </NavLink>
-      </span>
+
+
       <div className="something">{isLoaded && sessionLinks}</div>
     </div>
   );

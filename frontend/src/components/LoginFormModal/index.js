@@ -8,7 +8,18 @@ function LoginFormModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Log In</button>
+      <button style={{
+          backgroundColor: "#383838",
+          color: "rgb(153, 153, 153)",
+          height:"fit-content",
+          padding:"7px",
+          border:"rgb(215, 215, 215) 1px solid",
+          color:"rgb(215, 215, 215)",
+          borderRadius:"3px",
+          alignSelf:"center",
+          margin:"5px"
+      }}
+      onClick={() => setShowModal(true)}>Sign in</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <LoginForm />

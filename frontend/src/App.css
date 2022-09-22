@@ -9,5 +9,5 @@
 #navigation {
   position: fixed;
   width:99%;
-  
+  z-index: 10;
 }

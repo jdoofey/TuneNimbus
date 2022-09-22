@@ -1,9 +1,20 @@
-import { useSelector } from "react-redux";
 import "./HomePage.css";
-const HomePage = () => {
-  const sessionUser = useSelector((state) => state.session.user);
+import SignupForm from "../SignUpModal";
+import "../SongsPage/SongPage.css";
+import "../AllSongs/AllSongs.css";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllSongs, resetSongs } from "../../store/songs";
+import Song from "../Song/song";
+const HomePage = ({ setAudioUrl }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllSongs());
+    return () => dispatch(resetSongs());
+    //cleanup
+  }, [dispatch]);
+  const songs = useSelector((state) => state.song.allSongs);
 
-  if (!sessionUser || sessionUser) {
     return (
       <div id="page-container">
         <div id="whatever">
@@ -19,33 +30,42 @@ const HomePage = () => {
           </div>
         </div>
         <div className="middle-container">
-          <span>
-            <img src="https://i.imgur.com/CcYDFxL.png"></img>
-          </span>
-          <span className="middle-text">
-            <h1>Never stop listening</h1>
-            <h2>
-              TuneNimbus is not yet available on Web, iOS, Android, Sonos,
-              Chromecast, or Xbox One. We're still working on that, but
-              you can look forward to its release on February 32nd, 3023!
-            </h2>
-          </span>
+          <div id="list-container">
+            {Object.values(songs).map((song) => {
+              return (
+                <div id="list-ele" key={song.id}>
+                  <Song song={song} />
+
+                  <h1>hello</h1>
+                  <button
+                    id="play-button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setAudioUrl(song.url);
+                    }}
+                    >where</button>
+
+                </div>
+              );
+            })}
+          </div>
         </div>
         <div className="bottom-container">
           <div id="shader">
             <div className="bottom-text">
-            <h1>Calling All Creators</h1>
-            <h2>Get on TuneNimbus to connect with fans,
-                share your sounds, and grow your audience.
-                What are you waiting for? Join up to one other
-                user on the site and start your music career!
-            </h2>
+              <h1>Calling All Creators</h1>
+              <h2>
+                Get on TuneNimbus to connect with fans, share your sounds, and
+                grow your audience. What are you waiting for? Join up to one
+                other user on the site and start your music career!
+              </h2>
+              <SignupForm />
             </div>
           </div>
         </div>
       </div>
     );
-  }
+
 };
 
 export default HomePage;

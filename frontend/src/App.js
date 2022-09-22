@@ -17,6 +17,7 @@ import AudioPlayer from "react-h5-audio-player";
 import Song from "./components/Song/song";
 import PlaylistDetails from "./components/Playlists/PlaylistDetails/PlaylistDetails";
 import CreatePlaylist from "./components/Playlists/CreatePlaylist/CreatePlaylist";
+import "./components/Song/Song.css"
 import "react-h5-audio-player/lib/styles.css";
 import "./App.css";
 function App() {
@@ -36,9 +37,6 @@ function App() {
       </div>
         {isLoaded && (
           <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
             <Route exact path="/songs">
               <AllSongs setAudioUrl={setAudioUrl} />
             </Route>
@@ -66,6 +64,7 @@ function App() {
             <Route exact path="/signup">
               <SignupFormPage />
             </Route>
+
           </Switch>
         )}
         <div id="player-container">
@@ -79,20 +78,30 @@ function App() {
         <Navigation isLoaded={isLoaded} />
         {isLoaded && (
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/home">
               <HomePage />
             </Route>
-            <Route path="/login">
+            <Route exact path="/songs">
+              <AllSongs setAudioUrl={setAudioUrl} />
+            </Route>
+
+
+            <Route path="/songs/:songId">
+              <SongDetails />
+            </Route>
+
+
+            <Route exact path="/login">
               <LoginForm />
             </Route>
-            <Route path="/signup">
+            <Route exact path="/signup">
               <SignupFormPage />
-            </Route>
-            <Route exact path="/songs">
-              <AllSongs />
             </Route>
           </Switch>
         )}
+        <div id="player-container">
+          <AudioPlayer src={audioUrl} />
+        </div>
       </>
     );
   }

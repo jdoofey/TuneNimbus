@@ -34,7 +34,7 @@ const CreatePlaylist = () => {
     <div>
       <br></br>
       <br></br>
-      <button onClick={() => setShowModal(true)}>Create a New Playlist</button>
+      <button id="create-playlist-btn" onClick={() => setShowModal(true)}>Create a New Playlist</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <div id="create-container">
