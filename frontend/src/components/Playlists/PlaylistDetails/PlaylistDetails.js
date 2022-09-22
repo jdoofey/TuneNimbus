@@ -24,6 +24,7 @@ export default function PlaylistDetails({ setAudioUrl }) {
   return (
     <div id="playlist-details-master-container">
       <h1>{playlist.name}</h1>
+      <br></br>
       {playlist?.Songs?.map((song, i) => {
         return (
           <div>
@@ -34,13 +35,13 @@ export default function PlaylistDetails({ setAudioUrl }) {
               <div className="playlist-details-spacer"></div>
               <h3>{song.title}</h3>
               <div className="playlist-details-spacer"></div>
-              <button
+              <button className="playlist-audio-btn"
                 onClick={(e) => {
                   e.preventDefault();
                   setAudioUrl(song.url);
                 }}
               >
-                Play
+                
               </button>
             </div>
           </div>

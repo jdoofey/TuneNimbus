@@ -6,9 +6,7 @@
   display:none;
   width:50px;
   height:50px;
-  border-radius: 100px;
-  border: rgb(223, 145, 0) 2px solid;
-  font-weight: bold;
+  border:none;
   background-image: url(https://i.imgur.com/5vs8qrA.png);
   background-size: cover;
   transition:.5s;
@@ -25,6 +23,8 @@
   display: inline-block;
   position:fixed;
   align-self: center;
+  border-radius: 100px;
+  border-style: none;
   margin-top: 50px;
   transition:.15s;
   animation: fade-in .15s ;
@@ -32,11 +32,9 @@
 
 #play-button:hover {
   cursor:pointer;
-  border:red 1px solid;
   background-image:url(https://i.imgur.com/O0N9ZpT.png)
 }
 
 #play-button:active {
   offset-position: bottom 5px;
 }
-

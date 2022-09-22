@@ -33,7 +33,7 @@
   font-size: 16px;
   display:flex;
   height: 23px;
-  width: 258px;
+  padding:9px;
   align-items: center;
   justify-content: center;
   background-color: #ff7f50;
@@ -41,7 +41,12 @@
   border:none;
   border-radius: 5px;
 }
-
+#sign-in-btns {
+  display:flex;
+  width:250px;
+  justify-content: space-evenly;
+  align-items: space-evenly;
+}
 #login-container {
   display:flex;
   justify-content: center;

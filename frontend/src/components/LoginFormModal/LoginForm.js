@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { login } from "../../store/session";
 import './LoginForm.css'
 function LoginForm() {
   const history = useHistory()
@@ -59,7 +60,13 @@ function LoginForm() {
           required
           />
       </label>
+      <div id="sign-in-btns">
       <button id='submit-btn' type="submit">Log In</button>
+      <button id="submit-btn" onClick={()=> {
+        dispatch(login({credential:"Demo-lition", password:"password"}))
+        return history.push('/songs')
+      }}>Demo User</button>
+      </div>
       </div>
     </form>
           </div>
