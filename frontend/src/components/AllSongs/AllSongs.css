@@ -23,7 +23,7 @@
   display: inline-block;
   position:fixed;
   align-self: center;
-  margin-top: 100px;
+  margin-top: 50px;
   transition:.5s;
   animation: fade-in .5s ;
 }
