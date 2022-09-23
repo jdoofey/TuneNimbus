@@ -28,20 +28,20 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
-    history.push('/')
+    history.push('/home')
   };
 
   return (
     <>
       <button id='prfile-btn' onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+        <i className="fa-solid fa-angle-down" />
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
-            <button onClick={logout}>Log Out
+            <button id="logout-btn"onClick={logout}>Log Out
 
             </button>
           </li>

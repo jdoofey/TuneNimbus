@@ -8,30 +8,57 @@ import SignupFormModal from "../SignUpModal";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
-
   const sessionUser = useSelector((state) => state.session.user);
 
-  return (
-    <>
-    <div id="nav-top">
-      <div id ="navbar">
-        <div id="left-container">
-          <img src="https://i.imgur.com/OHysOUL.png"></img>
-        <NavLink className="nav-link" to="/songs">
+  let sessionLinks;
+  if (sessionUser) {
+    sessionLinks = (
+     <div className="container">
+        <NavLink className="nav-link"to="/songs">
           <button className="nav-ele">All Music</button>
         </NavLink>
-        <NavLink className="nav-link" to="/songs/current">
+        <NavLink  className="nav-link" to="/songs/current">
           <button className="nav-ele">Your Music</button>
         </NavLink>
-        <NavLink className="nav-link" to="/playlists/current">
+        <NavLink  className="nav-link" to="/playlists/current">
           <button className="nav-ele">Your Playlists</button>
         </NavLink>
-        <NavLink className="nav-link" to="/addsong">
+        <NavLink  className="nav-link" to="/addsong">
           <button className="nav-ele">Upload</button>
         </NavLink>
 
+        <ProfileButton user={sessionUser} />
+
+
+     </div>
+    );
+  } else {
+    sessionLinks = (
+      <div className="container">
+        <NavLink className="nav-link" to="/songs">
+          <button  className="nav-ele">All Music</button>
+        </NavLink>
+        <LoginFormModal />
+        <SignupFormModal />
         </div>
-      </div>
+    );
+  }
+
+  return (
+    <>
+    <div id="nav-container">
+      <span>
+        <NavLink to="/songs">
+        <img id="logos" src="https://i.imgur.com/OHysOUL.png"></img>
+        </NavLink>
+      </span>
+
+      <span className="container">
+        <NavLink className="nav-link" exact to="/home">
+          <button className="nav-ele">Home</button>
+        </NavLink>
+      </span>
+      <div className="something">{isLoaded && sessionLinks}</div>
     </div>
     </>
   );
