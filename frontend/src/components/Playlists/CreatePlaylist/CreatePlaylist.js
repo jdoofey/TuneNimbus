@@ -25,7 +25,7 @@ const CreatePlaylist = () => {
     const newPlaylist = await dispatch(createPlaylist(payload));
     if (newPlaylist) {
       exitMenu();
-      history.push(`/playlists/${newPlaylist.id}`);
+      // history.push(`/playlists/${newPlaylist.id}`);
       window.alert("Your playlist has been created.");
     }
   };

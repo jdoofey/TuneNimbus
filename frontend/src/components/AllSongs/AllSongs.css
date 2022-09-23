@@ -1,17 +1,22 @@
 #list-ele {
   width:fit-content;
 }
+#allsongs-master-container{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 #allsongs-header {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 70px;
   height:100px;
   width: 1200px;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  align-self: center;
-  padding-left: 345px;
 }
+
 #list-container {
   display: grid;
   /* border: 1px red solid; */
@@ -34,9 +39,19 @@
   background-size: cover;
   transition:.5s;
 }
-@media screen and (width<1200px){
-
-}
+/* @media screen and (max-width:1200px){
+  #list-container {
+    display: grid;
+    grid-template-columns: repeat(5, 190px);
+    grid-row-gap: 30px;
+    justify-items: center;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding-top: 20px;
+    padding-bottom: 25px;
+    justify-content: center;
+  }
+} */
 @keyframes fade-in {
   0%    { opacity: 0; }
   100%  { opacity: 1; }

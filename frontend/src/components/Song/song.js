@@ -7,17 +7,14 @@ function Song(song) {
 
   if (sessionUser) {
     return (
-      <NavLink
-        to={`/songs/${song.song.id}`}
-        // style={isActive => ({
-        //   color: isActive ? "black" : "black"
-        // })}
-        style={{ textDecoration: "none", color: "black" }}
-        activeStyle={(isActive) => ({
-          color: isActive ? "black" : "black",
-        })}
-      >
-        <div id="test">
+      <div id="test">
+        <NavLink
+          to={`/songs/${song.song.id}`}
+          style={{ textDecoration: "none", color: "black" }}
+          activeStyle={(isActive) => ({
+            color: isActive ? "black" : "black",
+          })}
+        >
           <img
             id="placeholder-img"
             src={
@@ -26,14 +23,14 @@ function Song(song) {
                 : "https://i.imgur.com/QwtY70m.jpg"
             }
           ></img>
-          <div id="title">{song.song.title}</div>
-        </div>
-      </NavLink>
+        </NavLink>
+        <div id="title-box">{song.song.title}</div>
+      </div>
     );
-  }
-  else return (
-    <NavLink
-        to={`/login`}
+  } else
+    return (
+      <NavLink
+        to={`/home`}
         //TODO make a please sign in or create an account
         // style={isActive => ({
         //   color: isActive ? "black" : "black"
@@ -55,23 +52,23 @@ function Song(song) {
           <div id="title">{song.song.title}</div>
         </div>
       </NavLink>
-  )
+    );
 }
-  // else {
-  //   return (
-  //     <div id="test">
-  //         <img
-  //           id="placeholder-img"
-  //           src={
-  //             song.song.previewImage !== (null || "")
-  //               ? song.song.previewImage
-  //               : "https://i.imgur.com/QwtY70m.jpg"
-  //           }
-  //         ></img>
-  //         <div id="title">{song.song.title}</div>
-  //       </div>
-  //   )
-  // }
+// else {
+//   return (
+//     <div id="test">
+//         <img
+//           id="placeholder-img"
+//           src={
+//             song.song.previewImage !== (null || "")
+//               ? song.song.previewImage
+//               : "https://i.imgur.com/QwtY70m.jpg"
+//           }
+//         ></img>
+//         <div id="title">{song.song.title}</div>
+//       </div>
+//   )
+// }
 // }
 
 export default Song;

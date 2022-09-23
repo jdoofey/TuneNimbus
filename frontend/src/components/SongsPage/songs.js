@@ -17,7 +17,7 @@ export const SongsList = ({ setAudioUrl }) => {
 
   if (!songs) return null; //add loading page
   return (
-    <div>
+    <div className="your-songs-master">
       <div className="your-songs-header">
         <h1>Your songs</h1>
       </div>

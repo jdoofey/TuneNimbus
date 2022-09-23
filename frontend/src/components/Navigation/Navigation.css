@@ -87,19 +87,18 @@ test{
   cursor: pointer;
 }
 .profile-dropdown {
-  position: absolute;
-  width: 220px;
-  /* height: 80px; */
-  top: 50px;
+  display: flex;
   background-color: #fff;
+  border: #333 1px solid;
+  position: absolute;
+
+  top: 50px;
+  width:199px;
   color: #333;
   border-radius: 5px;
-  border: #333 1px solid;
-  display: flex;
   flex-direction: column;
-  padding: 2px 0 4px 4px;
+  padding: 7px 7px;
   box-sizing: border-box;
-  width:199px;
   margin-top: 0;
   margin-left: 300px;
 }

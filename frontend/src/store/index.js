@@ -7,6 +7,7 @@ import playlistReducer from "./playlist";
 const rootReducer = combineReducers({
   session: sessionReducer,
   song: songReducer,
+  //change everywhere to an s
   playlists: playlistReducer
 });
 //PHASE1 session actions and reducer END

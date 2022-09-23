@@ -10,7 +10,7 @@ export default function PlaylistDetails({ setAudioUrl }) {
   const history = useHistory();
   const { playlistId } = useParams();
 
-  const playlist = useSelector((state) => state.playlists);
+  const playlist = useSelector((state) => state.playlists[playlistId]);
 
   // console.log(playlist.Songs);
   useEffect(() => {
@@ -21,6 +21,7 @@ export default function PlaylistDetails({ setAudioUrl }) {
     dispatch(removePlaylist(playlist.id))
     history.push("/playlists/current")
   }
+  if(!playlist) return null
   return (
     <div id="playlist-details-master-container">
       <h1>{playlist.name}</h1>
@@ -41,7 +42,7 @@ export default function PlaylistDetails({ setAudioUrl }) {
                   setAudioUrl(song.url);
                 }}
               >
-                
+
               </button>
             </div>
           </div>

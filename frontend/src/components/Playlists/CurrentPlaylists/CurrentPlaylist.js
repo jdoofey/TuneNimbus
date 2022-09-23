@@ -10,11 +10,11 @@ export const CurrentPlaylists = () => {
   const dispatch = useDispatch()
 
 
-  const playlists = useSelector((state)=> state.playlists.allPlaylists)
+  const playlists = useSelector((state)=> state.playlists)
 
   useEffect(() => {
     dispatch(getPlaylistsByCurrentUser())
-    return () => dispatch(resetPLaylists())
+    // return () => dispatch(resetPLaylists())
   }, [dispatch])
 
   if (!playlists) return null; //add loading page

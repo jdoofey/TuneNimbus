@@ -5,7 +5,12 @@ const LOAD_CURRENT = "playlists/LOAD_CURENT";
 const ADD_ONE = "playlists/ADD_ONE";
 const DELETE_ONE = "playlists/DELETE_ONE";
 const RESET_PLAYLISTS = "playlists/RESET_PLAYLISTS";
+const ADD_SONG_TO_PLAYLIST = "playlists/ADD_SONG_TO_PLAYLIST"
 
+export const addSongPlaylist = (playlist, song) => ({
+  type: ADD_SONG_TO_PLAYLIST,
+  playlist, song
+})
 const loadOnePlaylist = (playlist) => ({
   type: LOAD_ONE,
   playlist,
@@ -46,18 +51,19 @@ export const getPlaylistsByCurrentUser = () => async (dispatch) => {
     return data;
   }
 };
-export const addSongToPlaylist = playlist => async dispatch => {
-  const res = await csrfFetch(`/api/playlists/${playlist.id}/songs`,
+export const addSongToPlaylist = (playlistId, songId) => async dispatch => {
+  console.log("HIT-------in addSongToPlaylist")
+  const res = await csrfFetch(`/api/playlists/${playlistId}/songs`,
     {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(playlist)
+    body: JSON.stringify({songId})
     })
     if (res.ok) {
       const data = await res.json()
-      dispatch(addPlaylist(data))
       return data
     }
+    else return res
 }
 export const createPlaylist = (playlist) => async (dispatch) => {
   const res = await csrfFetch("/api/playlists", {
@@ -82,36 +88,37 @@ export const removePlaylist = (playlistId) => async (dispatch) => {
   }
 };
 
-const initialState = {
-  allPlaylists: {},
-  singlePlaylist: {},
-};
 
-const playlistReducer = (state = initialState, action) => {
+
+const playlistReducer = (state = {}, action) => {
   switch (action.type) {
     case LOAD_CURRENT:
-      let newState = { ...state, allPlaylists: { ...state.allPlaylists } };
+      let newState = {};
       action.playlists.Playlists.forEach(
-        (playlist) => (newState.allPlaylists[playlist.id] = playlist)
+        (playlist) => (newState[playlist.id] = playlist)
       );
       return newState;
     case ADD_ONE: {
-      const singlePlaylist = action.playlist;
-      const newState = { ...state, singlePlaylist };
+      const newState = { ...state};
+      newState[action.playlist.id] = action.playlist
       return newState;
     }
-    case LOAD_ONE:
-      const playlist = action.playlist;
-      return { ...state, ...playlist };
-
+    case LOAD_ONE: {
+      const newState = {...state}
+      newState[action.playlist.id] = action.playlist
+      return newState
+    }
     case DELETE_ONE: {
-      const newState = { ...state, allPlaylists: { ...state.allPlaylists } };
-      delete newState.allPlaylists[action.playlistId];
-      newState.singlePlaylist = {};
+      const newState = { ...state };
+      delete newState[action.playlistId];
       return newState;
     }
+    // case ADD_SONG_TO_PLAYLIST: {
+    //   const newState = {...state}
+    //   newState[action.playlist.id] = {...state[action.playlist.id], Songs:[]}
+    // }
     case RESET_PLAYLISTS: {
-      return initialState;
+      return {};
     }
     default:
       return state;

@@ -50,8 +50,12 @@
   font-size: 14px;
   width:154px;
 }
-
+.your-songs-master{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .your-songs-header {
   margin-top: 75px;
-  margin-left: 860px;
 }

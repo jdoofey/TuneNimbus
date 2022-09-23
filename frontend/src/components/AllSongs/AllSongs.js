@@ -14,7 +14,9 @@ export default function AllSongs({ setAudioUrl }) {
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   const songs = useSelector((state) => state.song.allSongs);
-  const playlists = useSelector((state) => state.playlists.allPlaylists);
+  const playlists = useSelector((state) => state.playlists);
+  const sessionUser = useSelector((state) => state.session.user);
+  const [selectedSong, setSelectedSong] = useState(null);
   // const cardStyling = {
   //   listEle: {
   //     width: "fit-content"
@@ -33,7 +35,7 @@ export default function AllSongs({ setAudioUrl }) {
   // }
   useEffect(() => {
     dispatch(getPlaylistsByCurrentUser());
-    return () => dispatch(resetPLaylists());
+    // return () => dispatch(resetPLaylists());
   }, [dispatch]);
 
   useEffect(() => {
@@ -42,67 +44,77 @@ export default function AllSongs({ setAudioUrl }) {
     //cleanup
   }, [dispatch]);
 
+  //ADD CLICK HANDLER
   if (!Object.values(songs).length) return <p>loading...</p>;
   //TODO ADD LOADING PAGE INTO ALL COMPONENTS- NOT PRIO
   return (
-    <div>
-    <div id="allsongs-header">
-
-    <h1>All Songs</h1>
-    </div>
-    <div id="list-container">
-      {Object.values(songs).map((song) => {
-        return (
-          <div id="list-ele" key={song.id}>
-            <Song song={song} />
-            <button
-              id="play-button"
-              onClick={(e) => {
-                e.preventDefault();
-                setAudioUrl(song.url);
-              }}
+    <div id="allsongs-master-container">
+      <div id="allsongs-header">
+        <h1>All Songs</h1>
+      </div>
+      <div id="list-container">
+        {Object.values(songs).map((song) => {
+          return (
+            <div id="list-ele" key={song.id}>
+              <Song song={song} />
+              <button
+                id="play-button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setAudioUrl(song.url);
+                }}
               ></button>
 
-            {/* <button id="create-playlist-btn" onClick={() => setShowModal(true)}>
-              Add to Playlist
-              </button>
+              {sessionUser && (
+                <button
+                  style={{ cursor: "pointer" }}
+                  id="create-playlist-btn"
+                  onClick={() => {
+                    setShowModal(true);
+                    setSelectedSong(song);
+                  }}
+                >
+                  Add to Playlist
+                </button>
+              )}
               {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                <div id="create-container">
-                <button id="close-modal">FIX ME X</button>
-                <form id="create-form">
-                <h1>Your Playlists</h1>
-                    <ul id="curr-playlist-container">
-                    {Object.values(playlists).map((playlist) => {
-                      return (
-                        <li id="list-ele" key={playlist.id}>
-                        <SinglePlaylist playlist={playlist} />
+                  <div id="create-container">
+                    <button id="close-modal">FIX ME X</button>
 
-                        <button
-                        onClick={async (e) => {
-                          e.preventDefault();
-                          await dispatch(addSongToPlaylist(payload));
-                          const payload = {
-                            songId: song.id,
-                          };
-                          return history.push("/playlists");
-                        }}
-                        >
-                              Add To This Playlist
-                            </button>
-                            <div>{playlist.name}</div>
+                      <h1>Your Playlists</h1>
+                      <ul id="curr-playlist-container">
+                        {Object.values(playlists).map((playlist) => {
+                          return (
+                            <li id="list-ele" key={playlist.id}>
+                              <SinglePlaylist playlist={playlist} />
+
+                              <button
+                                onClick={() => {
+                                  console.log("HIT-------in playlist Modal")
+                                  dispatch(
+                                    addSongToPlaylist(
+                                      playlist.id,
+                                      selectedSong.id
+                                    )
+                                  );
+                                }}
+                              >
+                                Add To This Playlist
+                              </button>
+                              <div>{playlist.name}</div>
                             </li>
-                            );
-                          })}
-                          </ul>
-                          </form>
-                          </div>
-                        </Modal> */}
-            {/* )} */}
-          </div>
-        );
-      })}
-    </div>
+                          );
+                        })}
+                      </ul>
+
+                  </div>
+                </Modal>
+              )}
+            </div>
+          );
+        })}
       </div>
+    </div>
   );
 }

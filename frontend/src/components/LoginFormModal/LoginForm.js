@@ -32,7 +32,7 @@ function LoginForm() {
     <form onSubmit={handleSubmit}>
       <div>
         {errors.map((error, idx) => (
-          <h4 key={idx}>{error}</h4>
+          <h4 id="login-errors"key={idx}>{error}</h4>
           ))}
       </div>
       <div id='input-container'>
