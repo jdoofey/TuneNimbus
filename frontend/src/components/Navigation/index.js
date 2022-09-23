@@ -54,9 +54,12 @@ function Navigation({ isLoaded }) {
       </span>
 
       <span className="container">
-        <NavLink className="nav-link" exact to="/home">
+        {!sessionUser && (
+
+          <NavLink className="nav-link" exact to="/home">
           <button className="nav-ele">Home</button>
         </NavLink>
+          )}
       </span>
       <div className="something">{isLoaded && sessionLinks}</div>
     </div>

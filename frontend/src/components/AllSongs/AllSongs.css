@@ -19,6 +19,8 @@
   100%  { opacity: 1; }
 }
 
+
+
 #list-ele:hover #play-button {
   display: inline-block;
   position:fixed;
@@ -26,8 +28,8 @@
   border-radius: 100px;
   border-style: none;
   margin-top: 50px;
-  transition:.15s;
-  animation: fade-in .15s ;
+  transition:.25s;
+  animation: fade-in .33s ;
 }
 
 #play-button:hover {

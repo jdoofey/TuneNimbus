@@ -23,12 +23,11 @@
 }
 
 #create-playlist-btn {
-  margin-left: 150px;
   font-size: 16px;
   display:flex;
   align-items: center;
   justify-content: center;
-  background-color: #ff7f50;
+  background-color: #ff7847;
   color:white;
   border:none;
   border-radius: 5px;

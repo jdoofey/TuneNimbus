@@ -21,7 +21,10 @@ export const CurrentPlaylists = () => {
 
   return (
     <div id="your-playlist-master-container">
+      <div className="playlist-header-box-container"><h1>Your Playlists</h1></div>
+      <div className="create-playlist-btn">
       <CreatePlaylist />
+      </div>
     <ul id="curr-playlist-container">
       {Object.values(playlists).map((playlist) => {
         return (

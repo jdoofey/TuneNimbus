@@ -2,3 +2,8 @@
 html, body {
   font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
 }
+
+
+textarea {
+  resize:none;
+}

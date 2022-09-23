@@ -21,12 +21,13 @@
 }
 
 #edit-song-form {
+
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width:350px;
-  height:550px;
+  height:650px;
 }
 
 .edit-song-inputs {

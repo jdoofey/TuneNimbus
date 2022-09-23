@@ -95,9 +95,9 @@ const EditSongForm = ({ song }) => {
             />
           <h3>New Description</h3>
           <textarea
-            className="edit-song-inputs"
             style={{fontFamily: "sans-serif",
-                    cols:3
+                    height:"100px",
+                    width:"320px"
                     }}
             type="text"
             value={description}
