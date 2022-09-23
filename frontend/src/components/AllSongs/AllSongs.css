@@ -2,6 +2,19 @@
   width:fit-content;
 }
 
+#list-container {
+  display: grid;
+  /* border: 1px red solid; */
+  grid-template-columns: repeat(6, 190px);
+  grid-row-gap: 30px;
+  /* grid-column-gap: 20px; */
+  justify-items: center;
+  margin-left: 150px;
+  margin-right: 150px;
+  padding-top: 100px;
+  padding-bottom: 25px;
+  justify-content: center;
+}
 #play-button {
   display:none;
   width:50px;

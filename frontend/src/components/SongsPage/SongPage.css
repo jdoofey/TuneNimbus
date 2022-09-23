@@ -10,7 +10,7 @@
   #list-container {
     display: grid;
   /* border: 1px red solid; */
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-row-gap: 20px;
   grid-column-gap: 10px;
   justify-items: center;
@@ -21,12 +21,12 @@
   justify-content: center;
   }
 }
-#list-container {
+#curr-list-container {
   display: grid;
   /* border: 1px red solid; */
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, 190px);
   grid-row-gap: 30px;
-  grid-column-gap: 20px;
+  /* grid-column-gap: 20px; */
   justify-items: center;
   margin-left: 150px;
   margin-right: 150px;

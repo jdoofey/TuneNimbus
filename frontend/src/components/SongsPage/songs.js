@@ -17,7 +17,7 @@ export const SongsList = ({ setAudioUrl }) => {
 
   if (!songs) return null; //add loading page
   return (
-    <div id="list-container">
+    <div id="curr-list-container">
       {Object.values(songs).map((song) => {
         return (
           <div id="list-ele" key={song.id}>
