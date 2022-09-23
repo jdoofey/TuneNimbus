@@ -14,7 +14,6 @@ import SongDetails from "./components/SongDetails/SongDetail";
 import AllSongs from "./components/AllSongs/AllSongs";
 import { CurrentPlaylists } from "./components/Playlists/CurrentPlaylists/CurrentPlaylist";
 import AudioPlayer from "react-h5-audio-player";
-import Song from "./components/Song/song";
 import PlaylistDetails from "./components/Playlists/PlaylistDetails/PlaylistDetails";
 import CreatePlaylist from "./components/Playlists/CreatePlaylist/CreatePlaylist";
 import "./components/Song/Song.css"
