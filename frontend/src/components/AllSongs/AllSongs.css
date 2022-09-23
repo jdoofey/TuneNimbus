@@ -1,7 +1,17 @@
 #list-ele {
   width:fit-content;
 }
-
+#allsongs-header {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  height:100px;
+  width: 1200px;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  padding-left: 345px;
+}
 #list-container {
   display: grid;
   /* border: 1px red solid; */
@@ -11,7 +21,7 @@
   justify-items: center;
   margin-left: 150px;
   margin-right: 150px;
-  padding-top: 100px;
+  padding-top: 20px;
   padding-bottom: 25px;
   justify-content: center;
 }

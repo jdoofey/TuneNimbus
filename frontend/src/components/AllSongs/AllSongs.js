@@ -45,6 +45,11 @@ export default function AllSongs({ setAudioUrl }) {
   if (!Object.values(songs).length) return <p>loading...</p>;
   //TODO ADD LOADING PAGE INTO ALL COMPONENTS- NOT PRIO
   return (
+    <div>
+    <div id="allsongs-header">
+
+    <h1>All Songs</h1>
+    </div>
     <div id="list-container">
       {Object.values(songs).map((song) => {
         return (
@@ -56,47 +61,48 @@ export default function AllSongs({ setAudioUrl }) {
                 e.preventDefault();
                 setAudioUrl(song.url);
               }}
-            ></button>
+              ></button>
 
             {/* <button id="create-playlist-btn" onClick={() => setShowModal(true)}>
               Add to Playlist
-            </button>
-            {showModal && (
-              <Modal onClose={() => setShowModal(false)}>
+              </button>
+              {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
                 <div id="create-container">
-                  <button id="close-modal">FIX ME X</button>
-                  <form id="create-form">
-                    <h1>Your Playlists</h1>
+                <button id="close-modal">FIX ME X</button>
+                <form id="create-form">
+                <h1>Your Playlists</h1>
                     <ul id="curr-playlist-container">
-                      {Object.values(playlists).map((playlist) => {
-                        return (
-                          <li id="list-ele" key={playlist.id}>
-                            <SinglePlaylist playlist={playlist} />
+                    {Object.values(playlists).map((playlist) => {
+                      return (
+                        <li id="list-ele" key={playlist.id}>
+                        <SinglePlaylist playlist={playlist} />
 
-                            <button
-                              onClick={async (e) => {
-                                e.preventDefault();
-                                await dispatch(addSongToPlaylist(payload));
-                                const payload = {
-                                  songId: song.id,
-                                };
-                                return history.push("/playlists");
-                              }}
-                            >
+                        <button
+                        onClick={async (e) => {
+                          e.preventDefault();
+                          await dispatch(addSongToPlaylist(payload));
+                          const payload = {
+                            songId: song.id,
+                          };
+                          return history.push("/playlists");
+                        }}
+                        >
                               Add To This Playlist
                             </button>
                             <div>{playlist.name}</div>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </form>
-                </div>
-              </Modal> */}
+                            </li>
+                            );
+                          })}
+                          </ul>
+                          </form>
+                          </div>
+                        </Modal> */}
             {/* )} */}
           </div>
         );
       })}
     </div>
+      </div>
   );
 }

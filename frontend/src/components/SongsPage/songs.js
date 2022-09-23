@@ -17,6 +17,10 @@ export const SongsList = ({ setAudioUrl }) => {
 
   if (!songs) return null; //add loading page
   return (
+    <div>
+      <div className="your-songs-header">
+        <h1>Your songs</h1>
+      </div>
     <div id="curr-list-container">
       {Object.values(songs).map((song) => {
         return (
@@ -27,11 +31,12 @@ export const SongsList = ({ setAudioUrl }) => {
                 e.preventDefault();
                 setAudioUrl(song.url);
               }}
-            >
+              >
             </button>
           </div>
         );
       })}
     </div>
+      </div>
   );
 };

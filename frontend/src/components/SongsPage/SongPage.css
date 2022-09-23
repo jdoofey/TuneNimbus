@@ -30,7 +30,7 @@
   justify-items: center;
   margin-left: 150px;
   margin-right: 150px;
-  padding-top: 100px;
+  padding-top: 20px;
   padding-bottom: 25px;
   justify-content: center;
 }
@@ -49,4 +49,9 @@
 #description {
   font-size: 14px;
   width:154px;
+}
+
+.your-songs-header {
+  margin-top: 75px;
+  margin-left: 860px;
 }
