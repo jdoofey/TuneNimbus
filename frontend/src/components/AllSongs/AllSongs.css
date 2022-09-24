@@ -27,7 +27,7 @@
   justify-items: center;
   margin-left: 150px;
   margin-right: 150px;
-
+  margin-bottom: 200px;
   padding-bottom: 25px;
   justify-content: center;
 
@@ -62,12 +62,12 @@
 
 
 #list-ele:hover #play-button {
-  display: inline-block;
-  position:fixed;
+  display: flex;
+  position:static;
   align-self: center;
   border-radius: 100px;
   border-style: none;
-  margin-top: 50px;
+  margin-top: -130px;
   transition:.25s;
   animation: fade-in .33s ;
 }
@@ -79,4 +79,39 @@
 
 #play-button:active {
   offset-position: bottom 5px;
+}
+#add-to-playlist-tbn {
+  display:none;
+}
+#list-ele:hover #add-to-playlist-tbn{
+  display: flex;
+  position:static;
+  align-self: flex-end;
+  justify-self: flex-end;
+  border-radius: 100px;
+  border-style: none;
+  margin-top: 29px;
+  transition:.25s;
+  animation: fade-in .33s ;
+  color:rgb(255, 255, 255);
+  z-index:0
+}
+
+#add-song-list-ele{
+  height:100px;
+  list-style-type: none;
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#smol-img{
+  height:70px;
+  width:70px;
+}
+
+#playlistaddsong-title{
+  font-weight: 600;
+  width:300px
 }

@@ -54,7 +54,7 @@
 .your-songs-header {
   display: flex;
   flex-direction: column;
-  margin-top: 70px;
+  margin-top: 50px;
   height:100px;
   width: 800px;
   justify-content: flex-start;

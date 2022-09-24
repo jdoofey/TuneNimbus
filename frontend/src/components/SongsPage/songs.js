@@ -1,15 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSongsByCurrentUser, resetSongs } from "../../store/songs";
 import "../AllSongs/AllSongs.css";
 import "./SongPage.css"
 import Song from "../Song/song";
-
+import { useHistory } from "react-router-dom";
+import { Modal } from "../../context/Modal";
+import { addSongToPlaylist } from "../../store/playlist";
+import { getPlaylistsByCurrentUser } from "../../store/playlist";
 export const SongsList = ({ setAudioUrl }) => {
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const songs = useSelector((state) => state.song.allSongs);
-
+  const playlists = useSelector((state) => state.playlists);
+  const sessionUser = useSelector((state) => state.session.user);
+  const [selectedSong, setSelectedSong] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  useEffect(() => {
+    dispatch(getPlaylistsByCurrentUser());
+    // return () => dispatch(resetPLaylists());
+  }, [dispatch]);
   useEffect(() => {
     dispatch(getSongsByCurrentUser());
     return () => dispatch(resetSongs());
@@ -31,8 +41,79 @@ export const SongsList = ({ setAudioUrl }) => {
                 e.preventDefault();
                 setAudioUrl(song.url);
               }}
-              >
-            </button>
+              ></button>
+
+{sessionUser && (
+                <>
+                  {/* <button><i class="fa-solid fa-ellipsis" style={{border:"none", color:"orange", backgroundColor:"transparent"}}></i></button> */}
+                  <button
+                    id="add-to-playlist-tbn"
+                    style={{
+                      cursor: "pointer",
+                      backgroundColor: "#ff652d",
+                      border: "none",
+                      height: "fit-content",
+                      padding: "5px 12px",
+                      borderRadius: "4px",
+                      fontSize: "12px",
+                    }}
+                    onClick={() => {
+                      setShowModal(true);
+                      setSelectedSong(song);
+                    }}
+                  >
+                    Add to Playlist
+                  </button>
+                </>
+              )}
+              {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                  <div id="create-container">
+                    <button id="close-modal">FIX ME X</button>
+
+                    <h1 style={{alignSelf:"center"}}>Your Playlists</h1>
+                    <ul id="add-song-to-playlist-container">
+                      {Object.values(playlists).map((playlist, i) => {
+                        return (
+                          <div id="add-song-list-ele" key={playlist.id}>
+                            <div id="addsong-container">
+                              <img
+                                id="smol-img"
+                                src={
+                                  playlist.imageUrl === (null || "")
+                                    ? playlist.imageUrl
+                                    : "https://i.imgur.com/QwtY70m.jpg"
+                                }
+                              ></img>
+                            </div>
+
+                            <div id="playlistaddsong-title">{i+1}.{" "}{playlist.name}</div>
+                            <button
+                              style={{
+                                backgroundColor:"#ff652d",
+                                color:"white",
+                                border:"none",
+                                borderRadius:"4px",
+                                padding:"8px 20px"
+                              }}
+                              onClick={() => {
+                                dispatch(
+                                  addSongToPlaylist(
+                                    playlist.id,
+                                    selectedSong.id
+                                  )
+                                );
+                              }}
+                            >
+                              Add To This Playlist
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </Modal>
+              )}
           </div>
         );
       })}

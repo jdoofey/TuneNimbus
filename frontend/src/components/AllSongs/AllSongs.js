@@ -66,57 +66,76 @@ export default function AllSongs({ setAudioUrl }) {
               ></button>
 
               {sessionUser && (
-                <button
-                  style={{ cursor: "pointer",
-                  backgroundColor: "#ff652d",
-                  color: "white",
-                  border:"none",
-                  height:"fit-content",
-                  padding:"5px 12px",
-                  borderRadius:"4px",
-                  alignSelf:"center",
-
-                  fontSize:"12px",
-                  alignSelf:"flex-start"
-                 }}
-                  onClick={() => {
-                    setShowModal(true);
-                    setSelectedSong(song);
-                  }}
-                >
-                  Add to Playlist
-                </button>
+                <>
+                  {/* <button><i class="fa-solid fa-ellipsis" style={{border:"none", color:"orange", backgroundColor:"transparent"}}></i></button> */}
+                  <button
+                    id="add-to-playlist-tbn"
+                    style={{
+                      cursor: "pointer",
+                      backgroundColor: "#ff652d",
+                      border: "none",
+                      height: "fit-content",
+                      padding: "5px 12px",
+                      borderRadius: "4px",
+                      fontSize: "12px",
+                    }}
+                    onClick={() => {
+                      setShowModal(true);
+                      setSelectedSong(song);
+                    }}
+                  >
+                    Add to Playlist
+                  </button>
+                </>
               )}
               {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                   <div id="create-container">
-                    <button id="close-modal">FIX ME X</button>
+                    <button id="close-modal"
+                      onClick={()=> setShowModal(false)}>X</button>
 
-                      <h1>Your Playlists</h1>
-                      <ul id="curr-playlist-container">
-                        {Object.values(playlists).map((playlist) => {
-                          return (
-                            <li id="list-ele" key={playlist.id}>
-                              <SinglePlaylist playlist={playlist} />
+                    <h1 style={{alignSelf:"center"}}>Your Playlists</h1>
+                    <ul id="add-song-to-playlist-container">
+                      {Object.values(playlists).map((playlist, i) => {
+                        return (
+                          <div id="add-song-list-ele" key={playlist.id}>
+                            <div id="addsong-container">
+                              <img
+                                id="smol-img"
+                                src={
+                                  playlist.imageUrl === (null || "")
+                                    ? playlist.imageUrl
+                                    : "https://i.imgur.com/QwtY70m.jpg"
+                                }
+                              ></img>
+                            </div>
 
-                              <button
-                                onClick={() => {
-                                  dispatch(
-                                    addSongToPlaylist(
-                                      playlist.id,
-                                      selectedSong.id
-                                    )
-                                  );
-                                }}
-                              >
-                                Add To This Playlist
-                              </button>
-                              <div>{playlist.name}</div>
-                            </li>
-                          );
-                        })}
-                      </ul>
-
+                            <div id="playlistaddsong-title">{i+1}.{" "}{playlist.name}</div>
+                            <button
+                              style={{
+                                backgroundColor:"#ff652d",
+                                color:"white",
+                                border:"none",
+                                borderRadius:"4px",
+                                padding:"8px 20px"
+                              }}
+                              onClick={() => {
+                                dispatch(
+                                  addSongToPlaylist(
+                                    playlist.id,
+                                    selectedSong.id
+                                  )
+                                  )
+                                  window.alert("Song added to playlist")
+                                  setShowModal(false)
+                              }}
+                            >
+                              Add To This Playlist
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </ul>
                   </div>
                 </Modal>
               )}
