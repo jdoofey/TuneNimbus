@@ -10,6 +10,7 @@
   font-size: x-large;
   justify-content: center;
   line-height: 1.7;
+  margin-top: 0px;
 }
 .middle-container {
   display:flex;
@@ -19,9 +20,11 @@
   width: 1265px;
   padding-left: 60px;
   padding-right:50px;
+  margin-top: 50px;
 }
 
 .bottom-container {
+  margin-top: -300px;
   background-image: url("https://i.imgur.com/zsL5rFt.png");
   width: 1265px;
   height:450px;
@@ -54,7 +57,7 @@
   z-index: 1;
   height:750px;
   width:1265px;
-  margin-top: 100px;
+  margin-top: 40px;
 }
 
 #page-container {

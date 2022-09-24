@@ -1,9 +1,9 @@
 #modal {
   position: fixed;
-  top: 0;
+  top: -430px;
   right: 0;
   left: 0;
-  bottom: 400px;
+  bottom:0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +22,8 @@
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgb(172, 172, 172);
+  opacity: .1;
 
 }
 

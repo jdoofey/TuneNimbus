@@ -26,7 +26,7 @@ const HomePage = ({ setAudioUrl }) => {
               you space to create, find your fans, and connect with other
               artists.
             </h5>
-            <h4>Start your journey today!</h4>
+            <h4>Check out some music below!</h4>
           </div>
         </div>
         <div className="middle-container">

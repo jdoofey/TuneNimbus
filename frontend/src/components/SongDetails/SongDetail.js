@@ -27,6 +27,9 @@ export default function SongDetails() {
       <div id="container-div">
         <div>
           <img id="preview"
+          style={{width:"400px",
+                  height:"400px"
+        }}
           src={
             song.previewImage!==null && song.previewImage!==""
             ? song.previewImage
