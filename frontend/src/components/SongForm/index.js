@@ -7,7 +7,6 @@ import "./SongForm.css";
 const AddSongForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [albumId, setAlbumId] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("");
@@ -19,7 +18,6 @@ const AddSongForm = () => {
     e.preventDefault();
 
     const payload = {
-      albumId,
       title,
       description,
       url,
@@ -30,7 +28,7 @@ const AddSongForm = () => {
 
     const createdSong = await dispatch(addSong(payload));
     if (createdSong) {
-      history.push(`/songs/${createdSong.id}`);
+      history.push(`/songs`);
     }
   };
   return (
