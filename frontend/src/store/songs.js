@@ -93,7 +93,7 @@ export const addSong = (song) => async (dispatch) => {
   });
   if (res.ok) {
     const data = await res.json();
-    dispatch(addOneSong(data));
+    await dispatch(addOneSong(data));
     return data;
   }
 };
