@@ -9,14 +9,15 @@ function SignupFormModal() {
   return (
     <>
       <button style={{
-          backgroundColor: "#ff7f50",
+          backgroundColor: "#ff652d",
           color: "white",
           border:"none",
           height:"fit-content",
-          padding:"7px",
-          borderRadius:"3px",
+          padding:"10px 15px",
+          borderRadius:"4px",
           alignSelf:"center",
-          margin:"5px"
+          margin:"5px",
+          zIndex:"10"
       }}onClick={() => setShowModal(true)}>Create account</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

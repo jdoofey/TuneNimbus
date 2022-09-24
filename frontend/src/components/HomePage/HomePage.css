@@ -38,6 +38,7 @@
   align-items: center;
   text-align: center;
   line-height: 2;
+  z-index:4;
 }
 #shader {
   background-color: black;

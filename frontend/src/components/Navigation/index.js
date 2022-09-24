@@ -56,7 +56,7 @@ function Navigation({ isLoaded }) {
       <span className="container">
         {!sessionUser && (
 
-          <NavLink className="nav-link" exact to="/home">
+          <NavLink className="nav-link" exact to="/">
           <button className="nav-ele">Home</button>
         </NavLink>
           )}

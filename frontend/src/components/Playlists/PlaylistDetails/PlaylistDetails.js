@@ -48,7 +48,19 @@ export default function PlaylistDetails({ setAudioUrl }) {
           </div>
         );
       })}
-      <button type="button" onClick={handleRemove}>Delete Playlist</button>
+      <button style={{
+                      cursor: "pointer",
+                      backgroundColor: "#ff652d",
+                      color: "white",
+                      border: "none",
+                      height: "fit-content",
+                      padding: "10px 15px",
+                      borderRadius: "4px",
+                      alignSelf: "center",
+                      fontSize: "14px",
+                      marginTop: "50px",
+                    }}
+      onClick={handleRemove}>Delete Playlist</button>
     </div>
   );
 }

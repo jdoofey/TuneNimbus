@@ -1,5 +1,5 @@
 #input-container {
-  height: 250px;
+  height: 300px;
   /* border:red 1px solid; */
   display:flex;
   flex-direction: column;
@@ -33,13 +33,13 @@
   font-size: 16px;
   display:flex;
   height: 23px;
-  padding:9px;
+  padding: 20px 20px;
   align-items: center;
   justify-content: center;
-  background-color: #ff7f50;
+  background-color: #ff652d;
   color:white;
   border:none;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 #sign-in-btns {
   display:flex;

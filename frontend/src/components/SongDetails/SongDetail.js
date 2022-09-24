@@ -41,7 +41,7 @@ export default function SongDetails() {
           <h4>Album: {song?.Album?.title}</h4>
           <h4>Description: {song.description}</h4>
           <h4>
-            Date Uploaded:{"   "}{song.createdAt}{"  "}
+            Date Uploaded:{"   "}{new Date(song.createdAt).toString().slice(4, 16)}{"  "}
             {
               // song.createdAt.toDateString()
               // song.createdAt.split("T")[0].split("-")[1] +

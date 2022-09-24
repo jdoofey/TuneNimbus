@@ -77,7 +77,7 @@ function App() {
         <Navigation isLoaded={isLoaded} />
         {isLoaded && (
           <Switch>
-            <Route exact path="/home">
+            <Route exact path="/">
               <HomePage setAudioUrl={setAudioUrl}/>
             </Route>
             <Route exact path="/songs">

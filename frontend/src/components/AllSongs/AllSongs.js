@@ -67,8 +67,18 @@ export default function AllSongs({ setAudioUrl }) {
 
               {sessionUser && (
                 <button
-                  style={{ cursor: "pointer" }}
-                  id="create-playlist-btn"
+                  style={{ cursor: "pointer",
+                  backgroundColor: "#ff652d",
+                  color: "white",
+                  border:"none",
+                  height:"fit-content",
+                  padding:"5px 12px",
+                  borderRadius:"4px",
+                  alignSelf:"center",
+
+                  fontSize:"12px",
+                  alignSelf:"flex-start"
+                 }}
                   onClick={() => {
                     setShowModal(true);
                     setSelectedSong(song);
@@ -91,7 +101,6 @@ export default function AllSongs({ setAudioUrl }) {
 
                               <button
                                 onClick={() => {
-                                  console.log("HIT-------in playlist Modal")
                                   dispatch(
                                     addSongToPlaylist(
                                       playlist.id,

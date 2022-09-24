@@ -34,7 +34,21 @@ const CreatePlaylist = () => {
     <div>
       <br></br>
       <br></br>
-      <button id="create-playlist-btn" onClick={() => setShowModal(true)}>Create a New Playlist</button>
+      <button
+      style={{
+        cursor: "pointer",
+        backgroundColor: "#ff652d",
+        color: "white",
+        border: "none",
+        height: "fit-content",
+        padding: "10px 15px",
+        borderRadius: "4px",
+        alignSelf: "center",
+        fontSize: "18px",
+        alignSelf: "flex-start",
+        justifySelf:"flex-start"
+      }}
+      id="create-playlist-btn" onClick={() => setShowModal(true)}>Create a New Playlist</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <div id="create-container">
@@ -59,7 +73,17 @@ const CreatePlaylist = () => {
               />
               <br></br>
               <button
-                className="submit-btn"
+                style={{
+                  cursor: "pointer",
+                  backgroundColor: "#ff652d",
+                  color: "white",
+                  border: "none",
+                  height: "fit-content",
+                  padding: "10px 15px",
+                  borderRadius: "4px",
+                  alignSelf: "center",
+                  fontSize: "14px"
+                }}
                 type="submit"
                 onClick={handleSubmit}
               >

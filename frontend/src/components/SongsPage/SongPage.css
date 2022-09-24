@@ -30,7 +30,7 @@
   justify-items: center;
   margin-left: 150px;
   margin-right: 150px;
-  padding-top: 20px;
+  padding-top: 30px;
   padding-bottom: 25px;
   justify-content: center;
 }
@@ -50,12 +50,14 @@
   font-size: 14px;
   width:154px;
 }
-.your-songs-master{
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+
 .your-songs-header {
-  margin-top: 75px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+  height:100px;
+  width: 800px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left:394px
 }
