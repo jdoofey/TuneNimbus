@@ -1,8 +1,6 @@
 #list-ele {
-  list-style-type: none;
-  display:flex;
-  flex-direction: column;
-  /* border:blue 1px solid; */
+
+  width:fit-content;
 
 }
 .create-playlist-btn{
@@ -16,11 +14,9 @@
   /* border: 1px red solid; */
   grid-template-columns: repeat(6, 190px);
   grid-row-gap: 30px;
-  grid-column-gap: 30px;
+  /* grid-column-gap: 20px; */
   justify-items: center;
-  margin-left: 150px;
-  margin-right: 150px;
-  padding-top: 50px;
+  margin-bottom: 200px;
   padding-bottom: 25px;
   justify-content: center;
 }
@@ -48,7 +44,12 @@
 
 .playlist-header-box-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
+  align-items: center;
   font-size: 16px;
-  padding-left: 394px;
+  margin-top: 40px;
+}
+
+#createplaylistbtn{
+  margin-top: -70px;
 }

@@ -93,10 +93,12 @@
   margin-top: 29px;
   transition:.25s;
   animation: fade-in .33s ;
-  color:rgb(255, 255, 255);
+  color:grey;
   z-index:0
 }
-
+#list-ele #add-to-playlist-tbn:hover{
+  color:white;
+}
 #add-song-list-ele{
   height:100px;
   list-style-type: none;
@@ -114,4 +116,8 @@
 #playlistaddsong-title{
   font-weight: 600;
   width:300px
+}
+
+#apt{
+  color:rgb(255, 137, 34)
 }
