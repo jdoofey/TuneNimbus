@@ -72,7 +72,7 @@ export const SongsList = ({ setAudioUrl }) => {
                 {showModal && (
                   <Modal onClose={() => setShowModal(false)}>
                     <div id="create-container">
-                      <button id="close-modal">FIX ME X</button>
+                      <button id="close-modal">X</button>
 
                       <h1 style={{ alignSelf: "center" }}>Your Playlists</h1>
                       <ul id="add-song-to-playlist-container">
@@ -100,6 +100,7 @@ export const SongsList = ({ setAudioUrl }) => {
                                   border: "none",
                                   borderRadius: "4px",
                                   padding: "8px 20px",
+                                  cursor:"pointer",
                                 }}
                                 onClick={() => {
                                   dispatch(
@@ -108,6 +109,8 @@ export const SongsList = ({ setAudioUrl }) => {
                                       selectedSong.id
                                     )
                                   );
+                                  window.alert(`"${selectedSong.title}" was added to "${playlist.name}"`)
+                                  setShowModal(false)
                                 }}
                               >
                                 Add To This Playlist

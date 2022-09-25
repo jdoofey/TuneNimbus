@@ -123,7 +123,7 @@ export default function AllSongs({ setAudioUrl }) {
                                 src={
                                   playlist.previewImage ||
                                  "https://i.imgur.com/QwtY70m.jpg"
-                                    
+
                                 }
                               ></img>
                             </div>
@@ -147,7 +147,7 @@ export default function AllSongs({ setAudioUrl }) {
                                     selectedSong.id
                                   )
                                 );
-                                window.alert("Song added to playlist");
+                                window.alert(`"${selectedSong.title}" was added to "${playlist.name}"`)
                                 setShowModal(false);
                               }}
                             >
