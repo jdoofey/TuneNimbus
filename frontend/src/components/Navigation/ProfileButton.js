@@ -42,7 +42,7 @@ function ProfileButton({ user }) {
           <li>{user.email}</li>
           <li>
             <button id="logout-btn"onClick={logout}>
-            <i class="fa-solid fa-right-from-bracket"></i>Log Out
+            <i class="fa-solid fa-right-from-bracket"></i>Sign out
 
             </button>
           </li>
