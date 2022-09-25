@@ -9,7 +9,7 @@ function SinglePlaylist(playlist) {
         <img
           id="card-image"
           src={
-            playlist.playlist.imageUrl === (null || "")
+            playlist.playlist.imageUrl !== (null || "")
             ? playlist.playlist.imageUrl
             : "https://i.imgur.com/QwtY70m.jpg"
           }
