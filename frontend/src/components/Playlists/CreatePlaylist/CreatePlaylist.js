@@ -54,7 +54,8 @@ const CreatePlaylist = () => {
           <div id="create-container">
           <button id='close-modal' style={{width:"fit-content",
         display:"flex",
-        justifyContent:"flex-end"}}onClick={()=> setShowModal(false)}>X</button>
+        justifyContent:"flex-end",
+        marginTop: "-200px"}}onClick={()=> setShowModal(false)}>X</button>
             <form id="create-form" onSubmit={handleSubmit}>
               <h1>Create Your Playlist</h1>
               <label>Playlist Title</label>

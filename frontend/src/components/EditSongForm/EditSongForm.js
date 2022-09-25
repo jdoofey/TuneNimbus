@@ -85,7 +85,9 @@ const EditSongForm = ({ song }) => {
         <div id="edit-container">
           <Modal onClose={() => setShowModal(false)}>
             <button
-            id="close-modal" onClick={() => setShowModal(false)}>
+            id="close-modal"
+            style={{marginTop:"150px"}}
+            onClick={() => setShowModal(false)}>
               X
             </button>
             <form id="edit-song-form" hidden={!showModal}>

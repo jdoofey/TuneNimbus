@@ -97,7 +97,7 @@ export default function AllSongs({ setAudioUrl }) {
                     >
                       X
                     </button>
-                    <h1 style={{ alignSelf: "center" }}>Your playlists</h1>
+                    <h1 style={{ alignSelf: "center" }}>Your Playlists</h1>
                     {!Object.values(playlists).length && (
                     <div
                       style={{
@@ -106,13 +106,13 @@ export default function AllSongs({ setAudioUrl }) {
                         alignItems: "center",
                       }}
                     >
-                      <h5>You have no playlists yet. Create one now!</h5>
+                      <h5>You have no playlists yet</h5>
                       <div id="createplaylistbtn">
                         <br></br>
                         <CreatePlaylist />
                       </div>
                     </div>
-                    )};
+                    )}
                     <ul id="add-song-to-playlist-container">
                       {Object.values(playlists).map((playlist, i) => {
                         return (
