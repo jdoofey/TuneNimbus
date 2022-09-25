@@ -19,7 +19,7 @@ const HomePage = ({ setAudioUrl }) => {
       <div id="page-container">
         <div id="whatever">
           <div id="welcome-container">
-            <h1>WELCOME TO TUNENIMBUS</h1>
+            <h1>Welcome to TuneNimbus</h1>
             <h3>What's next in music is first on TuneNimbus</h3>
             <h5 id="para">
               Upload your first track and begin your journey. TuneNimbus gives

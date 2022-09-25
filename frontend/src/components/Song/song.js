@@ -8,13 +8,16 @@ function Song(song) {
   if (sessionUser) {
     return (
       <div id="test">
-        <NavLink
-          to={`/songs/${song.song.id}`}
-          style={{ textDecoration: "none", color: "black" }}
-          activeStyle={(isActive) => ({
-            color: isActive ? "black" : "black",
-          })}
-        >
+          <NavLink
+            to={`/songs/${song.song.id}`}
+            // style={isActive => ({
+            //   color: isActive ? "black" : "black"
+            // })}
+            style={{ textDecoration: "none", color: "black" }}
+            activeStyle={(isActive) => ({
+              color: isActive ? "black" : "black",
+            })}
+          >
           <img
             id="placeholder-img"
             src={
@@ -23,22 +26,22 @@ function Song(song) {
                 : "https://i.imgur.com/QwtY70m.jpg"
             }
           ></img>
-        </NavLink>
-        <div id="title-box">{song.song.title}</div>
-      </div>
+          <div id="title-box">{song.song.title}</div>
+      </NavLink>
+        </div>
     );
-  } else
-    return (
-      <NavLink
+  }
+  else return (
+    <NavLink
         to={`/home`}
         //TODO make a please sign in or create an account
         // style={isActive => ({
         //   color: isActive ? "black" : "black"
         // })}
-        style={{ textDecoration: "none", color: "black" }}
-        activeStyle={(isActive) => ({
-          color: isActive ? "black" : "black",
-        })}
+        style={{ textDecoration: "none", color: "black", cursor:"default" }}
+        // activeStyle={(isActive) => ({
+        //   color: isActive ? "black" : "black",
+        // })}
       >
         <div id="test">
           <img
@@ -52,23 +55,23 @@ function Song(song) {
           <div id="title">{song.song.title}</div>
         </div>
       </NavLink>
-    );
+  )
 }
-// else {
-//   return (
-//     <div id="test">
-//         <img
-//           id="placeholder-img"
-//           src={
-//             song.song.previewImage !== (null || "")
-//               ? song.song.previewImage
-//               : "https://i.imgur.com/QwtY70m.jpg"
-//           }
-//         ></img>
-//         <div id="title">{song.song.title}</div>
-//       </div>
-//   )
-// }
+  // else {
+  //   return (
+  //     <div id="test">
+  //         <img
+  //           id="placeholder-img"
+  //           src={
+  //             song.song.previewImage !== (null || "")
+  //               ? song.song.previewImage
+  //               : "https://i.imgur.com/QwtY70m.jpg"
+  //           }
+  //         ></img>
+  //         <div id="title">{song.song.title}</div>
+  //       </div>
+  //   )
+  // }
 // }
 
 export default Song;

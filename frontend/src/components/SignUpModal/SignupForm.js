@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignUpForm.css'
 function SignupForm() {
+  const history = useHistory()
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [firstName, setFirstName] = useState("")
@@ -19,26 +20,26 @@ function SignupForm() {
   const validations = () => {
     let errorsArray = []
     if (password !== confirmPassword) {
-      errorsArray.push("Your passwords didn't match")
+      errorsArray.push("*Your passwords didn't match")
     }
     if (password.length < 6) {
-      errorsArray.push("Password must be at least 6 characters")
+      errorsArray.push("*Password must be at least 6 characters")
     }
     if (!email.includes("@")||!email.includes(".")) {
 
-      errorsArray.push("Please provide a valid email")
+      errorsArray.push("*Please provide a valid email")
     }
     if (username.length<4) {
-      errorsArray.push("Username must be at least 4 characters")
+      errorsArray.push("*Username must be at least 4 characters")
     }
     if(username.length>20) {
-      errorsArray.push("Username must be less than 20 characters")
+      errorsArray.push("*Username must be less than 20 characters")
     }
     if (firstName.length<2) {
-      errorsArray.push("Names must be 2 characters or more")
+      errorsArray.push("*Names must be 2 characters or more")
     }
     if (lastName.length<2) {
-      errorsArray.push("Names must be 2 characters or more")
+      errorsArray.push("*Names must be 2 characters or more")
     }
     setErrors(errorsArray)
     if (errorsArray.length) setDisplayErrors(true)
@@ -61,16 +62,16 @@ function SignupForm() {
         const data= await res.json()
         if (data&&data.errors) setErrors(Object.values(data.errors))
       })
-      return res
+      return res && history.push("/songs")
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <div id='bigbox'>
+      <img style={{height:"60px"}} src='https://i.imgur.com/OHysOUL.png'></img>
       {errors.length>0 && (<div id="errors-ul">
         {errors.map((error, idx) => <li id="errors-ul" key={idx}>{error}</li>)}
       </div>)}
-      <div id='bigbox'>
-      <img style={{height:"60px"}} src='https://i.imgur.com/OHysOUL.png'></img>
       <label id='email-label'>
         Email
         <input

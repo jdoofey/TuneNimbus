@@ -6,7 +6,7 @@ import Song from "../Song/song";
 import SinglePlaylist from "../Playlists/SinglePlaylist/SinglePlaylist";
 import { getPlaylistsByCurrentUser } from "../../store/playlist";
 import { addSongToPlaylist } from "../../store/playlist";
-import { resetPLaylists } from "../../store/playlist";
+import CreatePlaylist from "../Playlists/CreatePlaylist/CreatePlaylist";
 import { useHistory } from "react-router-dom";
 import "./AllSongs.css";
 export default function AllSongs({ setAudioUrl }) {
@@ -91,10 +91,28 @@ export default function AllSongs({ setAudioUrl }) {
               {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                   <div id="create-container">
-                    <button id="close-modal"
-                      onClick={()=> setShowModal(false)}>X</button>
-
-                    <h1 style={{alignSelf:"center"}}>Your Playlists</h1>
+                    <button
+                      id="close-modal"
+                      onClick={() => setShowModal(false)}
+                    >
+                      X
+                    </button>
+                    <h1 style={{ alignSelf: "center" }}>Your playlists</h1>
+                    {!Object.values(playlists).length && (
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <h5>You have no playlists yet. Create one now!</h5>
+                      <div id="createplaylistbtn">
+                        <br></br>
+                        <CreatePlaylist />
+                      </div>
+                    </div>
+                    )};
                     <ul id="add-song-to-playlist-container">
                       {Object.values(playlists).map((playlist, i) => {
                         return (
@@ -110,14 +128,17 @@ export default function AllSongs({ setAudioUrl }) {
                               ></img>
                             </div>
 
-                            <div id="playlistaddsong-title">{i+1}.{" "}{playlist.name}</div>
+                            <div id="playlistaddsong-title">
+                              {i + 1}. {playlist.name}
+                            </div>
                             <button
                               style={{
-                                backgroundColor:"#ff652d",
-                                color:"white",
-                                border:"none",
-                                borderRadius:"4px",
-                                padding:"8px 20px"
+                                backgroundColor: "#ff652d",
+                                color: "white",
+                                border: "none",
+                                borderRadius: "4px",
+                                padding: "8px 20px",
+                                cursor:"pointer"
                               }}
                               onClick={() => {
                                 dispatch(
@@ -125,9 +146,9 @@ export default function AllSongs({ setAudioUrl }) {
                                     playlist.id,
                                     selectedSong.id
                                   )
-                                  )
-                                  window.alert("Song added to playlist")
-                                  setShowModal(false)
+                                );
+                                window.alert("Song added to playlist");
+                                setShowModal(false);
                               }}
                             >
                               Add To This Playlist

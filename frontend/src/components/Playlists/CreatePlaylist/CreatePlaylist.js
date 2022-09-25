@@ -41,7 +41,7 @@ const CreatePlaylist = () => {
         color: "white",
         border: "none",
         height: "fit-content",
-        padding: "10px 15px",
+        padding: "14px 28px",
         borderRadius: "4px",
         alignSelf: "center",
         fontSize: "18px",
@@ -84,7 +84,8 @@ const CreatePlaylist = () => {
                   padding: "10px 15px",
                   borderRadius: "4px",
                   alignSelf: "center",
-                  fontSize: "14px"
+                  fontSize: "16px",
+                  padding:"10px 30px",
                 }}
                 type="submit"
                 onClick={handleSubmit}

@@ -15,13 +15,13 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
      <div className="container">
         <NavLink className="nav-link"to="/songs">
-          <button className="nav-ele">All Music</button>
+          <button className="nav-ele">All music</button>
         </NavLink>
         <NavLink  className="nav-link" to="/songs/current">
-          <button className="nav-ele">Your Music</button>
+          <button className="nav-ele">Your music</button>
         </NavLink>
         <NavLink  className="nav-link" to="/playlists/current">
-          <button className="nav-ele">Your Playlists</button>
+          <button className="nav-ele">Your playlists</button>
         </NavLink>
         <NavLink  className="nav-link" to="/addsong">
           <button className="nav-ele">Upload</button>
@@ -36,7 +36,7 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <div className="container">
         <NavLink className="nav-link" to="/songs">
-          <button  className="nav-ele">All Music</button>
+          <button  className="nav-ele">All music</button>
         </NavLink>
         <LoginFormModal />
         <SignupFormModal />

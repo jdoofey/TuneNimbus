@@ -4,11 +4,11 @@
   align-items: center;
   width:320px;
   /* border: grey 1px solid; */
-  height:700px;
+  height:900px;
   background: white;
   padding-left: 150px;
   padding-right:150px;
-
+  padding-top: 100px;
 }
 
 #container {

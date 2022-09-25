@@ -2,6 +2,7 @@
 // frontend/src/store/session.js
 import { csrfFetch } from './csrf';
 
+
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 
@@ -52,6 +53,7 @@ export const restoreUser = () => async dispatch => {
 
 //PHASE1 sessions actions and reducer
 export const login = (user) => async (dispatch) => {
+
   const { credential, password } = user;
   const response = await csrfFetch('/api/session', {
     method: 'POST',

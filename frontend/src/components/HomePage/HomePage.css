@@ -1,7 +1,7 @@
 #welcome-container {
   background-color: black;
   z-index:3;
-  opacity: 0.8;
+  opacity: 0.7;
   height:750px;
   display:flex;
   flex-direction: column;
@@ -46,14 +46,14 @@
 #shader {
   background-color: black;
   z-index:3;
-  opacity: 0.7;
+  opacity: 0.8;
   width: 1265px;
   height:450px;
   color:white;
 
 }
 #whatever {
-  background-image: url("https://i.imgur.com/3IDBrcC.png://i.imgur.com/5CxvQKb.png");
+  background-image: url("https://i.imgur.com/KP00BNh.jpg");
   z-index: 1;
   height:750px;
   width:1265px;

@@ -17,15 +17,29 @@ export const CurrentPlaylists = () => {
     dispatch(getPlaylistsByCurrentUser());
     // return () => dispatch(resetPLaylists())
   }, [dispatch]);
+  console.log(playlists)
+  if (!Object.values(playlists).length)
+    return (
+      <div style={{display:"flex",
+      flexDirection:"column",
+      alignItems:"center"}}>
+        <br></br>
+        <br></br>
+        <br></br>
 
-  if (!playlists) return null; //add loading page
-
+        <h2>You haven't created a playlist yet</h2>
+        <div id="createplaylistbtn">
+          <br></br>
+          <CreatePlaylist />
+        </div>
+      </div>
+    );
   return (
     <div id="your-playlist-master-container">
       <div className="playlist-header-box-container">
         <h1>Your Playlists</h1>
         <div id="createplaylistbtn">
-        <CreatePlaylist />
+          <CreatePlaylist />
         </div>
       </div>
 
