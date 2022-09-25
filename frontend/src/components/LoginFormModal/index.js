@@ -24,7 +24,6 @@ function LoginFormModal() {
       onClick={() =>{
 
         setShowModal(true)
-        history.push("/songs")
       }
       }>Sign in</button>
       {showModal && (
