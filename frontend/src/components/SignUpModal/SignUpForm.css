@@ -39,6 +39,7 @@
   border:#ff652d 1px solid;
   background-color:#ff652d;
   color:white;
+  cursor:pointer;
 }
 
 #errors-ul {

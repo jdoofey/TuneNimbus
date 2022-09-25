@@ -18,6 +18,7 @@ function SignupFormModal() {
           alignSelf:"center",
           margin:"5px",
           zIndex:"10",
+          cursor:"pointer",
       }}onClick={() => setShowModal(true)}>Create account</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
