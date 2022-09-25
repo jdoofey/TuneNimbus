@@ -126,7 +126,7 @@ const AddSongForm = () => {
               onChange={(e) => setPreviewImage(e.target.value)}
             />
             <br></br><br></br>
-            <button id="submit-btn" className="submit-btn" type="submit">
+            <button id="submit-btn" style={{cursor:"pointer"}} className="submit-btn" type="submit">
               Upload Song
             </button>
           </form>

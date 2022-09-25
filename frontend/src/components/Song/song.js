@@ -33,17 +33,17 @@ function Song(song) {
   }
   else return (
     <NavLink
-        to={`/home`}
+        to={`/`}
         //TODO make a please sign in or create an account
         // style={isActive => ({
         //   color: isActive ? "black" : "black"
         // })}
-        style={{ textDecoration: "none", color: "black", cursor:"default" }}
+        style={{ textDecoration: "none", cursor:"default" }}
         // activeStyle={(isActive) => ({
         //   color: isActive ? "black" : "black",
         // })}
       >
-        <div id="test">
+        <div id="test" style={{backgroundColor:"white"}}>
           <img
             id="placeholder-img"
             src={
@@ -52,7 +52,7 @@ function Song(song) {
                 : "https://i.imgur.com/QwtY70m.jpg"
             }
           ></img>
-          <div id="title">{song.song.title}</div>
+          <div id="title" style={{color:"black"}}>{song.song.title}</div>
         </div>
       </NavLink>
   )

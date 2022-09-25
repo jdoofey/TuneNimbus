@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createPlaylist } from "../../../store/playlist";
 import { useHistory } from "react-router-dom";
 import { Modal } from "../../../context/Modal";
@@ -9,11 +9,32 @@ const CreatePlaylist = () => {
   const history = useHistory();
   const [name, setName] = useState("");
   const [previewImage, setpreviewImage] = useState("");
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState([]);
+  const [displayErrors, setDisplayErrors] = useState(false)
+  let errorsArray = []
+  const validations = () => {
+    if (name.length<2)  {
+      errorsArray.push("*Title must be longer than 2 characters")
+    }
+    if (name.length>15) {
+      errorsArray.push("*Title must be less than 15 characters")
+    }
+    if (!previewImage.includes(".")) {
+      errorsArray.push("*Please include a valid image")
+    }
+    setErrors(errorsArray)
+    if (errorsArray.length) setDisplayErrors(true)
+    return errorsArray
+  }
+  useEffect(()=> {
+    if(displayErrors)validations()
+  }, [name, previewImage])
   const [showModal, setShowModal] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setDisplayErrors(false)
+    let errorsArray = validations()
+    if (errorsArray.length) return
     const payload = {
       name,
       previewImage,
@@ -58,6 +79,16 @@ const CreatePlaylist = () => {
         marginTop: "-200px"}}onClick={()=> setShowModal(false)}>X</button>
             <form id="create-form" onSubmit={handleSubmit}>
               <h1>Create Your Playlist</h1>
+              {errors &&
+                errors.map((e, i) => {
+                  if (e.length) {
+                    return <li
+                    style={{listStyle:"none",
+                            color:"red"
+                  }}
+                    key={i}>{e}</li>;
+                  }
+                })}
               <label>Playlist Title</label>
 
               <input

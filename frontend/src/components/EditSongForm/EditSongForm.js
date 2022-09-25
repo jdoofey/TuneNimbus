@@ -169,7 +169,10 @@ const EditSongForm = ({ song }) => {
                       alignSelf: "flex-end",
                     }}
                     type="button"
-                    onClick={handleEviscerate}
+                    onClick={
+                      handleEviscerate &&
+                      window.alert("Your song has been deleted")
+                    }
                   >
                     Delete Song
                   </button>
