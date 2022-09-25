@@ -170,8 +170,7 @@ const EditSongForm = ({ song }) => {
                     }}
                     type="button"
                     onClick={
-                      handleEviscerate &&
-                      window.alert("Your song has been deleted")
+                      handleEviscerate 
                     }
                   >
                     Delete Song
