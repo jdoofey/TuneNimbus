@@ -17,7 +17,8 @@ function LoginFormModal() {
           color:"rgb(215, 215, 215)",
           borderRadius:"3px",
           alignSelf:"center",
-          margin:"5px"
+          margin:"5px",
+          cursor:"pointer"
       }}
       onClick={() => setShowModal(true)}>Sign in</button>
       {showModal && (
