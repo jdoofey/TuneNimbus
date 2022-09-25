@@ -23,7 +23,7 @@ function LoginForm() {
           setErrors([data.message]);
         }
       }
-    );
+    ).then(history.push('/songs'))
   };
 
   return (
