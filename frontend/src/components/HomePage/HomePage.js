@@ -17,7 +17,8 @@ const HomePage = ({ setAudioUrl }) => {
 
     return (
       <div id="page-container">
-        <div id="whatever">
+        <div>
+        <div id="whatever"></div>
           <div id="welcome-container">
             <h1>Welcome to TuneNimbus</h1>
             <h3>What's next in music is first on TuneNimbus</h3>
