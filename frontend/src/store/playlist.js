@@ -52,7 +52,6 @@ export const getPlaylistsByCurrentUser = () => async (dispatch) => {
   }
 };
 export const addSongToPlaylist = (playlistId, songId) => async dispatch => {
-  console.log("HIT-------in addSongToPlaylist")
   const res = await csrfFetch(`/api/playlists/${playlistId}/songs`,
     {
     method: "POST",

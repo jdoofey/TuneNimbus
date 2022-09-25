@@ -17,7 +17,7 @@ export const CurrentPlaylists = () => {
     dispatch(getPlaylistsByCurrentUser());
     // return () => dispatch(resetPLaylists())
   }, [dispatch]);
-  console.log(playlists)
+ 
   if (!Object.values(playlists).length)
     return (
       <div style={{display:"flex",

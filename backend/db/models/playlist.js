@@ -32,10 +32,10 @@ module.exports = (sequelize, DataTypes) => {
         len:[1,40]
       }
     },
-    imageUrl: DataTypes.STRING,
+    previewImage: DataTypes.STRING,
     userId: DataTypes.INTEGER
   }, {
- 
+
     sequelize,
     modelName: 'Playlist',
   });

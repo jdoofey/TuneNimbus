@@ -39,7 +39,7 @@ const EditSongForm = ({ song }) => {
       title,
       description,
       url,
-      previewImage,
+      imageUrl:previewImage,
     };
 
     // if (!title || !url || title === "" || url === "") {

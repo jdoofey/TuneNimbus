@@ -83,9 +83,9 @@ export const SongsList = ({ setAudioUrl }) => {
                                 <img
                                   id="smol-img"
                                   src={
-                                    playlist.imageUrl === (null || "")
-                                      ? playlist.imageUrl
-                                      : "https://i.imgur.com/QwtY70m.jpg"
+                                    playlist.previewImage ||
+                                   "https://i.imgur.com/QwtY70m.jpg"
+
                                   }
                                 ></img>
                               </div>

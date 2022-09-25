@@ -58,6 +58,7 @@ const AddSongForm = () => {
     const createdSong = await dispatch(addSong(payload));
     if (createdSong) {
       history.push(`/songs`);
+      window.alert("Your song has been uploaded.");
     }
   };
   return (

@@ -8,7 +8,7 @@ const CreatePlaylist = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [name, setName] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [previewImage, setpreviewImage] = useState("");
   const [errors, setErrors] = useState();
   const [showModal, setShowModal] = useState(false);
   const handleSubmit = async (e) => {
@@ -16,7 +16,7 @@ const CreatePlaylist = () => {
 
     const payload = {
       name,
-      imageUrl,
+      previewImage,
     };
     setErrors([]);
     const exitMenu = () => {
@@ -71,8 +71,8 @@ const CreatePlaylist = () => {
 
               <input
                 type="text"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
+                value={previewImage}
+                onChange={(e) => setpreviewImage(e.target.value)}
               />
               <br></br>
               <button
@@ -89,7 +89,7 @@ const CreatePlaylist = () => {
                   padding:"10px 30px",
                 }}
                 type="submit"
-                onClick={handleSubmit}
+
               >
                 Create Playlist
               </button>
