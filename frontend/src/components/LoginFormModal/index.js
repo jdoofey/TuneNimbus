@@ -2,8 +2,9 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import LoginForm from './LoginForm';
-
+import { useHistory } from 'react-router-dom';
 function LoginFormModal() {
+  const history = useHistory()
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -20,7 +21,12 @@ function LoginFormModal() {
           margin:"5px",
           cursor:"pointer"
       }}
-      onClick={() => setShowModal(true)}>Sign in</button>
+      onClick={() =>{
+
+        setShowModal(true)
+        history.push("/songs")
+      }
+      }>Sign in</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <button id='close-modal' onClick={()=> setShowModal(false)}>X</button>
