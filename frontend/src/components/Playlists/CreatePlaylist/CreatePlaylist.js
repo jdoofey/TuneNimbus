@@ -19,7 +19,7 @@ const CreatePlaylist = () => {
     if (name.length>15) {
       errorsArray.push("*Title must be less than 15 characters")
     }
-    if (!previewImage.includes(".")) {
+    if (!previewImage.includes(".") && previewImage!=="") {
       errorsArray.push("*Please include a valid image")
     }
     setErrors(errorsArray)

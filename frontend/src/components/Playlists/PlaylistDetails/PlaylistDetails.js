@@ -26,6 +26,9 @@ export default function PlaylistDetails({ setAudioUrl }) {
     <div id="playlist-details-master-container">
       <h1>{playlist.name}</h1>
       <br></br>
+      {!playlist?.Songs?.length && <div>
+        <h3>You haven't added any songs to this playlist yet</h3>
+        </div>}
       {playlist?.Songs?.map((song, i) => {
         return (
           <div>
