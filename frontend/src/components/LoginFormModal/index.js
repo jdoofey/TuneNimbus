@@ -2,16 +2,15 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import LoginForm from './LoginForm';
-import { useHistory } from 'react-router-dom';
+
 function LoginFormModal() {
-  const history = useHistory()
+
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <button style={{
           backgroundColor: "#383838",
-          color: "rgb(153, 153, 153)",
           height:"fit-content",
           padding:"7px",
           border:"rgb(215, 215, 215) 1px solid",

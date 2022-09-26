@@ -23,17 +23,28 @@
 }
 
 .playlist-audio-btn {
-  width:50px;
-  height:50px;
+  display:none;
+  width:40px;
+  height:40px;
   border: #ff652d .5px solid;
   border-radius: 50%;
   font-weight: bold;
   background-image: url(https://i.imgur.com/5vs8qrA.png);
   background-size: cover;
-  transition:.5s;
+  opacity: .6;
 }
 
 .playlist-audio-btn:hover {
   cursor:pointer;
+  opacity:1;
+  animation: fade-in .5s;
   background-image:url(https://i.imgur.com/O0N9ZpT.png)
+}
+@keyframes fade-in {
+  0%    { opacity: .6; }
+  100%  { opacity: .9; }
+}
+#song-container:hover #playlistdetail {
+  display: flex;
+  margin-right: 15px;
 }

@@ -33,20 +33,21 @@ export default function PlaylistDetails({ setAudioUrl }) {
         return (
           <div>
             <div id="song-container">
-              <img src={song.previewImage} width="50"></img>
+              <img src={song.previewImage} width="70" height="70"></img>
+              <button style={{position:"static",
+              marginLeft:"-55px",
+              marginTop:"13px"}}className="playlist-audio-btn" id="playlistdetail"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setAudioUrl(song.url);
+                }}
+              ></button>
               <div className="playlist-details-spacer"></div>
               <h3>{i + 1}</h3>
               <div className="playlist-details-spacer"></div>
               <h3>{song.title}</h3>
               <div className="playlist-details-spacer"></div>
-              <button className="playlist-audio-btn"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setAudioUrl(song.url);
-                }}
-              >
 
-              </button>
             </div>
           </div>
         );

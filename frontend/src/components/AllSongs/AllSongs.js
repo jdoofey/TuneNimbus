@@ -3,15 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllSongs, resetSongs } from "../../store/songs";
 import { Modal } from "../../context/Modal";
 import Song from "../Song/song";
-import SinglePlaylist from "../Playlists/SinglePlaylist/SinglePlaylist";
+// import SinglePlaylist from "../Playlists/SinglePlaylist/SinglePlaylist";
 import { getPlaylistsByCurrentUser } from "../../store/playlist";
 import { addSongToPlaylist } from "../../store/playlist";
 import CreatePlaylist from "../Playlists/CreatePlaylist/CreatePlaylist";
-import { useHistory } from "react-router-dom";
+
 import "./AllSongs.css";
 export default function AllSongs({ setAudioUrl }) {
   const dispatch = useDispatch();
-  const history = useHistory();
+
   const [showModal, setShowModal] = useState(false);
   const songs = useSelector((state) => state.song.allSongs);
   const playlists = useSelector((state) => state.playlists);
