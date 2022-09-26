@@ -49,6 +49,7 @@ TuneNimbus is a SoundCloud clone. Here's their website: [SoundCloud](https://sou
 
 # Sample Features
 ## Landing Page
+You can play some sample songs, log in, and create an account on this page. There is also a demo user button on the log-in modal for easier access to the website.
 <img src=https://i.imgur.com/psalkRp.gif>
 
 ## Upload a Song
