@@ -22,7 +22,7 @@
 </details>
 
 ## Project Summary
-TuneNimbus is a SoundCloud clone. Here's their website: [SoundCloud](https://soundcloud.com/). On TuneNimbus, you can listen to more than -1 songs, upload music, and create your own playlists, at NO COST. By uploading your music to this site, you give me consent to use your creative material for FREE! Check it out [here](https://tunenimbus.herokuapp.com/)
+TuneNimbus is a SoundCloud clone. Here's their website: [SoundCloud](https://soundcloud.com/). TuneNimbus is an online audio distributiion platform and music sharing website that enables its users to upload, promote, and share music, as well as discover new music and share their opinions. Check it out [here](https://tunenimbus.herokuapp.com/)
 
 ## Wiki Links
 * [Backend Routes (API Documentation)](https://github.com/jakezmat/API-Project/wiki/API-Documentation)
@@ -50,6 +50,12 @@ TuneNimbus is a SoundCloud clone. Here's their website: [SoundCloud](https://sou
 # Sample Features
 ## Landing Page
 <img src=https://i.imgur.com/psalkRp.gif>
+
+## Upload a Song
+<img src="https://i.imgur.com/K2SOuY7.gif">
+
+## Add Song to a Playlist
+<img src="https://i.imgur.com/KgKtw5a.gif">
 
 # Getting Started
 
@@ -132,5 +138,6 @@ To get a local copy up and running follow these simple example steps.
         - [ ] date
 
 # Contact Information
+Jake Matillano (he/him/his)
 <img src=https://i.imgur.com/2ffGJqj.png width=20> [LinkedIn](https://www.linkedin.com/in/jake-matillano-b141811a3)
 <img src=https://i.imgur.com/w9xwrCT.png width=20> [GitHub](https://github.com/jakezmat)
