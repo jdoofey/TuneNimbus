@@ -11,15 +11,15 @@ const loadAll = songId => ({
   songId
 })
 
+const addComment = (comment, song )=> ({
+  type: ADD,
+  comment, song
+})
 const editComment = comment => ({
   type: EDIT,
   comment
 })
 
-const addComment = comment => ({
-  type: ADD,
-  comment
-})
 
 const deleteComment = commentId => ({
   type: DELETE,
@@ -37,4 +37,11 @@ export const getComments = (songId) => async (dispatch) => {
     dispatch(loadAll(data))
     return data
   }
+}
+'/:songId/comments'
+export const postComment = (comment, songId) => async dispatch => {
+  const res = await csrfFetch(`/${songId}/comments`, {
+    method:"POST",
+    headers:{"Content-Type": "application/json"}
+  } )
 }
