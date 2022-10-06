@@ -1,9 +1,17 @@
 import { csrfFetch } from "./csrf";
 
-const LOAD_ONE = "comments/LOAD_ONE";
-const LOAD_CURRENT = "comments/LOAD_CURENT";
+const LOAD_ALL = "comments/LOAD_ALL";
+const EDIT = "comments/EDIT"
 const ADD_ONE = "comments/ADD_ONE";
 const DELETE_ONE = "comments/DELETE_ONE";
 const RESET = "comments/RESET";
 
-export const 
+const loadAll = comments => ({
+  type:LOAD_ALL,
+  comments
+})
+
+const editComment = comment => ({
+  tpe:EDIT,
+  comment
+})
