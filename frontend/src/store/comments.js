@@ -7,34 +7,34 @@ const DELETE = "comments/DELETE";
 const RESET = "comments/RESET";
 
 const loadAll = songId => ({
-  type:LOAD_ALL,
+  type: LOAD_ALL,
   songId
 })
 
 const editComment = comment => ({
-  type:EDIT,
+  type: EDIT,
   comment
 })
 
 const addComment = comment => ({
-  type:ADD,
+  type: ADD,
   comment
 })
 
 const deleteComment = commentId => ({
-  type:DELETE,
+  type: DELETE,
   commentId
 })
 
 export const reset = () => ({
   type: RESET,
-})
+});
 
-export const getComments = songId => async dispatch => ({
+export const getComments = (songId) => async (dispatch) => {
   const res = await fetch(`/api/${songId}/comments`)
   if (res.ok) {
     const data = await res.json()
     dispatch(loadAll(data))
     return data
   }
-})
+}
