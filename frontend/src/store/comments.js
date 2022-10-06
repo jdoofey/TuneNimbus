@@ -63,3 +63,15 @@ export const removeComment = commentId => async dispatch => {
     return response
   }
 }
+
+const initialState = {}
+const commentReducer = (state ={}, action) => {
+  switch(action.type) {
+    
+    case RESET: {
+      return {}
+    }
+    default:
+      return state
+  }
+}
