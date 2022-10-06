@@ -67,11 +67,23 @@ export const removeComment = commentId => async dispatch => {
 const initialState = {}
 const commentReducer = (state ={}, action) => {
   switch(action.type) {
-    
-    case RESET: {
-      return {}
-    }
+    case LOAD_ALL:
+      action.comments.Comments(comment => {
+        song[comment.id] = comment
+      })
+    case ADD:
+      newState = {song: {...state.song}}
+      newstate.song[action.comment.id] = action.comment
+      return newState
+    case DELETE:
+      newState={song:{...state.song}}
+      delete newState.song[action.commentId]
+      return newState
+    case RESET:
+      return initialState
     default:
       return state
   }
 }
+
+export default commentReducer
