@@ -41,9 +41,25 @@ export const getComments = (songId) => async (dispatch) => {
 }
 '/:songId/comments'
 export const postComment = (comment, songId) => async dispatch => {
-  const res = await csrfFetch(`/${songId}/comments`, {
+  const res = await csrfFetch(`/api/${songId}/comments`, {
     method:"POST",
     headers:{"Content-Type": "application/json"},
-    body: JSON.stringify({})
-  } )
+    body: JSON.stringify({comment})
+  })
+  if (res.ok) {
+    const data = await res.json()
+    dispatch(addComment(data))
+    return data
+  }
+  return null
+}
+
+export const removeComment = commentId => async dispatch => {
+  const response = await csrfFetch(`/api/comments/${commentId}`, {
+    method:"DELETE"
+  })
+  if (response.ok) {
+    dispatch(deleteComment(commentId))
+    return response
+  }
 }
