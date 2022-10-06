@@ -6,14 +6,14 @@ const ADD = "comments/ADD";
 const DELETE = "comments/DELETE";
 const RESET = "comments/RESET";
 
-const loadAll = songId => ({
+const load = (comments, songId) => ({
   type: LOAD_ALL,
-  songId
+  comments, songId
 })
 
-const addComment = (comment, song )=> ({
+const addComment = (comment, songId )=> ({
   type: ADD,
-  comment, song
+  comment, songId
 })
 const editComment = comment => ({
   type: EDIT,
@@ -34,14 +34,16 @@ export const getComments = (songId) => async (dispatch) => {
   const res = await fetch(`/api/${songId}/comments`)
   if (res.ok) {
     const data = await res.json()
-    dispatch(loadAll(data))
+    dispatch(load(data))
     return data
   }
+  return null
 }
 '/:songId/comments'
 export const postComment = (comment, songId) => async dispatch => {
   const res = await csrfFetch(`/${songId}/comments`, {
     method:"POST",
-    headers:{"Content-Type": "application/json"}
+    headers:{"Content-Type": "application/json"},
+    body: JSON.stringify({})
   } )
 }
