@@ -2,8 +2,8 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_ALL = "comments/LOAD_ALL";
 const EDIT = "comments/EDIT"
-const ADD_ONE = "comments/ADD_ONE";
-const DELETE_ONE = "comments/DELETE_ONE";
+const ADD = "comments/ADD";
+const DELETE = "comments/DELETE";
 const RESET = "comments/RESET";
 
 const loadAll = comments => ({
@@ -12,6 +12,20 @@ const loadAll = comments => ({
 })
 
 const editComment = comment => ({
-  tpe:EDIT,
+  type:EDIT,
   comment
+})
+
+const addComment = comment => ({
+  type:ADD,
+  comment
+})
+
+const deleteComment = commentId => ({
+  type:DELETE,
+  commentId
+})
+
+export const reset = () => ({
+  type: RESET,
 })
