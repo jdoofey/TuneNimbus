@@ -6,9 +6,9 @@ const ADD = "comments/ADD";
 const DELETE = "comments/DELETE";
 const RESET = "comments/RESET";
 
-const loadAll = comments => ({
+const loadAll = songId => ({
   type:LOAD_ALL,
-  comments
+  songId
 })
 
 const editComment = comment => ({
@@ -28,4 +28,13 @@ const deleteComment = commentId => ({
 
 export const reset = () => ({
   type: RESET,
+})
+
+export const getComments = songId => async dispatch => ({
+  const res = await fetch(`/api/${songId}/comments`)
+  if (res.ok) {
+    const data = await res.json()
+    dispatch(loadAll(data))
+    return data
+  }
 })
