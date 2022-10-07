@@ -29,12 +29,12 @@ module.exports = {
         userId:2
       },
       {
-        body:'',
+        body:'The best thing since sliced bread',
         songId:2,
         userId:2
       },
       {
-        body:'',
+        body:'This stuff is fire!',
         songId:2,
         userId:3
       },
