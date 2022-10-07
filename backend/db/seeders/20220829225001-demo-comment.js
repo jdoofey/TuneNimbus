@@ -39,9 +39,24 @@ module.exports = {
         userId:3
       },
       {
-        body:'',
+        body:'Bruh this is my life\'s theme song',
         songId:2,
-        userId:3
+        userId:4
+      },
+      {
+        body:'You just gained another fan',
+        songId:2,
+        userId:5
+      },
+      {
+        body:'Nodding my head nonstop',
+        songId:1,
+        userId:4
+      },
+      {
+        body:'This got me feeling some typa way',
+        songId:1,
+        userId:5
       },
 
     ], {});
