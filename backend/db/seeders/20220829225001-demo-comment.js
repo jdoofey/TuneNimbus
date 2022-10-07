@@ -89,12 +89,12 @@ module.exports = {
         userId:5
       },
       {
-        body:'',
+        body:'This is a great song and anyone who says otherwise is just wrong',
         songId:5,
         userId:4
       },
       {
-        body:'',
+        body:'My dream is to be you one day.',
         songId:5,
         userId:4
       },
