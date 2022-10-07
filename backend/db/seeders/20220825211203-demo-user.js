@@ -26,18 +26,18 @@ module.exports = {
         lastName: 'Goblin'
       },
       {
-        email: 'user1@user.io',
-        username: 'FakeUser1',
+        email: 'flexbox@flex.io',
+        username: 'displayflex4lyfe',
         hashedPassword: bcrypt.hashSync('password'),
-        firstName: 'John2',
-        lastName: 'Smith2'
+        firstName: 'Flex',
+        lastName: 'Boxx'
       },
       {
-        email: 'user1@user.io',
-        username: 'FakeUser1',
+        email: 'python@snek.io',
+        username: 'IhateBrackets',
         hashedPassword: bcrypt.hashSync('password'),
-        firstName: 'John2',
-        lastName: 'Smith2'
+        firstName: 'Snakey',
+        lastName: 'Hissboy'
       },
     ], {});
   },
