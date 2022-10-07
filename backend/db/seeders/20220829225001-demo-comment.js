@@ -58,6 +58,46 @@ module.exports = {
         songId:1,
         userId:5
       },
+      {
+        body:'I hope I get to see you live at a concert one day!',
+        songId:3,
+        userId:4
+      },
+      {
+        body:'Listening to this on repeat, nonstop, all week',
+        songId:3,
+        userId:5
+      },
+      {
+        body:'Yo, this is sick! Wish I discovered this sooner',
+        songId:4,
+        userId:1
+      },
+      {
+        body:'What a bop, honestly. I can\t stop replaying',
+        songId:4,
+        userId:2
+      },
+      {
+        body:'I\m in love with you, and the song',
+        songId:4,
+        userId:4
+      },
+      {
+        body:'This wasn\t my favorite release from you, but it\s still decent ig',
+        songId:4,
+        userId:5
+      },
+      {
+        body:'',
+        songId:5,
+        userId:4
+      },
+      {
+        body:'',
+        songId:5,
+        userId:4
+      },
 
     ], {});
     /**
