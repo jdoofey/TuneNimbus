@@ -17,7 +17,33 @@ module.exports = {
         body:'This song made my ears cry',
         songId:2,
         userId:3
-      }
+      },
+      {
+        body:'Cannot wait until you release another one!',
+        songId:1,
+        userId:3
+      },
+      {
+        body:'It was fun getting to collab with you',
+        songId:1,
+        userId:2
+      },
+      {
+        body:'',
+        songId:2,
+        userId:2
+      },
+      {
+        body:'',
+        songId:2,
+        userId:3
+      },
+      {
+        body:'',
+        songId:2,
+        userId:3
+      },
+
     ], {});
     /**
      * Add seed commands here.
