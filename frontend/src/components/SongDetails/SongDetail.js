@@ -4,8 +4,8 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { getSongDeets } from "../../store/songs";
 import React, { useEffect } from "react";
+import Comments from "../Comments/comments";
 import "./SongDetail.css";
-import EditSongForm from "../EditSongForm/EditSongForm";
 export default function SongDetails({ setAudioUrl }) {
 
   const dispatch = useDispatch();
@@ -23,38 +23,42 @@ export default function SongDetails({ setAudioUrl }) {
   // }
 
   return (
-    <div id="banner-container">
-      <div id="banner-top">
-        <div id="banner-top-left">
-          <button
-            id="song-details-play-button"
-            onClick={(e) => {
-              e.preventDefault();
-              setAudioUrl(song.url);
-            }}
-          ></button>
-          <div id="banner-song-details">
-            <div id="song-details-title">{song.title}</div>
-            <div id="song-details-artist">{song?.Artist?.username}</div>
+    <>
+      <div id="banner-container">
+        <div id="banner-top">
+          <div id="banner-top-left">
+            <button
+              id="song-details-play-button"
+              onClick={(e) => {
+                e.preventDefault();
+                setAudioUrl(song.url);
+              }}
+            ></button>
+            <div id="banner-song-details">
+              <div id="song-details-title">{song.title}</div>
+              <div id="song-details-artist">{song?.Artist?.username}</div>
+            </div>
+          </div>
+          <div id="song-details-date">
+            <span>{new Date(song.createdAt).toString().slice(4, 16)}</span>
           </div>
         </div>
-      <div id="song-details-date">
-        <span>{new Date(song.createdAt).toString().slice(4, 16)}</span>
+        <img id="song-details-image"
+          style={{
+            width: "300px",
+            height: "300px"
+          }}
+          src={
+            song.previewImage !== null && song.previewImage !== ""
+              ? song.previewImage
+              : "https://i.imgur.com/QwtY70m.jpg"
+          }
+          alt="404"
+        ></img>
+        <h1 id="waveform">{"[ - - - Waveform would go here - - - ]"}</h1>
       </div>
-      </div>
-      <img id="song-details-image"
-        style={{
-          width: "300px",
-          height: "300px"
-        }}
-        src={
-          song.previewImage !== null && song.previewImage !== ""
-            ? song.previewImage
-            : "https://i.imgur.com/QwtY70m.jpg"
-        }
-        alt="404"
-      ></img>
-    </div>
+      <Comments song={song}/>
+    </>
   );
 }
 

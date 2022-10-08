@@ -10,8 +10,7 @@
 
 #banner-container {
   padding:50px 50px;
-  margin: 100px 150px;
-  margin-top: 100px;
+  margin: 100px 150px 0px 150px;
   background: linear-gradient(175deg, #ad4c5c 0%, #ffc3a0 100%);
   display:grid;
   grid-template-columns: auto auto 350px;
@@ -22,7 +21,6 @@
 }
 
 #song-details-date{
-  padding-right: 30px;
   color:white;
 }
 #song-details-title{
@@ -40,6 +38,7 @@
 }
 #song-details-image{
   grid-area: b;
+  padding-left: 30px;
 }
 
 #banner-top{
@@ -55,5 +54,9 @@
 #banner-song-details{
   display:flex;
   flex-direction: column;
-
+}
+#waveform{
+  grid-area:c;
+  justify-self: center;
+  align-self: flex-end;
 }
