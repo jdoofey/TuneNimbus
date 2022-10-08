@@ -1,16 +1,18 @@
 #song-details-play-button {
   /* display:none; */
-  width:50px;
-  height:50px;
+  border-radius:50%;
+  width:70px;
+  height:70px;
   border:none;
   background-image: url(https://i.imgur.com/5vs8qrA.png);
   background-size: cover;
 }
 
 #banner-container {
-  padding:25px;
+  padding:50px 50px;
+  margin: 100px 150px;
   margin-top: 100px;
-  background: linear-gradient(175deg, #ffafbd 0%, #ffc3a0 100%);
+  background: linear-gradient(175deg, #ad4c5c 0%, #ffc3a0 100%);
   display:grid;
   grid-template-columns: auto auto 350px;
   grid-template-rows: 50% 50%;
@@ -19,12 +21,31 @@
     "c c b"
 }
 
+#song-details-date{
+  padding-right: 30px;
+  color:white;
+}
+#song-details-title{
+  font-size: 25px;
+}
+#song-details-title,
+#song-details-artist{
+  font-weight: bold;
+  background-color: rgb(36, 36, 36);
+  color:white;
+  width:fit-content;
+  margin:3px 15px;
+  padding:5px 15px;
+  border-radius: 2px;
+}
 #song-details-image{
   grid-area: b;
 }
 
 #banner-top{
   grid-area: a;
+  display:flex;
+  justify-content: space-between;
 }
 
 #banner-top-left{

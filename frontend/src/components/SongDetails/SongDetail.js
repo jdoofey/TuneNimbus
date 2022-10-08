@@ -32,12 +32,15 @@ export default function SongDetails({ setAudioUrl }) {
               e.preventDefault();
               setAudioUrl(song.url);
             }}
-          >test</button>
+          ></button>
           <div id="banner-song-details">
-            <div>{song.title}</div>
-            <div>{song?.Artist?.username}</div>
+            <div id="song-details-title">{song.title}</div>
+            <div id="song-details-artist">{song?.Artist?.username}</div>
           </div>
         </div>
+      <div id="song-details-date">
+        <span>{new Date(song.createdAt).toString().slice(4, 16)}</span>
+      </div>
       </div>
       <img id="song-details-image"
         style={{
