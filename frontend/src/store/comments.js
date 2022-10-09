@@ -6,9 +6,9 @@ const ADD = "comments/ADD";
 const DELETE = "comments/DELETE";
 const RESET = "comments/RESET";
 
-const load = (comments, songId) => ({
+const load = (songId) => ({
   type: LOAD_ALL,
-  comments, songId
+  songId
 })
 
 const addComment = (comment, songId )=> ({
@@ -31,16 +31,17 @@ export const reset = () => ({
 });
 
 export const getComments = (songId) => async (dispatch) => {
-  const res = await fetch(`/api/${songId}/comments`)
+  const res = await fetch(`/api/songs/${songId}/comments`)
   if (res.ok) {
     const data = await res.json()
-    dispatch(load(data))
+    console.log("why no hit", data)
+    await dispatch(load(data))
     return data
   }
   return null
 }
-'/:songId/comments'
-export const postComment = (comment, songId) => async dispatch => {
+
+export const submitComment = (comment, songId) => async dispatch => {
   const res = await csrfFetch(`/api/${songId}/comments`, {
     method:"POST",
     headers:{"Content-Type": "application/json"},
@@ -65,16 +66,20 @@ export const removeComment = commentId => async dispatch => {
 }
 
 const initialState = {}
+const newState ={}
 const commentReducer = (state ={}, action) => {
+  const song = action.song
   switch(action.type) {
     case LOAD_ALL:
       action.comments.Comments(comment => {
         song[comment.id] = comment
       })
     case ADD:
+
       newState = {song: {...state.song}}
-      newstate.song[action.comment.id] = action.comment
+      newState.song[action.comment.id] = action.comment
       return newState
+
     case DELETE:
       newState={song:{...state.song}}
       delete newState.song[action.commentId]

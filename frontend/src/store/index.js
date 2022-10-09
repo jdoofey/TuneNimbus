@@ -4,11 +4,13 @@ import thunk from "redux-thunk";
 import sessionReducer from './session';
 import songReducer from "./songs";
 import playlistReducer from "./playlist";
+import commentReducer from "./comments";
 const rootReducer = combineReducers({
   session: sessionReducer,
   song: songReducer,
   //change everywhere to an s
-  playlists: playlistReducer
+  playlists: playlistReducer,
+  comments: commentReducer
 });
 //PHASE1 session actions and reducer END
 let enhancer;

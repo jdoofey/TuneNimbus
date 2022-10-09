@@ -10,8 +10,7 @@ export default function SongDetails({ setAudioUrl }) {
 
   const dispatch = useDispatch();
   const { songId } = useParams();
-  const song = useSelector((state) => state.song);
-
+  const song = useSelector((state) => state.song.singleSong);
   useEffect(() => {
 
     dispatch(getSongDeets(songId));
@@ -57,7 +56,7 @@ export default function SongDetails({ setAudioUrl }) {
         ></img>
         <h1 id="waveform">{"[ - - - Waveform would go here - - - ]"}</h1>
       </div>
-      <Comments song={song}/>
+      <Comments />
     </>
   );
 }
