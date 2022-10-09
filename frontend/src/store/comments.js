@@ -35,7 +35,7 @@ export const getComments = (songId) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json()
     console.log("why no hit", data)
-    await dispatch(load(data))
+    dispatch(load(data))
     return data
   }
   console.log("not hit")
@@ -66,29 +66,23 @@ export const removeComment = commentId => async dispatch => {
   }
 }
 
-const initialState = {}
-let newState ={}
 const commentReducer = (state ={}, action) => {
-  switch(action.type) {
-    case LOAD_ALL:
-      newState={...state, comments:{...state.comments}}
-      console.log(action)
-      action.songId.Comments.map(comment => {
-        newState.comments[comment.id] = comment
-      })
-      return newState
-    case ADD:
-
-      newState = {song: {...state.song}}
-      newState.song[action.comment.id] = action.comment
-      return newState
-
-    case DELETE:
-      newState={song:{...state.song}}
-      delete newState.song[action.commentId]
-      return newState
-    case RESET:
-      return initialState
+  switch (action.type) {
+      case LOAD_ALL:
+          const allComments = {}
+          console.log("ACTION",action?.songId?.comments)
+          action.songId.Comments.forEach(comment => {
+              allComments[comment.id] = comment;
+          });
+          return {
+              ...allComments,
+              ...state,
+          };
+      case ADD:
+          return {
+              ...state,
+              [action.comment.id]: action.comment
+          }
     default:
       return state
   }
