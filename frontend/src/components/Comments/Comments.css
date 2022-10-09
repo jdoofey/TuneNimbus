@@ -2,8 +2,26 @@
   margin:10px 10px;
   border:1px solid purple;
 }
-
-
+#comment-input{
+  width:96%;
+  border:.5px solid grey;
+  border-radius:3px;
+}
+#comment-submit-btn{
+  width:5%;
+  font-size: 16px;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff652d;
+  color:white;
+  border:none;
+  border-radius: 4px;
+}
+#comment-form{
+  display:flex;
+  justify-content: center;
+  height:30px;
+}
 #comments-container{
   margin: 10px 150px 100px 150px;
   border:1px solid green;
@@ -11,7 +29,10 @@
 
 #comments-submission{
   margin:10px 10px;
-  border:1px solid blue;
+  border:1px solid grey;
+  border-radius:1px;
+  padding:10px 10px 10px 40px;
+  background-color: rgb(189, 189, 189) ;
 }
 
 #comments-display{
