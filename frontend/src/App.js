@@ -46,7 +46,7 @@ function App() {
               <SongsList setAudioUrl={setAudioUrl} />
             </Route>
             <Route path="/songs/:songId">
-              <SongDetails />
+              <SongDetails setAudioUrl={setAudioUrl}/>
             </Route>
             <Route path="/playlists/current">
               <CurrentPlaylists />

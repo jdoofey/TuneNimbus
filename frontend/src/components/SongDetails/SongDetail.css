@@ -1,14 +1,62 @@
-#container-div {
-  padding-top: 100px;
+#song-details-play-button {
+  /* display:none; */
+  border-radius:50%;
+  width:70px;
+  height:70px;
+  border:none;
+  background-image: url(https://i.imgur.com/5vs8qrA.png);
+  background-size: cover;
+}
+
+#banner-container {
+  padding:50px 50px;
+  margin: 100px 150px 0px 150px;
+  background: linear-gradient(175deg, #ad4c5c 0%, #ffc3a0 100%);
+  display:grid;
+  grid-template-columns: auto auto 350px;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    "a a b"
+    "c c b"
+}
+
+#song-details-date{
+  color:white;
+}
+#song-details-title{
+  font-size: 25px;
+}
+#song-details-title,
+#song-details-artist{
+  font-weight: bold;
+  background-color: rgb(36, 36, 36);
+  color:white;
+  width:fit-content;
+  margin:3px 15px;
+  padding:5px 15px;
+  border-radius: 2px;
+}
+#song-details-image{
+  grid-area: b;
+  padding-left: 30px;
+}
+
+#banner-top{
+  grid-area: a;
+  display:flex;
+  justify-content: space-between;
+}
+
+#banner-top-left{
+  display:flex;
+
+}
+#banner-song-details{
   display:flex;
   flex-direction: column;
-  align-items: center;
 }
-
-#preview {
-  height:500px;
-}
-
-#edit-song-container {
-  margin-bottom: 100px;
+#waveform{
+  grid-area:c;
+  justify-self: center;
+  align-self: flex-end;
 }

@@ -116,7 +116,7 @@ const songReducer = (state = initialState, action) => {
     }
     case LOAD_ONE:
       const song = action.song;
-      return { ...state, ...song };
+      return { ...state, singleSong:{...song} };
     case LOAD_ALL: {
       const newState = {...state, allSongs:{...state.allSongs}};
       action.songs.Songs.forEach((song) => (newState.allSongs[song.id] = song));
@@ -140,5 +140,6 @@ const songReducer = (state = initialState, action) => {
       return state;
   }
 };
+
 
 export default songReducer;
