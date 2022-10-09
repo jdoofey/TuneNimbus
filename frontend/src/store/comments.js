@@ -31,13 +31,14 @@ export const reset = () => ({
 });
 
 export const getComments = (songId) => async (dispatch) => {
-  const res = await fetch(`/api/songs/${songId}/comments`)
+  const res = await csrfFetch(`/api/songs/${songId}/comments`)
   if (res.ok) {
     const data = await res.json()
     console.log("why no hit", data)
     await dispatch(load(data))
     return data
   }
+  console.log("not hit")
   return null
 }
 
@@ -66,14 +67,16 @@ export const removeComment = commentId => async dispatch => {
 }
 
 const initialState = {}
-const newState ={}
+let newState ={}
 const commentReducer = (state ={}, action) => {
-  const song = action.song
   switch(action.type) {
     case LOAD_ALL:
-      action.comments.Comments(comment => {
-        song[comment.id] = comment
+      newState={...state, comments:{...state.comments}}
+      console.log(action)
+      action.songId.Comments.map(comment => {
+        newState.comments[comment.id] = comment
       })
+      return newState
     case ADD:
 
       newState = {song: {...state.song}}

@@ -8,10 +8,11 @@ export default function Comments() {
   const [comment, setComment] = useState("")
   const [valErrs, setValErrs] = useState([])
   const [showErrs, setShowErrs] = useState(false)
+  const comments = useSelector(state=> state.comments)
+  console.log(song.id)
   useEffect(()=>{
-
+    console.log("how is this undef?",song.id)
     dispatch(getComments(song.id))
-
   }, [dispatch])
   useEffect(() => {
     const errs = []
