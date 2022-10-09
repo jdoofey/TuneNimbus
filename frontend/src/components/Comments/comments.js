@@ -43,14 +43,15 @@ export default function Comments() {
     <div id="comments-container">
       <div id="song-description">Description here? :{" "}{song.description}</div>
       <div id="comments-submission">
-        <form>
+        <form id="comment-form">
           <input
+            id="comment-input"
             type="text"
-            placeholder="Write a comment"
+            placeholder="  Write a comment..."
             value={comment}
             onChange={e => setComment(e.target.value)}
           ></input>
-          <button type="submit">Post</button>
+          <button id="comment-submit-btn" type="submit">Post</button>
         </form>
       </div>
       <ul>
@@ -63,6 +64,7 @@ export default function Comments() {
           )  : null
         })}
       </ul>
+
     </div>
   )
 }
