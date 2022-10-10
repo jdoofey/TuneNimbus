@@ -74,17 +74,17 @@ module.exports = {
         userId:1
       },
       {
-        body:'What a bop, honestly. I can\t stop replaying',
+        body:'What a bop, honestly. I can\'t stop replaying',
         songId:4,
         userId:2
       },
       {
-        body:'I\m in love with you, and the song',
+        body:'I\'m in love with you, and the song',
         songId:4,
         userId:4
       },
       {
-        body:'This wasn\t my favorite release from you, but it\s still decent ig',
+        body:'This wasn\'t my favorite release from you, but it\s still decent ig',
         songId:4,
         userId:5
       },
