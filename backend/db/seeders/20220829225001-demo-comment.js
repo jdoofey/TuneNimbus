@@ -98,6 +98,26 @@ module.exports = {
         songId:5,
         userId:4
       },
+      {
+        body:'Uhmmm uhhh meow',
+        songId:6,
+        userId:4
+      },
+      {
+        body:'This song reminds me of my childhood',
+        songId:6,
+        userId:5
+      },
+      {
+        body:'Yo, all my homies love this track. Keep it up',
+        songId:7,
+        userId:4
+      },
+      {
+        body:'rawr xD this is so co0l :3',
+        songId:7,
+        userId:5
+      },
 
     ], {});
     /**

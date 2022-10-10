@@ -74,10 +74,7 @@ const commentReducer = (state ={}, action) => {
           action.songId.Comments.forEach(comment => {
               allComments[comment.id] = comment;
           });
-          return {
-              ...allComments,
-              ...state,
-          };
+          return {...allComments, ...state};
       case ADD:
           return {
               ...state,
