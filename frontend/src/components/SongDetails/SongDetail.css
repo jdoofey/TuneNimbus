@@ -10,7 +10,7 @@
 
 #banner-container {
   padding:50px 50px;
-  margin: 100px 150px 0px 150px;
+  margin: 100px 250px 0px 250px;
   background: linear-gradient(175deg, #ad4c5c 0%, #ffc3a0 100%);
   display:grid;
   grid-template-columns: auto auto 350px;
