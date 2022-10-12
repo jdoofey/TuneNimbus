@@ -17,22 +17,7 @@ export default function AllSongs({ setAudioUrl }) {
   const playlists = useSelector((state) => state.playlists);
   const sessionUser = useSelector((state) => state.session.user);
   const [selectedSong, setSelectedSong] = useState(null);
-  // const cardStyling = {
-  //   listEle: {
-  //     width: "fit-content"
-  //   },
-  //   playButton: {
-  //     display:"none",
-  //     width:"50px",
-  //     height:"50px",
-  //     borderRadius:"100px",
-  //     border:"rgb(223, 145, 0) 2px solid",
-  //     fontWeight:"bold",
-  //     backgroundImage: "url(https://i.imgur.com/5vs8qrA.png)",
-  //     backgroundSize:"cover",
-  //     transition:".5s",
-  //   }
-  // }
+
   useEffect(() => {
     dispatch(getPlaylistsByCurrentUser());
     // return () => dispatch(resetPLaylists());
