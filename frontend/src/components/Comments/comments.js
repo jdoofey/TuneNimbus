@@ -41,7 +41,7 @@ export default function Comments() {
   }
   return (
     <div id="comments-container">
-      <div id="song-description">Description here? :{" "}{song.description}</div>
+      <div id="song-description">Description:{" "}{song.description}</div>
       <div id="comments-submission">
         <form id="comment-form">
           <input
@@ -57,7 +57,7 @@ export default function Comments() {
       <ul>
         {Object.values(comments).map(comment => {
           return comment.songId.toString() ===songId ? (
-            <div style={{margin:"20px 10px"}}>
+            <div style={{margin:"20px 10px", border:"1px solid black", padding:"5px"}}>
               <div>{comment?.User.username}</div>
               <div>{comment.body}</div>
             </div>
