@@ -1,6 +1,6 @@
 #song-description{
   margin:10px 10px;
-  border:1px solid purple;
+  /* border:1px solid purple; */
 }
 #comment-input{
   width:96%;
@@ -24,7 +24,8 @@
 }
 #comments-container{
   margin: 10px 250px 100px 250px;
-  border:1px solid green;
+  border:1px solid grey;
+  background-color: rgb(228, 228, 228);
 }
 
 #comments-submission{

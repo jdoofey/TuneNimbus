@@ -39,6 +39,13 @@ module.exports = {
         firstName: 'Snakey',
         lastName: 'Hissboy'
       },
+      {
+        email: "rllyshortgirl@tiny.com",
+        username: "˞˞˞˞˞˞˞˞˞˞˞˞˞˞˞˞˞keshort",
+        hashedPassword: bcrypt.hashSync('androiduser:c'),
+        firstName: 'Shelly',
+        lastName: 'Kaowo'
+      }
     ], {});
   },
 

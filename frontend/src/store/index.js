@@ -1,14 +1,16 @@
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import { legacy_createStore as createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+
 //PHASE1 session actions and reducer
 import sessionReducer from './session';
 import songReducer from "./songs";
 import playlistReducer from "./playlist";
 import commentReducer from "./comments";
+
+
 const rootReducer = combineReducers({
   session: sessionReducer,
   song: songReducer,
-  //change everywhere to an s
   playlists: playlistReducer,
   comments: commentReducer
 });
