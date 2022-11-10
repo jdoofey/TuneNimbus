@@ -43,10 +43,11 @@ export const getComments = (songId) => async (dispatch) => {
 }
 
 export const submitComment = (comment, songId) => async dispatch => {
-  const res = await csrfFetch(`/api/${songId}/comments`, {
+
+  const res = await csrfFetch(`/api/comments/${songId}/comments`, {
     method:"POST",
     headers:{"Content-Type": "application/json"},
-    body: JSON.stringify({comment})
+    body: JSON.stringify(comment)
   })
   if (res.ok) {
     const data = await res.json()

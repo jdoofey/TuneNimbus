@@ -71,12 +71,9 @@ router.put('/:commentId', restoreUser, requireAuth, async (req, res)=>{
 router.post('/:songId/comments', async (req, res)=>{
   const {songId} = req.params
   const user = req.user
-  const {body} = req.body
+
+  console.log("----------------", req.body.comment)
   const song = await Song.findByPk(songId)
-  const comment = await Comment.create({
-    userId: user.id,
-    body
-  })
   if (!song) {
     res.statusCode = 404
     return res.json({
@@ -84,6 +81,11 @@ router.post('/:songId/comments', async (req, res)=>{
       statusCode: res.statusCode,
     })
   }
+  const comment = await Comment.create({
+    userId: user.id,
+    body:req.body.comment,
+    songId:songId
+  })
   return res.json(comment)
 })
 

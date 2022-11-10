@@ -7,6 +7,7 @@ export default function Comments() {
   const dispatch = useDispatch()
   const comments = useSelector(state => state.comments)
   const song = useSelector(state => state.song.singleSong)
+  
   const { songId } = useParams()
   const [comment, setComment] = useState("")
   const [valErrs, setValErrs] = useState([])
@@ -31,19 +32,17 @@ export default function Comments() {
       valErrs.push("Please type out a comment")
       return setShowErrs(true)
     }
-    const payload = {
-      comment: comment,
-      songId: song.id
-    }
+    const payload={comment:comment}
+
     setShowErrs(false)
-    const newComment = await dispatch(submitComment(payload))
+    const newComment = await dispatch(submitComment(payload, song.id))
     if (newComment) setComment('')
   }
   return (
     <div id="comments-container">
       <div id="song-description">Description:{" "}{song.description}</div>
       <div id="comments-submission">
-        <form id="comment-form">
+        <form onSubmit={onSubmit} id="comment-form">
           <input
             id="comment-input"
             type="text"
