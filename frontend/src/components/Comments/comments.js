@@ -50,6 +50,7 @@ export default function Comments() {
             placeholder="  Write a comment..."
             value={comment}
             onChange={e => setComment(e.target.value)}
+            className="login-input"
           ></input>
           <button id="comment-submit-btn" type="submit">Post</button>
         </form>
@@ -57,8 +58,9 @@ export default function Comments() {
       <ul>
         {Object.values(comments).map(comment => {
           return comment.songId.toString() ===songId ? (
-            <div style={{margin:"20px 10px", border:"1px solid black", padding:"5px"}}>
+            <div style={{margin:"20px 10px", border:"1px solid grey", padding:"5px"}}>
               <div>{comment?.User.username}</div>
+              <div style={{fontSize:"12px", marginBottom:"10px"}}>{new Date(song.createdAt).toString().slice(4, 16)}</div>
               <div>{comment.body}</div>
             </div>
           )  : null

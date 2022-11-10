@@ -57,3 +57,26 @@
 #login-errors {
   color:red
 }
+
+.sign-in-btn{
+  background-color: transparent;
+  height: fit-content;
+  padding: 7px;
+  border: rgb(215,215,215) 1px solid;
+  color: rgb(198, 198, 198);
+  border-radius: 4px;
+  margin: 14px;
+  cursor: pointer;
+  transition: .4s;
+}
+.sign-in-btn:hover{
+  background-color: rgb(56, 56, 56);
+  color: white;
+}
+
+.login-input{
+  background-color: rgb(46, 46, 46);
+  border-radius: 4px;
+  padding: 5px;
+  color: white;
+}

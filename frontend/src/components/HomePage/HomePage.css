@@ -27,13 +27,14 @@
 }
 
 .bottom-container {
-  margin-top: -300px;
+  margin-top: -330px;
   background-image: url("https://i.imgur.com/zsL5rFt.png");
   width: 1265px;
   height:450px;
   z-index: 1;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-bottom: 100px;
 
 }
 .bottom-text{

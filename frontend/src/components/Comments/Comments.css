@@ -1,5 +1,6 @@
 #song-description{
   margin:10px 10px;
+  padding-left: 40px;
   /* border:1px solid purple; */
 }
 #comment-input{
@@ -15,6 +16,7 @@
   background-color: #ff652d;
   color:white;
   border:none;
+  margin-left: 5px;
   border-radius: 4px;
 }
 #comment-form{
@@ -25,15 +27,15 @@
 #comments-container{
   margin: 10px 250px 100px 250px;
   border:1px solid grey;
-  background-color: rgb(228, 228, 228);
+  background-color: #1a1a1a;
 }
 
 #comments-submission{
   margin:10px 10px;
-  border:1px solid grey;
+
   border-radius:1px;
   padding:10px 10px 10px 40px;
-  background-color: rgb(189, 189, 189) ;
+  background-color: #1a1a1a ;
 }
 
 #comments-display{

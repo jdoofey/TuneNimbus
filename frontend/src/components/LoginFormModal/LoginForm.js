@@ -43,6 +43,7 @@ function LoginForm() {
       <label id='user-label'>
         Username or Email
         <input
+        className="login-input"
           id='user'
           type="text"
           value={credential}
@@ -53,6 +54,7 @@ function LoginForm() {
       <label id='pass-label'>
         Password
         <input
+        className="login-input"
           id='pass'
           type="password"
           value={password}

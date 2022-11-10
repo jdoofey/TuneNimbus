@@ -39,7 +39,7 @@
   border:none;
   background-image: url(https://i.imgur.com/5vs8qrA.png);
   background-size: cover;
-  transition:.5s;
+  transition:.4s;
 }
 /* @media screen and (max-width:1200px){
   #list-container {
@@ -56,6 +56,15 @@
 } */
 @keyframes fade-in {
   0%    { opacity: 0; }
+  10%    {opacity:.1}
+  20%    {opacity:.2}
+  30%   {opacity:.3}
+  40%   {opacity:.4}
+  50%   {opacity:.5}
+  60%   {opacity:.6}
+  70%   {opacity:.7}
+  80%   {opacity:.8}
+  90%   {opacity:.9}
   100%  { opacity: 1; }
 }
 
@@ -67,9 +76,9 @@
   align-self: center;
   border-radius: 100px;
   border-style: none;
-  margin-top: -130px;
-  transition:.25s;
-  animation: fade-in .33s ;
+  margin-top: -140px;
+  transition:.4s;
+  animation: fade-in .5s ;
 }
 
 #play-button:hover {
@@ -90,8 +99,9 @@
   justify-self: flex-end;
   border-radius: 100px;
   border-style: none;
-  margin-top: 29px;
-  transition:.25s;
+  margin-top: 28px;
+  margin-right: 10px;
+  transition:.4s;
   animation: fade-in .33s ;
   color:grey;
   z-index:0

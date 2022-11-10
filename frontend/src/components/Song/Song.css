@@ -4,6 +4,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 1px solid rgb(202, 202, 202);
+  padding: 10px;
+  border-radius: 4px;
+  background-color: transparent;
+  text-align: center;
 }
 
 #placeholder-img {
@@ -13,8 +18,17 @@
 }
 
 #title-box {
-  display: flex;
-  align-self: center;
+
+
   font-size: 13px;
   width:150px;
+  overflow: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+}
+
+#title{
+  background-color: #121212;
+  color: white;
 }

@@ -79,6 +79,7 @@ function SignupForm() {
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className="login-input"
           required
         />
       </label>
@@ -87,6 +88,7 @@ function SignupForm() {
         <input
           id='first-name'
           type="text"
+          className="login-input"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
@@ -97,6 +99,7 @@ function SignupForm() {
         <input
           id='last-name'
           type="text"
+          className="login-input"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
@@ -108,6 +111,7 @@ function SignupForm() {
           id='username'
           type="text"
           value={username}
+          className="login-input"
           onChange={(e) => setUsername(e.target.value)}
           required
         />
@@ -118,6 +122,7 @@ function SignupForm() {
           id='password'
           type="password"
           value={password}
+          className="login-input"
           onChange={(e) => setPassword(e.target.value)}
           required
         />
@@ -127,6 +132,7 @@ function SignupForm() {
         <input
           id='confirm-password'
           type="password"
+          className="login-input"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required

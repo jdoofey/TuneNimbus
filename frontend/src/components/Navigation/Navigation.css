@@ -1,9 +1,9 @@
 #nav-container {
   display: flex;
   position:fixed;
-	background-color: #333;
+	background-color: rgb(30, 30, 30);
   justify-content: space-between;
-  height:50px;
+  height:60px;
   width:100%;
   top:0;
   left:0;
@@ -37,7 +37,7 @@
   position: absolute;
   justify-content: center;
   align-items: center;
-  background-color: #333;
+  background-color: rgb(30, 30, 30);
   color: rgb(153, 153, 153);
   /* font-size: small; */
   border: none;
@@ -61,7 +61,7 @@
   color:white
 }
 .nav-ele:focus {
-  background-color: rgba(21, 21, 21, 0.966);
+  background-color: rgba(0, 0, 0, 0.966);
   color: white
 }
 /* amanda saves my css */
@@ -92,12 +92,12 @@ test{
 .profile-dropdown {
   display: flex;
   background-color: #fff;
-  border: #333 1px solid;
+  border: rgb(30, 30, 30) 1px solid;
   position: absolute;
 
   top: 50px;
   width:199px;
-  color: #333;
+  color: rgb(30, 30, 30);
   border-radius: 5px;
   flex-direction: column;
   padding: 7px 7px;
@@ -107,7 +107,7 @@ test{
 }
 
 #prfile-btn{
-  background-color: #333;
+  background-color: rgb(30, 30, 30);
   color: #fff;
   border:none;
   margin-right: 25px;

@@ -9,17 +9,8 @@ function LoginFormModal() {
 
   return (
     <>
-      <button style={{
-          backgroundColor: "#383838",
-          height:"fit-content",
-          padding:"7px",
-          border:"rgb(215, 215, 215) 1px solid",
-          color:"rgb(215, 215, 215)",
-          borderRadius:"3px",
-          alignSelf:"center",
-          margin:"5px",
-          cursor:"pointer"
-      }}
+      <button 
+      className="sign-in-btn"
       onClick={() =>{
 
         setShowModal(true)

@@ -22,34 +22,39 @@
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: white;
+  background-color: #121212;
   opacity: .8;
 
 }
 
 #modal-content {
   position: absolute;
-  background-color:white;
+  background-color:#121212;
   opacity: 1;
   height:fit-content;
   width:fit-content;
   /* border: blue 1px solid; */
   display:flex;
   flex-direction: column;
-  padding:30px;
+  padding:60px 50px;
   border-radius: 2px;
   margin-top: 150px;
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 4px;
 }
 
 
 
 #close-modal {
-  padding-left: 3px;
+  position: relative;
+  bottom: 50px;
+  right: 50px;
   display: flex;
   justify-content: flex-end;
   margin-right: 5px;
   border:none;
-  background-color: white;
+  background-color: transparent;
+  color: white;
   width:fit-content
 }
 

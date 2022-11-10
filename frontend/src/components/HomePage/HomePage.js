@@ -36,9 +36,6 @@ const HomePage = ({ setAudioUrl }) => {
               return (
                 <div id="list-el" key={song.id}>
                   <Song song={song} />
-
-/home/jake/appacademy/projects/w12Projects/authenticate-me-project/authenticate-me/backend/db/seeders
-
                   <button
                     id="play-btn"
                     onClick={(e) => {
