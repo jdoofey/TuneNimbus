@@ -7,16 +7,16 @@ export default function Comments() {
   const dispatch = useDispatch()
   const comments = useSelector(state => state.comments)
   const song = useSelector(state => state.song.singleSong)
-  
+
   const { songId } = useParams()
   const [comment, setComment] = useState("")
   const [valErrs, setValErrs] = useState([])
   const [showErrs, setShowErrs] = useState(false)
 
-
+  const [isLoaded, setIsLoaded] = useState(false)
   useEffect(() => {
-
     dispatch(getComments(songId))
+    .then(()=> setIsLoaded(true))
   }, [dispatch], songId)
 
 
@@ -38,7 +38,7 @@ export default function Comments() {
     const newComment = await dispatch(submitComment(payload, song.id))
     if (newComment) setComment('')
   }
-  return (
+  return isLoaded && (
     <div id="comments-container">
       <div id="song-description">Description:{" "}{song.description}</div>
       <div id="comments-submission">
@@ -58,8 +58,8 @@ export default function Comments() {
         {Object.values(comments).map(comment => {
           return comment.songId.toString() ===songId ? (
             <div style={{margin:"20px 10px", border:"1px solid grey", padding:"5px"}}>
-              <div>{comment?.User.username}</div>
-              <div style={{fontSize:"12px", marginBottom:"10px"}}>{new Date(song.createdAt).toString().slice(4, 16)}</div>
+              <div>{comment?.User?.username}</div>
+              <div style={{fontSize:"12px", marginBottom:"10px"}}>{new Date(comment.createdAt).toString().slice(4, 16)}</div>
               <div>{comment.body}</div>
             </div>
           )  : null
