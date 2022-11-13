@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { getComments, submitComment } from '../../store/comments'
+import { getComments, submitComment, reset, editCommentThunk, removeComment } from '../../store/comments'
 import './Comments.css'
 export default function Comments() {
   const dispatch = useDispatch()
   const comments = useSelector(state => state.comments)
   const song = useSelector(state => state.song.singleSong)
+  const sessionUser = useSelector((state) => state.session.user);
 
   const { songId } = useParams()
   const [comment, setComment] = useState("")
@@ -16,7 +17,7 @@ export default function Comments() {
   const [isLoaded, setIsLoaded] = useState(false)
   useEffect(() => {
     dispatch(getComments(songId))
-    .then(()=> setIsLoaded(true))
+      .then(() => setIsLoaded(true))
   }, [dispatch], songId)
 
 
@@ -32,7 +33,7 @@ export default function Comments() {
       valErrs.push("Please type out a comment")
       return setShowErrs(true)
     }
-    const payload={comment:comment}
+    const payload = { comment: comment }
 
     setShowErrs(false)
     const newComment = await dispatch(submitComment(payload, song.id))
@@ -54,17 +55,39 @@ export default function Comments() {
           <button id="comment-submit-btn" type="submit">Post</button>
         </form>
       </div>
-      <ul>
-        {Object.values(comments).map(comment => {
-          return comment.songId.toString() ===songId ? (
-            <div style={{margin:"20px 10px", border:"1px solid grey", padding:"5px"}}>
-              <div>{comment?.User?.username}</div>
-              <div style={{fontSize:"12px", marginBottom:"10px"}}>{new Date(comment.createdAt).toString().slice(4, 16)}</div>
-              <div>{comment.body}</div>
-            </div>
-          )  : null
-        })}
-      </ul>
+      {comments && (
+
+        <ul>
+          {Object.values(comments).map(comment => {
+            console.log(comment)
+            return comment.songId.toString() === songId ? (
+              <div style={{ margin: "20px 10px", border: "1px solid grey", padding: "5px" }}>
+                <div>
+                  <span>{comment?.User?.username}</span>
+                  {comment?.User?.username === sessionUser.username && (
+                    <span>
+                      <button>Edit</button>
+                      <button onClick={async (e)=>{
+                        await dispatch(removeComment(comment))
+                        window.confirm("Are you sure you want to delete this comment?")
+                        await dispatch(getComments(songId))
+                      }}
+                    >Delete</button>
+                    </span>
+                  )}
+                </div>
+                <div style={{ fontSize: "12px", marginBottom: "10px" }}>{new Date(comment.createdAt).toString().slice(4, 16)}</div>
+                <div>{comment.body}</div>
+              </div>
+            ) : null
+          })}
+        </ul>
+      )}
+      {!comments && (
+        <div>
+          <div>No reviews yet</div>
+        </div>
+      )}
 
     </div>
   )

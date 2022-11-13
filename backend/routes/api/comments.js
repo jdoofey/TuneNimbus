@@ -96,6 +96,7 @@ router.get('/:songId/comments', async(req, res)=>{
   const comments = await song.getComments({
     include:[{model:User, attributes:['id', 'username']}]
   })
+  
   if (!song) {
     res.statusCode = 404
     return res.json({

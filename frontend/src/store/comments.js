@@ -57,16 +57,34 @@ export const submitComment = (comment, songId) => async dispatch => {
   return null
 }
 
-export const removeComment = commentId => async dispatch => {
-  const response = await csrfFetch(`/api/comments/${commentId}`, {
+export const removeComment = comment => async dispatch => {
+  const response = await csrfFetch(`/api/comments/${comment.id}`, {
     method:"DELETE"
   })
   if (response.ok) {
-    dispatch(deleteComment(commentId))
+    dispatch(deleteComment(comment))
     return response
   }
 }
 
+export const editCommentThunk = comment => async dispatch => {
+  const response = await csrfFetch(`/api/comments/${comment.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json"},
+    body: JSON.stringify(comment)
+  });
+  if (response.ok) {
+    const editedCommentData = await response.json();
+    dispatch(editComment(editedCommentData));
+    return editedCommentData
+  }
+}
+
+
+const initialState = {
+  allComments:{},
+  singleCOmment:{}
+}
 const commentReducer = (state ={}, action) => {
   switch (action.type) {
       case LOAD_ALL:
@@ -81,8 +99,11 @@ const commentReducer = (state ={}, action) => {
               ...state,
               [action.comment.id]: action.comment
           }
-    default:
-      return state
+      case RESET:{
+        return initialState
+      }
+      default:
+          return state
   }
 }
 

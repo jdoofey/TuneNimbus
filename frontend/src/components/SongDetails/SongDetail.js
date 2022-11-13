@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import EditSongForm from "../EditSongForm/EditSongForm";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { getSongDeets } from "../../store/songs";
@@ -49,12 +50,17 @@ export default function SongDetails({ setAudioUrl }) {
           }}
           src={
             song.previewImage !== null && song.previewImage !== ""
-              ? song.previewImage
-              : "https://i.imgur.com/QwtY70m.jpg"
+            ? song.previewImage
+            : "https://i.imgur.com/QwtY70m.jpg"
           }
           alt="404"
-        ></img>
+          ></img>
         <h1 id="waveform">{"[ - - - Waveform would go here - - - ]"}</h1>
+             {(sessionUser.username === song?.Artist?.username) && (
+              <div id="edit-song-container">
+                <EditSongForm song={song}/>
+              </div>
+             )}
       </div>
       <Comments />
     </>
@@ -82,6 +88,3 @@ export default function SongDetails({ setAudioUrl }) {
 //     Date Uploaded:{"   "}{new Date(song.createdAt).toString().slice(4, 16)}{"  "}
 
 //   </h4>
-//   {(sessionUser.username === song?.Artist?.username) && (
-//     <div id="edit-song-container">
-//       <EditSongForm song={song}/>
