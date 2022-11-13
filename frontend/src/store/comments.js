@@ -99,6 +99,11 @@ const commentReducer = (state ={}, action) => {
               ...state,
               [action.comment.id]: action.comment
           }
+      case DELETE:
+          const newState = {...state, allComments:{...state.allComments}}
+          delete newState.allComments[action.comment.id]
+          newState.singleComment = {}
+          return newState
       case RESET:{
         return initialState
       }

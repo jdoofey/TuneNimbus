@@ -18,7 +18,7 @@ export default function Comments() {
   useEffect(() => {
     dispatch(getComments(songId))
       .then(() => setIsLoaded(true))
-  }, [dispatch], songId)
+  }, [dispatch, songId])
 
 
   useEffect(() => {
@@ -67,10 +67,10 @@ export default function Comments() {
                   {comment?.User?.username === sessionUser.username && (
                     <span>
                       <button>Edit</button>
-                      <button onClick={async (e)=>{
-                        await dispatch(removeComment(comment))
+                      <button onClick={()=>{
+                        dispatch(removeComment(comment))
                         window.confirm("Are you sure you want to delete this comment?")
-                        await dispatch(getComments(songId))
+                        dispatch(getComments(songId))
                       }}
                     >Delete</button>
                     </span>
