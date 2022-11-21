@@ -17,6 +17,9 @@ function Navigation({ isLoaded }) {
         <NavLink className="nav-link"to="/songs">
           <button className="nav-ele">All Music</button>
         </NavLink>
+        <NavLink className="nav-link"to="/albums">
+          <button className="nav-ele">Albums</button>
+        </NavLink>
         <NavLink  className="nav-link" to="/songs/current">
           <button className="nav-ele">Your Music</button>
         </NavLink>
@@ -53,15 +56,16 @@ function Navigation({ isLoaded }) {
         </NavLink>
       </span>
 
-      <span className="container">
+
         {!sessionUser && (
+          <span className="container">
 
           <NavLink className="nav-link" exact to="/">
           <button className="nav-ele">Home</button>
         </NavLink>
-          )}
       </span>
-      <div className="something">{isLoaded && sessionLinks}</div>
+          )}
+          {isLoaded && sessionLinks}
     </div>
     </>
   );

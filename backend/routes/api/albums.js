@@ -126,7 +126,14 @@ router.get('/:albumId', async (req, res)=>{
 })
 //get all albums
 router.get('/', async (req, res) =>{
-  const albums = await Album.findAll()
+  const albums = await Album.findAll({
+    include:[
+      {model:User, as:'Artist',
+        attributes:['id', 'username','previewImage']
+      },
+      {model:Song}
+    ]
+  })
   res.json({Albums:albums})
 })
 
