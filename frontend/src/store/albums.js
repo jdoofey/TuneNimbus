@@ -115,3 +115,37 @@ export const deleteAlbumThunk = albumId => async dispatch => {
   }
   return "Bad Data"
 }
+
+const albumReducer = (state = {}, action) => {
+  let newState = {}
+  switch (action.type) {
+    case LOAD_ALL:
+      action.albums.Albums.forEach(album => newState[album.id] = album)
+      return newState
+    case LOAD_ONE:
+      newState = {...state}
+      newState[action.album.id] = action.album
+      return newState
+    case LOAD_CURRENT:
+      action.albums.Albums.forEach(album => newState[album.id] = album)
+      return newState
+    case ADD:
+      newState = {...state}
+      newState[action.album.id] = action.album
+      return newState
+    case EDIT:
+      newState = {...state}
+      newState[action.album.id] = action.album
+      return newState
+    case DELETE:
+      newState = {...state}
+      delete newState[action.album.id]
+      return newState
+    case RESET:
+      return {}
+    default:
+      return state
+  }
+}
+
+export default albumReducer
