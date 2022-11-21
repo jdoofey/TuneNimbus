@@ -6,13 +6,14 @@ import sessionReducer from './session';
 import songReducer from "./songs";
 import playlistReducer from "./playlist";
 import commentReducer from "./comments";
-
+import albumReducer from "./albums";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   song: songReducer,
   playlists: playlistReducer,
-  comments: commentReducer
+  comments: commentReducer,
+  albums: albumReducer
 });
 //PHASE1 session actions and reducer END
 let enhancer;
