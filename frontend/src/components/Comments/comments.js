@@ -18,7 +18,7 @@ export default function Comments() {
   useEffect(() => {
     dispatch(getComments(songId))
       .then(() => setIsLoaded(true))
-  }, [dispatch, songId])
+  }, [dispatch])
 
 
   useEffect(() => {
@@ -37,6 +37,7 @@ export default function Comments() {
 
     setShowErrs(false)
     const newComment = await dispatch(submitComment(payload, song.id))
+    
     if (newComment) setComment('')
   }
   return isLoaded && (
@@ -55,12 +56,12 @@ export default function Comments() {
           <button id="comment-submit-btn" type="submit">Post</button>
         </form>
       </div>
-      {comments && (
+      {Object.values(comments).length && (
 
         <ul>
           {Object.values(comments).map(comment => {
             console.log(comment)
-            return comment.songId.toString() === songId ? (
+            return comment?.songId.toString() === songId ? (
               <div style={{ margin: "20px 10px", border: "1px solid grey", padding: "5px" }}>
                 <div>
                   <span>{comment?.User?.username}</span>

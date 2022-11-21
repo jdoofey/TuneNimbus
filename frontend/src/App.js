@@ -20,6 +20,7 @@ import "./components/Song/Song.css"
 import "react-h5-audio-player/lib/styles.css";
 import "./App.css";
 function App() {
+  console.log("THIS IS LOCAITON-----",window.location)
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const [audioUrl, setAudioUrl] = useState("");

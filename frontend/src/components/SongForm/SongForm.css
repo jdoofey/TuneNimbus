@@ -5,7 +5,7 @@
   width:320px;
   /* border: grey 1px solid; */
   height:900px;
-  background: white;
+  background-color: #0c0c0c;
   padding-left: 150px;
   padding-right:150px;
   padding-top: 100px;
@@ -14,7 +14,7 @@
 #container {
   display:flex;
   justify-content: center;
-  background-color: rgb(238, 238, 238);
+  background-color: #121212;
 }
 
 /* .bg-div {
