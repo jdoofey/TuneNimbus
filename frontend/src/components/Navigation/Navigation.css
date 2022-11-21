@@ -68,11 +68,9 @@
 .something {
   display:flex
 }
-.profile-dropdown {
-  color: black;
-  cursor: default;
-}
+
 .profile-dropdown li {
+  text-align: right;
   display: flex;
   list-style-type: none;
 }
@@ -94,9 +92,11 @@ test{
   background-color: #fff;
   border: rgb(30, 30, 30) 1px solid;
   position: absolute;
-
-  top: 50px;
-  width:199px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  top: 60px;
+  left: 360px;
+  width:fit-content;
   color: rgb(30, 30, 30);
   border-radius: 5px;
   flex-direction: column;
