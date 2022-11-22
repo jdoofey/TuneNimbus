@@ -24,7 +24,10 @@
   color:white;
 }
 #song-details-title{
-  font-size: 25px;
+  font-size: 35px;
+}
+#song-details-artist{
+  font-size: 20px;
 }
 #song-details-title,
 #song-details-artist{

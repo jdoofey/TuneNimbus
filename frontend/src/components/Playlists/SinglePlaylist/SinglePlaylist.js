@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./SinglePlaylist.css"
 
 function SinglePlaylist(playlist) {
-  console.log(playlist)
+
   return (
     <Link to={`/playlists/${playlist.playlist.id}`}>
       <div id="playlist-container">

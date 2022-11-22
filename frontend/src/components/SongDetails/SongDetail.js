@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import EditSongForm from "../EditSongForm/EditSongForm";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { getSongDeets } from "../../store/songs";
 import React, { useEffect } from "react";
 import Comments from "../Comments/comments";
+import * as moment from 'moment';
 import "./SongDetail.css";
 export default function SongDetails({ setAudioUrl }) {
 
@@ -40,7 +39,7 @@ export default function SongDetails({ setAudioUrl }) {
             </div>
           </div>
           <div id="song-details-date">
-            <span>{new Date(song.createdAt).toString().slice(4, 16)}</span>
+            <span>{moment(song.createdAt).fromNow()}</span>
           </div>
         </div>
         <img id="song-details-image"

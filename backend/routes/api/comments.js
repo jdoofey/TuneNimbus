@@ -72,7 +72,6 @@ router.post('/:songId/comments', async (req, res)=>{
   const {songId} = req.params
   const user = req.user
 
-  console.log("----------------", req.body.comment)
   const song = await Song.findByPk(songId)
   if (!song) {
     res.statusCode = 404
@@ -96,7 +95,7 @@ router.get('/:songId/comments', async(req, res)=>{
   const comments = await song.getComments({
     include:[{model:User, attributes:['id', 'username']}]
   })
-  
+
   if (!song) {
     res.statusCode = 404
     return res.json({

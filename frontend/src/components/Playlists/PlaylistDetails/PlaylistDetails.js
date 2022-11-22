@@ -12,7 +12,7 @@ export default function PlaylistDetails({ setAudioUrl }) {
 
   const playlist = useSelector((state) => state.playlists[playlistId]);
 
-  // console.log(playlist.Songs);
+  
   useEffect(() => {
     dispatch(getOnePlaylist(playlistId));
   }, [playlistId, dispatch]);
