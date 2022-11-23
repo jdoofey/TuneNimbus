@@ -29,6 +29,26 @@
 #song-details-artist{
   font-size: 20px;
 }
+.song-details-album-img{
+  height: 33px;
+  object-fit: cover;
+  width: 33px;
+}
+.song-details-album-container{
+  display: flex;
+  margin-left: 25px;
+  align-items: center;
+}
+.song-details-album{
+  font-size: 15px;
+  font-weight: bold;
+  background-color: rgb(36, 36, 36);
+  color:white;
+  width:fit-content;
+  margin:3px 0px;
+  padding:5px 15px;
+
+}
 #song-details-title,
 #song-details-artist{
   font-weight: bold;

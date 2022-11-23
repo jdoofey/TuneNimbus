@@ -26,7 +26,10 @@ export default function GetAllAlbums() {
     );
   return (
     <div>
+      <div className="albums-header-container">
       <h1>Albums</h1>
+      <button className="create-album-btn">Create Album</button>
+      </div>
       <div className="album-map-container">
         {Object.values(albums).map((album) => {
           return (

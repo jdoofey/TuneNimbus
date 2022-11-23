@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
+
 import { useParams } from "react-router-dom";
 import EditSongForm from "../EditSongForm/EditSongForm";
 import { getSongDeets } from "../../store/songs";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Comments from "../Comments/comments";
 import * as moment from 'moment';
 import "./SongDetail.css";
@@ -11,9 +12,12 @@ export default function SongDetails({ setAudioUrl }) {
   const dispatch = useDispatch();
   const { songId } = useParams();
   const song = useSelector((state) => state.song.singleSong);
+
+  const [isLoaded, setIsLoaded] = useState(false)
   useEffect(() => {
 
-    dispatch(getSongDeets(songId));
+    dispatch(getSongDeets(songId))
+    .then(()=> setIsLoaded(true))
   }, [songId, dispatch]);
 
   const sessionUser = useSelector(state => state.session.user)
@@ -21,7 +25,7 @@ export default function SongDetails({ setAudioUrl }) {
   //   // TODO ADD CSS
   // }
 
-  return (
+  return isLoaded && (
     <>
       <div id="banner-container">
         <div id="banner-top">
@@ -36,6 +40,14 @@ export default function SongDetails({ setAudioUrl }) {
             <div id="banner-song-details">
               <div id="song-details-title">{song.title}</div>
               <div id="song-details-artist">{song?.Artist?.username}</div>
+              <div>
+              {song?.Album!== null && (
+              <div className="song-details-album-container">
+                <img className="song-details-album-img" src={song.Album.previewImage === null ? "https://images.unsplash.com/photo-1599508704512-2f19efd1e35f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" : song.Album.previewImage}/>
+                <div className="song-details-album">{`In Album: ${song.Album.title}`}</div>
+              </div>
+              )}
+              </div>
             </div>
           </div>
           <div id="song-details-date">
