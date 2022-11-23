@@ -16,6 +16,12 @@
   justify-content: center;
   background-color: #121212;
 }
+.upload-song-input{
+  background-color: #121212;
+  padding: 5px;
+  border: 1px solid rgb(77, 77, 77);
+  border-radius: 4px;
+}
 
 /* .bg-div {
   background-image: url(https://i.imgur.com/WLTSm3i.png);

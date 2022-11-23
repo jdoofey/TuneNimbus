@@ -16,11 +16,13 @@ import { CurrentPlaylists } from "./components/Playlists/CurrentPlaylists/Curren
 import AudioPlayer from "react-h5-audio-player";
 import PlaylistDetails from "./components/Playlists/PlaylistDetails/PlaylistDetails";
 import CreatePlaylist from "./components/Playlists/CreatePlaylist/CreatePlaylist";
+import GetAllAlbums from "./components/GetAllAlbums/GetAllAlbums";
 import "./components/Song/Song.css"
 import "react-h5-audio-player/lib/styles.css";
 import "./App.css";
+import AlbumDetails from "./components/AlbumDetails/AlbumDetails";
 function App() {
-  console.log("THIS IS LOCAITON-----",window.location)
+  
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const [audioUrl, setAudioUrl] = useState("");
@@ -46,17 +48,23 @@ function App() {
             <Route exact path="/songs/current">
               <SongsList setAudioUrl={setAudioUrl} />
             </Route>
-            <Route path="/songs/:songId">
+            <Route exact path="/songs/:songId">
               <SongDetails setAudioUrl={setAudioUrl}/>
             </Route>
-            <Route path="/playlists/current">
+            <Route exact path="/playlists/current">
               <CurrentPlaylists />
             </Route>
-            <Route path="/addplaylist">
+            <Route exact path="/addplaylist">
               <CreatePlaylist />
             </Route>
-            <Route path="/playlists/:playlistId">
+            <Route exact path="/playlists/:playlistId">
               <PlaylistDetails setAudioUrl={setAudioUrl} />
+            </Route>
+            <Route exact path="/albums">
+              <GetAllAlbums />
+            </Route>
+            <Route exact path="/albums/:albumId">
+              <AlbumDetails />
             </Route>
             <Route exact path="/login">
               <LoginForm />

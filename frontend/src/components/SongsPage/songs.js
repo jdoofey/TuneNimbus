@@ -81,7 +81,7 @@ export const SongsList = ({ setAudioUrl }) => {
                             <div id="add-song-list-ele" key={playlist.id}>
                               <div id="addsong-container">
                                 <img
-                                  id="smol-img"
+                                  id="kelly-size-img"
                                   src={
                                     playlist.previewImage ||
                                    "https://i.imgur.com/QwtY70m.jpg"

@@ -21,7 +21,7 @@ const EditSongForm = ({ song }) => {
 
   const handleEviscerate = async (e) => {
     e.preventDefault();
-    console.log("DELETE", songState);
+ 
 
     dispatch(eviscerateSong(songState.id));
     history.push(`/songs/current`);
@@ -170,7 +170,7 @@ const EditSongForm = ({ song }) => {
                     }}
                     type="button"
                     onClick={
-                      handleEviscerate 
+                      handleEviscerate
                     }
                   >
                     Delete Song

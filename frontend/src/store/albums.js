@@ -123,8 +123,8 @@ const albumReducer = (state = {}, action) => {
       action.albums.Albums.forEach(album => newState[album.id] = album)
       return newState
     case LOAD_ONE:
-      newState = {...state}
-      newState[action.album.id] = action.album
+      newState = {...state }
+      newState["singleAlbum"] = action.album
       return newState
     case LOAD_CURRENT:
       action.albums.Albums.forEach(album => newState[album.id] = album)

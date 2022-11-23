@@ -1,0 +1,53 @@
+.album-map-container{
+  display: grid;
+  grid-template-columns: repeat(6, 190px);
+  grid-row-gap: 30px;
+  grid-column-gap: 30px ;
+  justify-items: center;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-bottom: 70px;
+  padding-bottom: 25px;
+  justify-content: center;
+}
+
+.album-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(202, 202, 202);
+  padding: 10px;
+  border-radius: 4px;
+  background-color: transparent;
+  text-align: center;
+  width: 160px;
+}
+
+.album-card-image{
+  width:170px;
+  height:170px;
+}
+
+.albums-header-container{
+  display: flex;
+  margin-top: 50px;
+  margin-left: 400px;
+  margin-right: 400px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create-album-btn{
+  font-size: 18px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff652d;
+  color:white;
+  border:none;
+  border-radius: 4px;
+  padding:14px 28px;
+  height: fit-content;
+  cursor: pointer;
+}

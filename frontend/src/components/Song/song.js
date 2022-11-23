@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import "./Song.css";
 import { useSelector } from "react-redux";
 function Song(song) {
-  // console.log(song.song.url)
+
   const sessionUser = useSelector((state) => state.session.user);
 
   if (sessionUser) {

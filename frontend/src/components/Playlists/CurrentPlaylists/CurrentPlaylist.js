@@ -2,9 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getPlaylistsByCurrentUser,
-  resetPLaylists,
+  
 } from "../../../store/playlist";
-import { NavLink } from "react-router-dom";
 import SinglePlaylist from "../SinglePlaylist/SinglePlaylist";
 import CreatePlaylist from "../CreatePlaylist/CreatePlaylist";
 import "./CurrentPlaylist.css";
@@ -17,7 +16,7 @@ export const CurrentPlaylists = () => {
     dispatch(getPlaylistsByCurrentUser());
     // return () => dispatch(resetPLaylists())
   }, [dispatch]);
- 
+
   if (!Object.values(playlists).length)
     return (
       <div style={{display:"flex",

@@ -37,7 +37,7 @@ export default function Comments() {
 
     setShowErrs(false)
     const newComment = await dispatch(submitComment(payload, song.id))
-    
+
     if (newComment) setComment('')
   }
   return isLoaded && (
@@ -60,7 +60,7 @@ export default function Comments() {
 
         <ul>
           {Object.values(comments).map(comment => {
-            console.log(comment)
+          
             return comment?.songId.toString() === songId ? (
               <div style={{ margin: "20px 10px", border: "1px solid grey", padding: "5px" }}>
                 <div>

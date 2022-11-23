@@ -1,0 +1,55 @@
+.album-details-parent-container{
+  margin: 70px 250px;
+}
+
+.album-details-preview-img{
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  grid-area: "b";
+}
+
+.album-details-banner{
+  padding: 10px 10px;
+  margin: 100px 0px 0px 0px;
+  background: linear-gradient(175deg, #ad4c5c 0%, #ffc3a0 100%);
+  display:grid;
+  grid-template-columns: auto auto 350px;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    "a a b"
+    "c c b"
+
+}
+
+.album-details-description-container{
+  border: 1px solid gold;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.album-details-artist-profile{
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.album-details-album-description{
+  font-size: 24px;
+}
+
+
+.album-details-song-img{
+  height: 75px;
+  width: 75px;
+  object-fit: cover;
+}
+
+.album-details-song-tile{
+  display: flex;
+  align-items: center;
+  margin: 10px 0px;
+  font-size: 20px;
+  border: 1px solid red;
+}

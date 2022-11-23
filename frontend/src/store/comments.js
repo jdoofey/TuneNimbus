@@ -34,11 +34,11 @@ export const getComments = (songId) => async (dispatch) => {
   const res = await csrfFetch(`/api/songs/${songId}/comments`)
   if (res.ok) {
     const data = await res.json()
-    console.log("why no hit", data)
+
     dispatch(load(data))
     return data
   }
-  console.log("not hit")
+
   return null
 }
 
@@ -89,7 +89,7 @@ const commentReducer = (state ={}, action) => {
   switch (action.type) {
       case LOAD_ALL:
           const allComments = {}
-          console.log("ACTION",action?.songId?.comments)
+          
           action.songId.Comments.forEach(comment => {
               allComments[comment.id] = comment;
           });

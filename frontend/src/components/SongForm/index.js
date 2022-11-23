@@ -84,6 +84,7 @@ const AddSongForm = () => {
             <br></br>
             <label>Song Title</label>
             <input
+              className="upload-song-input"
               type="text"
               placeholder="Song Title"
               min="2"
@@ -97,6 +98,7 @@ const AddSongForm = () => {
             style={{fontFamily:"Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif",
                     height:"70px",
                     width:"300px"}}
+                    className="upload-song-input"
               type="text"
               placeholder="Song Description"
               min="5"
@@ -113,12 +115,14 @@ const AddSongForm = () => {
               min="5"
               value={url}
               required
+              className="upload-song-input"
               onChange={(e) => setUrl(e.target.value)}
             />
             <br></br>
             <label>Cover Picture</label>
             <input
               style={{width:"300px"}}
+              className="upload-song-input"
               type="text"
               placeholder="Upload A Cover Image URL (not required)"
               min="5"
