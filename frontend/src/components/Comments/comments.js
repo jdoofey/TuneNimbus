@@ -18,7 +18,7 @@ export default function Comments() {
   useEffect(() => {
     dispatch(getComments(songId))
       .then(() => setIsLoaded(true))
-  }, [dispatch])
+  }, [dispatch, songId])
 
 
   useEffect(() => {
@@ -60,19 +60,20 @@ export default function Comments() {
 
         <ul>
           {Object.values(comments).map(comment => {
-          
+              const deleteCommentHandler = async () => {
+                window.confirm('Are you sure you want to delete this comment')
+                await dispatch(removeComment(comment))
+                await dispatch(reset())
+                await dispatch(getComments(songId))
+              }
             return comment?.songId.toString() === songId ? (
               <div style={{ margin: "20px 10px", border: "1px solid grey", padding: "5px" }}>
                 <div>
                   <span>{comment?.User?.username}</span>
                   {comment?.User?.username === sessionUser.username && (
                     <span>
-                      <button>Edit</button>
-                      <button onClick={()=>{
-                        dispatch(removeComment(comment))
-                        window.confirm("Are you sure you want to delete this comment?")
-                        dispatch(getComments(songId))
-                      }}
+
+                      <button onClick={deleteCommentHandler}
                     >Delete</button>
                     </span>
                   )}

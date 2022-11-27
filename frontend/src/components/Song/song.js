@@ -1,9 +1,13 @@
 import { NavLink } from "react-router-dom";
 import "./Song.css";
 import { useSelector } from "react-redux";
+import defaultSong from "../../assets/default.png"
 function Song(song) {
 
   const sessionUser = useSelector((state) => state.session.user);
+  const imageOnErrorHandler = (event) => {
+    event.currentTarget.src = defaultSong;
+  };
 
   if (sessionUser) {
     return (
@@ -25,6 +29,7 @@ function Song(song) {
                 ? song.song.previewImage
                 : "https://i.imgur.com/QwtY70m.jpg"
             }
+            onError={imageOnErrorHandler}
           ></img>
           <div id="title-box">{song.song.title}</div>
       </NavLink>
