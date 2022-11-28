@@ -139,7 +139,9 @@ export default function CreateAlbum() {
             onChange={updateAlbumImage}
             required
           />
-          <label>Add a Song (You can add more later)</label>
+
+
+          {/* <label>Add a Song (You can add more later)</label>
           <select
             className="album-song-input album-input"
           >
@@ -148,7 +150,7 @@ export default function CreateAlbum() {
                 <option value={song.id}>{song.title}</option>
               )
             })}
-          </select>
+          </select> */}
 
           <span className="album-form-btns-container">
             <div>{" "}</div>
