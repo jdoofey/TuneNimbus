@@ -15,6 +15,10 @@ export default function GetAllAlbums() {
     return () => dispatch(resetAlbums())
   }, [dispatch])
 
+  const handleCreateAlbum = (e) => {
+    e.preventDefault()
+    history.push('/createalbum')
+  }
   if (!Object.values(albums).length)
     return (
       <div>
@@ -28,7 +32,7 @@ export default function GetAllAlbums() {
     <div>
       <div className="albums-header-container">
       <h1>Albums</h1>
-      <button className="create-album-btn">Create Album</button>
+      <button onClick={handleCreateAlbum} className="create-album-btn">Create Album</button>
       </div>
       <div className="album-map-container">
         {Object.values(albums).map((album) => {

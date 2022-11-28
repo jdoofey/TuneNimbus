@@ -1,0 +1,70 @@
+
+
+.create-album-parent-container{
+  margin-top: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.create-album-form-container{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: fit-content;
+  align-items: left;
+  justify-content: center;
+}
+
+.label-error-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.create-album-error-text{
+  color: rgb(250, 44, 44);
+}
+
+.album-input{
+  margin-bottom: 10px;
+  height: 20px;
+  font-size: 14px;
+  padding: 5px;
+  background-color: rgb(46, 46, 46);
+  color: white;
+}
+
+.album-song-input{
+  height: 35px;
+  font-size: 16px;
+  border: 1px solid rgb(39, 39, 39);
+  margin-bottom: 30px;
+}
+
+.album-form-btn{
+  padding: 10px 30px;
+  font-size: 16px;
+  width: fit-content;
+  border:#ff652d 1px solid;
+  background-color:#ff652d;
+  border-radius: 4px;
+  color:white;
+  cursor:pointer;
+}
+
+.album-form-btns-container{
+  display: flex;
+  justify-content: space-around;
+}
+
+.album-form-cancel{
+  padding: 10px 30px;
+  font-size: 16px;
+  width: fit-content;
+  border:#2f2f2f 1px solid;
+  background-color:#282828;
+  border-radius: 4px;
+  color:white;
+  cursor:pointer;
+}

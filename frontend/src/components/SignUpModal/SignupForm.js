@@ -16,6 +16,7 @@ function SignupForm() {
   const [errors, setErrors] = useState([])
   const [displayErrors, setDisplayErrors] = useState(false)
 
+  
   // if (sessionUser&&(Object.keys(sessionUser).length)) return <Redirect to="/" />;
   const validations = () => {
     let errorsArray = []
