@@ -40,7 +40,7 @@ function App() {
       </div>
         {isLoaded && (
           <Switch>
-            <Route exact path="/songs">
+            <Route exact path="/">
               <AllSongs setAudioUrl={setAudioUrl} />
             </Route>
             <Route exact path="/addsong">
