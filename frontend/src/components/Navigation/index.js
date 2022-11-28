@@ -14,7 +14,7 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
      <div className="container">
-        <NavLink className="nav-link"to="/songs">
+        <NavLink className="nav-link"to="/">
           <button className="nav-ele">All Music</button>
         </NavLink>
         <NavLink className="nav-link"to="/albums">

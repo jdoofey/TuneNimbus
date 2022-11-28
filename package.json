@@ -6,7 +6,9 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "moment": "^2.29.4",
-    "react-h5-audio-player": "^3.8.5"
+    "react-h5-audio-player": "^3.8.5",
+    "react-multi-select-component": "^4.3.4",
+    "react-select": "^5.6.1"
   },
   "scripts": {
     "heroku-postbuild": "npm run build --prefix frontend",

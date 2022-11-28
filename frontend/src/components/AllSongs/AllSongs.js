@@ -6,6 +6,7 @@ import Song from "../Song/song";
 // import SinglePlaylist from "../Playlists/SinglePlaylist/SinglePlaylist";
 import { getPlaylistsByCurrentUser } from "../../store/playlist";
 import { addSongToPlaylist } from "../../store/playlist";
+import defaultSong from "../../assets/default.png"
 import CreatePlaylist from "../Playlists/CreatePlaylist/CreatePlaylist";
 
 import "./AllSongs.css";
@@ -17,6 +18,11 @@ export default function AllSongs({ setAudioUrl }) {
   const playlists = useSelector((state) => state.playlists);
   const sessionUser = useSelector((state) => state.session.user);
   const [selectedSong, setSelectedSong] = useState(null);
+
+  const imageOnErrorHandler = (event) => {
+    event.currentTarget.src = defaultSong;
+  };
+
 
   useEffect(() => {
     dispatch(getPlaylistsByCurrentUser());
@@ -110,6 +116,7 @@ export default function AllSongs({ setAudioUrl }) {
                                  "https://i.imgur.com/QwtY70m.jpg"
 
                                 }
+                                onError={imageOnErrorHandler}
                               ></img>
                             </div>
 
