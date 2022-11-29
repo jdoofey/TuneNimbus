@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { editAlbumThunk, getSingleAlbumThunk, resetAlbums } from '../../store/albums';
+import { editAlbumThunk, getSingleAlbumThunk, resetAlbums, deleteAlbumThunk } from '../../store/albums';
 import { Modal } from '../../context/Modal'
 import "./EditAlbumModal.css"
 
@@ -68,7 +68,12 @@ export default function EditAlbumModal({album}) {
     }
   }
   const [showModal, setShowModal] = useState(false);
-
+  const handleDeleteAlbum = async e => {
+    e.preventDefault();
+    window.confirm("Are you sure you want to delete this album?")
+    dispatch(deleteAlbumThunk(album.id))
+    history.push('/albums')
+  }
   return (
     <>
       <button onClick={() => setShowModal(true)}>Edit Album</button>
@@ -139,7 +144,8 @@ export default function EditAlbumModal({album}) {
 
                 <span className="album-form-btns-container">
                   <div>{" "}</div>
-                  <button className="album-form-btn" type="submit">Add Album</button>
+                  <button className="album-form-btn" type="submit">Save Changes</button>
+                  <button className="album-form-btn" onClick={handleDeleteAlbum}>Delete</button>
                   <div>{" "}</div>
                 </span>
               </div>
