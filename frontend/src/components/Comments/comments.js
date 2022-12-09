@@ -72,7 +72,7 @@ export default function Comments() {
                   {comment?.User?.username === sessionUser.username && (
                     <span>
 
-                      <button onClick={deleteCommentHandler}
+                      <button className='comment-delete-btn' onClick={deleteCommentHandler}
                     >Delete</button>
                     </span>
                   )}

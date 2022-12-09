@@ -16,7 +16,8 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.6.1",
     "redux": "^4.2.0",
-    "redux-thunk": "^2.4.1"
+    "redux-thunk": "^2.4.1",
+    "wavesurfer.js": "^6.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

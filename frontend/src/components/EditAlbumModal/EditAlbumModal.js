@@ -76,7 +76,8 @@ export default function EditAlbumModal({album}) {
   }
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Edit Album</button>
+    <br></br>
+      <button className='album-form-btn' onClick={() => setShowModal(true)}>Edit Album</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <div>
@@ -153,6 +154,7 @@ export default function EditAlbumModal({album}) {
           </div>
         </Modal>
       )}
+      <br></br>
     </>
   )
 

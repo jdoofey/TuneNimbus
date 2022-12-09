@@ -7,6 +7,9 @@ import React, { useEffect, useState } from "react";
 import Comments from "../Comments/comments";
 import * as moment from 'moment';
 import "./SongDetail.css";
+
+
+
 export default function SongDetails({ setAudioUrl }) {
 
   const dispatch = useDispatch();
@@ -66,7 +69,9 @@ export default function SongDetails({ setAudioUrl }) {
           }
           alt="404"
           ></img>
-        <h1 id="waveform">{"[ - - - Waveform would go here - - - ]"}</h1>
+        <div id="waveform">
+
+        </div>
              {(sessionUser.username === song?.Artist?.username) && (
               <div id="edit-song-container">
                 <EditSongForm song={song}/>

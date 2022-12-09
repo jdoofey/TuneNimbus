@@ -25,7 +25,7 @@
 
 
 .album-details-description-container{
-  border: 1px solid gold;
+  /* border: 1px solid white; */
   margin-top: 10px;
   display: flex;
   align-items: center;
@@ -59,7 +59,7 @@
   align-items: center;
   margin: 10px 0px;
   font-size: 20px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .album-edit-btn{
