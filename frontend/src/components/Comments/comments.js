@@ -40,6 +40,7 @@ export default function Comments() {
     const newComment = await dispatch(submitComment(payload, song.id))
     window.alert("Your comment has been submitted")
     if (newComment) setComment('')
+    await dispatch(getComments(songId))
   }
   return isLoaded && (
     <div id="comments-container">
