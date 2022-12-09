@@ -51,3 +51,8 @@
   height: fit-content;
   cursor: pointer;
 }
+
+.navlink-albums{
+  text-decoration: none;
+  color: white;
+}

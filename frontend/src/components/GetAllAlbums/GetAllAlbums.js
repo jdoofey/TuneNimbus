@@ -37,7 +37,7 @@ export default function GetAllAlbums() {
       <div className="album-map-container">
         {Object.values(albums).map((album) => {
           return (
-            <NavLink to={`/albums/${album.id}`}>
+            <NavLink className='navlink-albums' to={`/albums/${album.id}`}>
 
               <div className="album-card">
                 <img
