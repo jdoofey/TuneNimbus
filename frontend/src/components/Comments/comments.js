@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { getComments, submitComment, reset, editCommentThunk, removeComment } from '../../store/comments'
 import './Comments.css'
 export default function Comments() {
+  const history = useHistory()
   const dispatch = useDispatch()
   const comments = useSelector(state => state.comments)
   const song = useSelector(state => state.song.singleSong)
@@ -17,8 +18,8 @@ export default function Comments() {
   const [isLoaded, setIsLoaded] = useState(false)
   useEffect(() => {
     dispatch(getComments(songId))
-      .then(() => setIsLoaded(true))
-  }, [dispatch, songId])
+    .then(setIsLoaded(true))
+  }, [dispatch])
 
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export default function Comments() {
 
     setShowErrs(false)
     const newComment = await dispatch(submitComment(payload, song.id))
-
+    window.alert("Your comment has been submitted")
     if (newComment) setComment('')
   }
   return isLoaded && (
@@ -61,10 +62,8 @@ export default function Comments() {
         <ul>
           {Object.values(comments).map(comment => {
               const deleteCommentHandler = async () => {
-                window.confirm('Are you sure you want to delete this comment')
+                await window.confirm('Are you sure you want to delete this comment')
                 await dispatch(removeComment(comment))
-                await dispatch(reset())
-                await dispatch(getComments(songId))
               }
             return comment?.songId.toString() === songId ? (
               <div style={{ margin: "20px 10px", border: "1px solid grey", padding: "5px" }}>
@@ -73,7 +72,7 @@ export default function Comments() {
                   {comment?.User?.username === sessionUser.username && (
                     <span>
 
-                      <button onClick={deleteCommentHandler}
+                      <button className='comment-delete-btn' onClick={deleteCommentHandler}
                     >Delete</button>
                     </span>
                   )}
