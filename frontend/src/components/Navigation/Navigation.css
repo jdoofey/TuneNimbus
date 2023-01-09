@@ -112,3 +112,43 @@ test{
   border:none;
   margin-right: 25px;
 }
+
+.github-btn{
+  background-image: url("../../assets/github-grey.png");
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.github-btn:hover{
+  background-image: url("../../assets/github-white.png");
+}
+
+.linkedin-btn{
+  background-image: url("../../assets/linkedIn-grey.png");
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-size: cover;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.linkedin-btn:hover{
+  background-image: url("../../assets/linkedIn-white.png");
+}
+
+.logo-external-links-div{
+  display: flex;
+}
