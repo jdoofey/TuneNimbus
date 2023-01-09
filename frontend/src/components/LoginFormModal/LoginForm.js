@@ -29,49 +29,49 @@ function LoginForm() {
   return (
     <div id="login-container">
 
-    <form onSubmit={handleSubmit}>
-      <div>
-        {errors.map((error, idx) => (
-          <h4 id="login-errors"key={idx}>{error}</h4>
+      <form onSubmit={handleSubmit}>
+        <div>
+          {errors.map((error, idx) => (
+            <h4 id="login-errors" key={idx}>{error}</h4>
           ))}
-      </div>
-      <div id='input-container'>
-        <div id='login-logo'>
-
-      <img  src='https://i.imgur.com/OHysOUL.png'></img>
         </div>
-      <label id='user-label'>
-        Username or Email
-        <input
-        className="login-input"
-          id='user'
-          type="text"
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          required
-          />
-      </label>
-      <label id='pass-label'>
-        Password
-        <input
-        className="login-input"
-          id='pass'
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          />
-      </label>
-      <div id="sign-in-btns">
-      <button id='submit-btn' type="submit">Log In</button>
-      <button id="submit-btn" onClick={()=> {
-        dispatch(login({credential:"Demo-lition", password:"password"}))
-        return history.push('/songs')
-      }}>Demo User</button>
-      </div>
-      </div>
-    </form>
+        <div id='input-container'>
+          <div id='login-logo'>
+
+            <img src='https://i.imgur.com/OHysOUL.png'></img>
           </div>
+          <label id='user-label'>
+            Username or Email
+            <input
+              className="login-input"
+              id='user'
+              type="text"
+              value={credential}
+              onChange={(e) => setCredential(e.target.value)}
+              required
+            />
+          </label>
+          <label id='pass-label'>
+            Password
+            <input
+              className="login-input"
+              id='pass'
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          <div id="sign-in-btns">
+            <button id='submit-btn' type="submit">Log In</button>
+            <button id="submit-btn" onClick={() => {
+              dispatch(login({ credential: "Demo-lition", password: "password" }))
+              return history.push('/')
+            }}>Demo User</button>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 }
 

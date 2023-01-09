@@ -44,9 +44,9 @@
 }
 #sign-in-btns {
   display:flex;
-  width:250px;
-  justify-content: space-evenly;
-  align-items: space-evenly;
+  width:260px;
+  justify-content: space-between;
+  align-items: space-between;
 }
 #login-container {
   display:flex;
