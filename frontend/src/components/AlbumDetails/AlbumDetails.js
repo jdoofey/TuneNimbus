@@ -7,7 +7,7 @@ import EditAlbumModal from "../EditAlbumModal/EditAlbumModal"
 import * as moment from "moment"
 import "./AlbumDetails.css"
 
-export default function AlbumDetails() {
+export default function AlbumDetails({ setAudioUrl }) {
   const dispatch = useDispatch()
   const { albumId } = useParams()
   const [isLoaded, setIsLoaded] = useState(false)
@@ -68,7 +68,13 @@ export default function AlbumDetails() {
           return (
             <div className="album-details-song-tile">
               <img className="album-details-song-img" src={song.previewImage} />
-              <span>{song.title}</span>
+              <button className="album-audio-btn" id="album-audio-btn"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setAudioUrl(song.url);
+                }}
+              ></button>
+              <span className="album-details-song-title">{song.title}</span>
             </div>
           )
         })}

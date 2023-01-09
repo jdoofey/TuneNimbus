@@ -65,7 +65,7 @@ function App() {
               <GetAllAlbums />
             </Route>
             <Route exact path="/albums/:albumId">
-              <AlbumDetails />
+              <AlbumDetails setAudioUrl={setAudioUrl} />
             </Route>
             <Route exact path="/createalbum">
               <CreateAlbum />

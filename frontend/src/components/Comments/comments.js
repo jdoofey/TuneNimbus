@@ -24,14 +24,14 @@ export default function Comments() {
 
   useEffect(() => {
     const errs = []
-    if (comment.length > 250) errs.push("Comments cannot be more than 250 characters")
+    if (comment.length > 150) errs.push("*Comments cannot be more than 150 characters")
     setValErrs(errs)
   }, [comment])
   const onSubmit = async e => {
     e.preventDefault()
 
-    if (!comment.length) {
-      valErrs.push("Please type out a comment")
+    if (!comment.length || !comment.trim().length) {
+      valErrs.push("*Please type out a comment")
       return setShowErrs(true)
     }
     const payload = { comment: comment }
@@ -57,6 +57,7 @@ export default function Comments() {
           ></input>
           <button id="comment-submit-btn" type="submit">Post</button>
         </form>
+        <div className='comment-error-div'>{valErrs}</div>
       </div>
       {Object.values(comments).length && (
 

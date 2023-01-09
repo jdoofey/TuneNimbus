@@ -51,3 +51,9 @@
   padding: 3px 8px;
   margin-left: 10px;
 }
+
+.comment-error-div{
+  color: rgb(249, 42, 42);
+  font-size: 15px;
+  position: absolute;
+}
