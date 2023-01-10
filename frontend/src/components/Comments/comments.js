@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams,  } from 'react-router-dom'
 import { getComments, submitComment, reset, editCommentThunk, removeComment } from '../../store/comments'
 import './Comments.css'
 export default function Comments() {
-  const history = useHistory()
+
   const dispatch = useDispatch()
   const comments = useSelector(state => state.comments)
   const song = useSelector(state => state.song.singleSong)
@@ -21,12 +21,12 @@ export default function Comments() {
     .then(setIsLoaded(true))
   }, [dispatch])
 
-
   useEffect(() => {
     const errs = []
     if (comment.length > 150) errs.push("*Comments cannot be more than 150 characters")
     setValErrs(errs)
   }, [comment])
+
   const onSubmit = async e => {
     e.preventDefault()
 
