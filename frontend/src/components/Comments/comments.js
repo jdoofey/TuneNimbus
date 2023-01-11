@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams,  } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getComments, submitComment, reset, editCommentThunk, removeComment } from '../../store/comments'
 import './Comments.css'
 export default function Comments() {
@@ -9,6 +9,7 @@ export default function Comments() {
   const comments = useSelector(state => state.comments)
   const song = useSelector(state => state.song.singleSong)
   const sessionUser = useSelector((state) => state.session.user);
+
 
   const { songId } = useParams()
   const [comment, setComment] = useState("")
@@ -42,6 +43,7 @@ export default function Comments() {
     if (newComment) setComment('')
     await dispatch(getComments(songId))
   }
+  
   return isLoaded && (
     <div id="comments-container">
       <div id="song-description">Description:{" "}{song.description}</div>
