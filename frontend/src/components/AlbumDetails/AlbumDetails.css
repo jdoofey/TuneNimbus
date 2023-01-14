@@ -36,6 +36,8 @@
   height: 120px;
   border-radius: 50%;
   border: 2px solid white;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .album-details-album-description{
@@ -114,4 +116,8 @@
   display: flex;
   position: absolute;
   margin-left: 18px;
+}
+
+.album-details-created-at{
+  margin-right: 10px;
 }
