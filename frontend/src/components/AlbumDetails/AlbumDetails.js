@@ -36,7 +36,7 @@ export default function AlbumDetails({ setAudioUrl }) {
             </div>
           </div>
           <div id="song-details-date">
-            <span>{moment(album.createdAt).fromNow()}</span>
+            <span className="album-details-created-at">{moment(album.createdAt).fromNow()}</span>
 
           </div>
         </div>
