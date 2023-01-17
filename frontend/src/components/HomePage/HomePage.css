@@ -1,3 +1,4 @@
+
 #welcome-container {
   position:absolute;
   width:1265px;
@@ -15,6 +16,7 @@
   line-height: 1.7;
   margin-top: 0px;
 }
+
 .middle-container {
   display:flex;
   flex-direction:row;
@@ -35,8 +37,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   margin-bottom: 100px;
-
 }
+
 .bottom-text{
   display: flex;
   padding: 50px;
@@ -47,6 +49,7 @@
   line-height: 2;
   z-index:4;
 }
+
 #shader {
   background-color: black;
   z-index:3;
@@ -54,8 +57,8 @@
   width: 1265px;
   height:450px;
   color:white;
-
 }
+
 #whatever {
   background-image: url("https://i.imgur.com/KP00BNh.jpg");
   filter:  blur(2px);
@@ -97,12 +100,8 @@
   /* transition:.5s; */
 }
 
-
-
 #list-el:hover #play-btn {
-
   opacity: 1;
-
 }
 
 #play-btn:hover {
@@ -111,6 +110,3 @@
   background-image:url(https://i.imgur.com/O0N9ZpT.png)
 }
 
-/* #play-btn:active {
-  offset-position: bottom 5px;
-} */
