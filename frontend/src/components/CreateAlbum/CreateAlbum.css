@@ -1,12 +1,10 @@
 
-
 .create-album-parent-container{
   margin-top: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 
 .create-album-form-container{
   display: flex;

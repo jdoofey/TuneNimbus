@@ -41,19 +41,7 @@
   background-size: cover;
   transition:.4s;
 }
-/* @media screen and (max-width:1200px){
-  #list-container {
-    display: grid;
-    grid-template-columns: repeat(5, 190px);
-    grid-row-gap: 30px;
-    justify-items: center;
-    margin-left: 150px;
-    margin-right: 150px;
-    padding-top: 20px;
-    padding-bottom: 25px;
-    justify-content: center;
-  }
-} */
+
 @keyframes fade-in {
   0%    { opacity: 0; }
   10%    {opacity:.1}
@@ -67,8 +55,6 @@
   90%   {opacity:.9}
   100%  { opacity: 1; }
 }
-
-
 
 #list-ele:hover #play-button {
   display: flex;
