@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { getComments, submitComment, reset, editCommentThunk, removeComment } from '../../store/comments'
+import { getComments, removeComment } from '../../store/comments'
 import CreateComment from './createComment'
 import './Comments.css'
 export default function Comments() {
@@ -11,32 +11,27 @@ export default function Comments() {
   const song = useSelector(state => state.song.singleSong)
   const sessionUser = useSelector((state) => state.session.user);
 
-
   const { songId } = useParams()
-
 
   const [isLoaded, setIsLoaded] = useState(false)
   useEffect(() => {
     dispatch(getComments(songId))
-    .then(setIsLoaded(true))
-  }, [dispatch])
+      .then(setIsLoaded(true))
+  }, [dispatch, songId])
 
-
-
-
-
+  const deleteCommentHandler = async (comment) => {
+    // await window.confirm('Are you sure you want to delete this comment')
+    await dispatch(removeComment(comment))
+  }
   return isLoaded && (
     <div id="comments-container">
       <div id="song-description">Description:{" "}{song.description}</div>
-      <CreateComment song={song} songId={songId}/>
+      <CreateComment song={song} songId={songId} />
       {!!Object.values(comments).length && (
 
         <ul>
           {Object.values(comments).map(comment => {
-              const deleteCommentHandler = async () => {
-                await window.confirm('Are you sure you want to delete this comment')
-                await dispatch(removeComment(comment))
-              }
+
             return comment?.songId.toString() === songId ? (
               <div style={{ margin: "20px 10px", border: "1px solid grey", padding: "5px" }}>
                 <div>
@@ -44,8 +39,11 @@ export default function Comments() {
                   {comment?.User?.username === sessionUser.username && (
                     <span>
 
-                      <button className='comment-delete-btn' onClick={deleteCommentHandler}
-                    >Delete</button>
+                      <button
+                      className='comment-delete-btn'
+                      onClick={() => deleteCommentHandler(comment)}
+                      hidden={sessionUser.id !== comment?.User?.id}
+                      >Delete</button>
                     </span>
                   )}
                 </div>

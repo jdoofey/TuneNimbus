@@ -5,6 +5,7 @@ const router = express.Router();
 const {Op} = require('sequelize')
 
 
+
 router.get('/:songId/comments', async (req, res)=>{
   // const song = await Song.findByPk(req.params.songId)
   const comment = await Comment.findAll({
@@ -21,24 +22,49 @@ router.get('/:songId/comments', async (req, res)=>{
   else res.json({Comments:comment})
 })
 
-router.post('/:songId/comments', restoreUser, requireAuth, async(req, res)=>{
-  const {body} = req.body
-  const userId = req.user.id;
-  const songId = req.params.songId
+router.post('/:songId/comments', async (req, res) => {
+  const { songId } = req.params
+  const user = req.user
+
   const song = await Song.findByPk(songId)
-  if(!song){
+  if (!song) {
     res.statusCode = 404
-    res.json({
-      statusCode:res.statusCode,
-      message:'Song couldn\'t be found'
+    return res.json({
+      message: 'Song couldn\'t be found',
+      statusCode: res.statusCode,
     })
   }
-  const newComment = await Comment.create({
-    body, userId, songId
-
+  const comment = await Comment.create({
+    userId: user.id,
+    body: req.body.comment,
+    songId: songId
   })
-  res.json(newComment)
+
+  return res.json({
+    userId: user.id,
+    body: req.body.comment,
+    songId: songId,
+    User:{id: user.id, username:user.username}
+  })
 })
+// router.post('/:songId/comments', restoreUser, requireAuth, async(req, res)=>{
+//   const {body} = req.body
+//   const userId = req.user.id;
+//   const songId = req.params.songId
+//   const song = await Song.findByPk(songId)
+//   if(!song){
+//     res.statusCode = 404
+//     res.json({
+//       statusCode:res.statusCode,
+//       message:'Song couldn\'t be found'
+//     })
+//   }
+//   const newComment = await Comment.create({
+//     body, userId, songId
+
+//   })
+//   res.json(newComment)
+// })
 
 
 

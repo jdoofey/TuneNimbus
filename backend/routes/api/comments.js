@@ -68,25 +68,25 @@ router.put('/:commentId', restoreUser, requireAuth, async (req, res)=>{
 })
 
 //create comment for song via songId
-router.post('/:songId/comments', async (req, res)=>{
-  const {songId} = req.params
-  const user = req.user
+// router.post('/:songId/comments', async (req, res)=>{
+//   const {songId} = req.params
+//   const user = req.user
 
-  const song = await Song.findByPk(songId)
-  if (!song) {
-    res.statusCode = 404
-    return res.json({
-      message: 'Song couldn\'t be found',
-      statusCode: res.statusCode,
-    })
-  }
-  const comment = await Comment.create({
-    userId: user.id,
-    body:req.body.comment,
-    songId:songId
-  })
-  return res.json(comment)
-})
+//   const song = await Song.findByPk(songId)
+//   if (!song) {
+//     res.statusCode = 404
+//     return res.json({
+//       message: 'Song couldn\'t be found',
+//       statusCode: res.statusCode,
+//     })
+//   }
+//   const comment = await Comment.create({
+//     userId: user.id,
+//     body:req.body.comment,
+//     songId:songId
+//   })
+//   return res.json(comment)
+// })
 
 //coments by song id
 router.get('/:songId/comments', async(req, res)=>{
@@ -103,7 +103,7 @@ router.get('/:songId/comments', async(req, res)=>{
       statusCode: res.statusCode,
     })
   }
-  return res.json({Comments:comments})
+  return res.json({comments})
 })
 
 

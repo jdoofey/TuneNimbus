@@ -44,7 +44,7 @@ export const getComments = (songId) => async (dispatch) => {
 
 export const submitComment = (comment, songId) => async dispatch => {
 
-  const res = await csrfFetch(`/api/comments/${songId}/comments`, {
+  const res = await csrfFetch(`/api/songs/${songId}/comments`, {
     method:"POST",
     headers:{"Content-Type": "application/json"},
     body: JSON.stringify(comment)
@@ -89,16 +89,16 @@ const commentReducer = (state ={}, action) => {
   switch (action.type) {
       case LOAD_ALL:
           const allComments = {}
-          
+
           action.songId.Comments.forEach(comment => {
               allComments[comment.id] = comment;
           });
           return {...allComments, ...state};
-      case ADD:
-          return {
-              ...state,
-              [action.comment.id]: action.comment
-          }
+      // case ADD:
+      //     return {
+      //         ...state,
+      //         [action.comment.id]: action.comment
+      //     }
       case DELETE:
           const newState = {...state, allComments:{...state.allComments}}
           delete newState.allComments[action.comment.id]

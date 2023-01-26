@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { getComments, submitComment, reset, editCommentThunk, removeComment } from '../../store/comments'
+import { useDispatch } from 'react-redux'
+import { getComments, submitComment} from '../../store/comments'
 import './Comments.css'
 
 export default function CreateComment ({song, songId}) {
@@ -10,6 +9,11 @@ export default function CreateComment ({song, songId}) {
   const [comment, setComment] = useState("")
   const [valErrs, setValErrs] = useState([])
   const [showErrs, setShowErrs] = useState(false)
+
+  useEffect(() => {
+    dispatch(getComments(songId))
+  }, [dispatch, songId])
+
 
   useEffect(() => {
     const errs = []
@@ -28,11 +32,11 @@ export default function CreateComment ({song, songId}) {
 
     setShowErrs(false)
     const newComment = await dispatch(submitComment(payload, song.id))
-    window.alert("Your comment has been submitted")
+
     if (newComment) setComment('')
     await dispatch(getComments(songId))
   }
-
+   // zaka temori was here thanks man ur so big and true
 
   return (
     <div id="comments-submission">
