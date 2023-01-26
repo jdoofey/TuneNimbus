@@ -34,11 +34,9 @@ export const getComments = (songId) => async (dispatch) => {
   const res = await csrfFetch(`/api/songs/${songId}/comments`)
   if (res.ok) {
     const data = await res.json()
-
     dispatch(load(data))
     return data
   }
-
   return null
 }
 
@@ -62,8 +60,9 @@ export const removeComment = comment => async dispatch => {
     method:"DELETE"
   })
   if (response.ok) {
-    dispatch(deleteComment(comment))
-    return response
+    const data = await response.json
+    dispatch(deleteComment(comment.id))
+    return data
   }
 }
 
@@ -87,23 +86,29 @@ const initialState = {
 }
 const commentReducer = (state ={}, action) => {
   switch (action.type) {
-      case LOAD_ALL:
-          const allComments = {}
+      case LOAD_ALL:{
 
-          action.songId.Comments.forEach(comment => {
-              allComments[comment.id] = comment;
-          });
-          return {...allComments, ...state};
+        const allComments = {}
+
+        action.songId.Comments.forEach(comment => {
+          allComments[comment.id] = comment;
+        });
+        return {...allComments, ...state};
+      }
       // case ADD:
       //     return {
       //         ...state,
       //         [action.comment.id]: action.comment
       //     }
-      case DELETE:
-          const newState = {...state, allComments:{...state.allComments}}
-          delete newState.allComments[action.comment.id]
-          newState.singleComment = {}
-          return newState
+      case DELETE:{
+        let newState = { ...state }
+        delete newState[action.commentId];
+        return newState;
+        // const newState = {...state, allComments:{...state.allComments}}
+        // delete newState.allComments[action.commentId]
+        // newState.singleComment = {}
+        // return newState
+      }
       case RESET:{
         return initialState
       }

@@ -39,13 +39,13 @@ router.post('/:songId/comments', async (req, res) => {
     body: req.body.comment,
     songId: songId
   })
-
-  return res.json({
-    userId: user.id,
-    body: req.body.comment,
-    songId: songId,
-    User:{id: user.id, username:user.username}
-  })
+  return res.json(comment)
+  // return res.json({
+  //   userId: user.id,
+  //   body: req.body.comment,
+  //   songId: songId,
+  //   User:{id: user.id, username:user.username}
+  // })
 })
 // router.post('/:songId/comments', restoreUser, requireAuth, async(req, res)=>{
 //   const {body} = req.body
