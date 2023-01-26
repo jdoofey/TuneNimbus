@@ -11,9 +11,9 @@ const load = (songId) => ({
   songId
 })
 
-const addComment = (comment, songId )=> ({
+const addComment = (commentData)=> ({
   type: ADD,
-  comment, songId
+  commentData
 })
 const editComment = comment => ({
   type: EDIT,
@@ -95,19 +95,16 @@ const commentReducer = (state ={}, action) => {
         });
         return {...allComments, ...state};
       }
-      // case ADD:
-      //     return {
-      //         ...state,
-      //         [action.comment.id]: action.comment
-      //     }
+      case ADD:
+          return {
+              ...state,
+              [action.commentData.id]: action.commentData
+          }
       case DELETE:{
         let newState = { ...state }
         delete newState[action.commentId];
         return newState;
-        // const newState = {...state, allComments:{...state.allComments}}
-        // delete newState.allComments[action.commentId]
-        // newState.singleComment = {}
-        // return newState
+        
       }
       case RESET:{
         return initialState

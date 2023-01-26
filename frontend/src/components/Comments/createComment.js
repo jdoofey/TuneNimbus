@@ -34,7 +34,7 @@ export default function CreateComment ({song, songId}) {
     const newComment = await dispatch(submitComment(payload, song.id))
 
     if (newComment) setComment('')
-    await dispatch(getComments(songId))
+    // await dispatch(getComments(songId))
   }
    // zaka temori was here thanks man ur so big and true
 
