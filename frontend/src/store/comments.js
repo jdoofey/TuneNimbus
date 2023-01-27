@@ -11,9 +11,9 @@ const load = (songId) => ({
   songId
 })
 
-const addComment = (comment, songId )=> ({
+const addComment = (commentData)=> ({
   type: ADD,
-  comment, songId
+  commentData
 })
 const editComment = comment => ({
   type: EDIT,
@@ -34,17 +34,15 @@ export const getComments = (songId) => async (dispatch) => {
   const res = await csrfFetch(`/api/songs/${songId}/comments`)
   if (res.ok) {
     const data = await res.json()
-
     dispatch(load(data))
     return data
   }
-
   return null
 }
 
 export const submitComment = (comment, songId) => async dispatch => {
 
-  const res = await csrfFetch(`/api/comments/${songId}/comments`, {
+  const res = await csrfFetch(`/api/songs/${songId}/comments`, {
     method:"POST",
     headers:{"Content-Type": "application/json"},
     body: JSON.stringify(comment)
@@ -62,8 +60,9 @@ export const removeComment = comment => async dispatch => {
     method:"DELETE"
   })
   if (response.ok) {
-    dispatch(deleteComment(comment))
-    return response
+    const data = await response.json
+    dispatch(deleteComment(comment.id))
+    return data
   }
 }
 
@@ -87,23 +86,26 @@ const initialState = {
 }
 const commentReducer = (state ={}, action) => {
   switch (action.type) {
-      case LOAD_ALL:
-          const allComments = {}
-          
-          action.songId.Comments.forEach(comment => {
-              allComments[comment.id] = comment;
-          });
-          return {...allComments, ...state};
+      case LOAD_ALL:{
+
+        const allComments = {}
+
+        action.songId.Comments.forEach(comment => {
+          allComments[comment.id] = comment;
+        });
+        return {...allComments, ...state};
+      }
       case ADD:
           return {
               ...state,
-              [action.comment.id]: action.comment
+              [action.commentData.id]: action.commentData
           }
-      case DELETE:
-          const newState = {...state, allComments:{...state.allComments}}
-          delete newState.allComments[action.comment.id]
-          newState.singleComment = {}
-          return newState
+      case DELETE:{
+        let newState = { ...state }
+        delete newState[action.commentId];
+        return newState;
+        
+      }
       case RESET:{
         return initialState
       }
