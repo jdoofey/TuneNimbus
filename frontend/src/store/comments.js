@@ -11,7 +11,7 @@ const load = (songId) => ({
   songId
 })
 
-const addComment = (commentData)=> ({
+const addComment = (commentData) => ({
   type: ADD,
   commentData
 })
@@ -43,8 +43,8 @@ export const getComments = (songId) => async (dispatch) => {
 export const submitComment = (comment, songId) => async dispatch => {
 
   const res = await csrfFetch(`/api/songs/${songId}/comments`, {
-    method:"POST",
-    headers:{"Content-Type": "application/json"},
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(comment)
   })
   if (res.ok) {
@@ -57,7 +57,7 @@ export const submitComment = (comment, songId) => async dispatch => {
 
 export const removeComment = comment => async dispatch => {
   const response = await csrfFetch(`/api/comments/${comment.id}`, {
-    method:"DELETE"
+    method: "DELETE"
   })
   if (response.ok) {
     const data = await response.json
@@ -69,7 +69,7 @@ export const removeComment = comment => async dispatch => {
 export const editCommentThunk = comment => async dispatch => {
   const response = await csrfFetch(`/api/comments/${comment.id}`, {
     method: "PUT",
-    headers: { "Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(comment)
   });
   if (response.ok) {
@@ -79,38 +79,36 @@ export const editCommentThunk = comment => async dispatch => {
   }
 }
 
-
 const initialState = {
-  allComments:{},
-  singleCOmment:{}
+  allComments: {},
+  singleCOmment: {}
 }
-const commentReducer = (state ={}, action) => {
+const commentReducer = (state = {}, action) => {
   switch (action.type) {
-      case LOAD_ALL:{
+    case LOAD_ALL: {
 
-        const allComments = {}
+      const allComments = {}
 
-        action.songId.Comments.forEach(comment => {
-          allComments[comment.id] = comment;
-        });
-        return {...allComments, ...state};
+      action.songId.Comments.forEach(comment => {
+        allComments[comment.id] = comment;
+      });
+      return { ...allComments, ...state };
+    }
+    case ADD:
+      return {
+        ...state,
+        [action.commentData.id]: action.commentData
       }
-      case ADD:
-          return {
-              ...state,
-              [action.commentData.id]: action.commentData
-          }
-      case DELETE:{
-        let newState = { ...state }
-        delete newState[action.commentId];
-        return newState;
-        
-      }
-      case RESET:{
-        return initialState
-      }
-      default:
-          return state
+    case DELETE: {
+      let newState = { ...state }
+      delete newState[action.commentId];
+      return newState;
+    }
+    case RESET: {
+      return initialState
+    }
+    default:
+      return state
   }
 }
 
