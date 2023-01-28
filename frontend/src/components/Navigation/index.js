@@ -60,10 +60,11 @@ function Navigation({ isLoaded }) {
         <a target="_blank" href="https://www.linkedin.com/in/jake-matillano">
           <button className="linkedin-btn" ></button>
         </a>
-        {/* TODO ADD WELLFOUNDED LINK
-        <a target="_blank" href="https://github.com/jdoofey/TuneNimbus">
-          <button className="github-btn" ></button>
-        </a> */}
+
+          <a target="_blank" href="https://angel.co/u/jake-matillano">
+          <button className="wellfound-btn" ></button>
+        </a>
+
         </div >
 
         <div className="external-links-div">

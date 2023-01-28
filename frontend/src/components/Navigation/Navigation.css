@@ -149,6 +149,23 @@ test{
   background-image: url("../../assets/linkedIn-white.png");
 }
 
+.wellfound-btn{
+  background-image: url("../../assets/wellfound-grey.png");
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-size: cover;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.wellfound-btn:hover{
+  background-image: url("../../assets/wellfound-white.png");
+}
 .logo-external-links-div{
   display: flex;
 }
