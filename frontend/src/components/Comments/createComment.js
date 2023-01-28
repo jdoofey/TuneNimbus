@@ -8,8 +8,7 @@ export default function CreateComment ({song, songId}) {
 
   const [comment, setComment] = useState("")
   const [valErrs, setValErrs] = useState([])
-  const [showErrs, setShowErrs] = useState(false)
-
+  
   useEffect(() => {
     dispatch(getComments(songId))
   }, [dispatch, songId])
@@ -26,11 +25,11 @@ export default function CreateComment ({song, songId}) {
 
     if (!comment.length || !comment.trim().length) {
       valErrs.push("*Please type out a comment")
-      return setShowErrs(true)
+
     }
     const payload = { comment: comment }
 
-    setShowErrs(false)
+
     const newComment = await dispatch(submitComment(payload, song.id))
 
     if (newComment) setComment('')

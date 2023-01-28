@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { getComments, removeComment, reset } from '../../store/comments'
+import { getComments, removeComment } from '../../store/comments'
 import CreateComment from './createComment'
 import './Comments.css'
 

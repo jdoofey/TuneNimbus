@@ -1,6 +1,6 @@
 // frontend/src/components/Navigation/index.js
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
@@ -52,16 +52,16 @@ function Navigation({ isLoaded }) {
       <div id="nav-container">
         <div className="logo-external-links-div">
           <NavLink to="/songs">
-            <img id="logos" src="https://i.imgur.com/OHysOUL.png"></img>
+            <img alt="main-logo" id="logos" src="https://i.imgur.com/OHysOUL.png"></img>
           </NavLink>
-        <a target="_blank" href="https://github.com/jdoofey/TuneNimbus">
+          <a target="_blank" rel="noreferrer" href="https://github.com/jdoofey/TuneNimbus">
           <button className="github-btn" ></button>
         </a>
-        <a target="_blank" href="https://www.linkedin.com/in/jake-matillano">
+          <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/jake-matillano">
           <button className="linkedin-btn" ></button>
         </a>
 
-          <a target="_blank" href="https://angel.co/u/jake-matillano">
+          <a target="_blank" rel="noreferrer" href="https://angel.co/u/jake-matillano">
           <button className="wellfound-btn" ></button>
         </a>
 

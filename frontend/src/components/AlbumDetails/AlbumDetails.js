@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useParams, useHistory, Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { getSingleAlbumThunk } from "../../store/albums"
 import userProfileDefault from "../../assets/user-profile-default.png"
 import EditAlbumModal from "../EditAlbumModal/EditAlbumModal"
@@ -19,7 +19,7 @@ export default function AlbumDetails({ setAudioUrl }) {
   useEffect(() => {
     dispatch(getSingleAlbumThunk(albumId))
       .then(() => setIsLoaded(true))
-  }, [dispatch])
+  }, [dispatch, albumId])
   const album = useSelector(state => state.albums.singleAlbum)
 
   return isLoaded && (
@@ -41,6 +41,7 @@ export default function AlbumDetails({ setAudioUrl }) {
           </div>
         </div>
         <img
+          alt="album-preview-img"
           className="album-details-preview-img"
           src={album?.previewImage === null ?
             "https://images.unsplash.com/photo-1619983081636-a91694656575?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
@@ -53,6 +54,7 @@ export default function AlbumDetails({ setAudioUrl }) {
       <div className="album-details-description-container">
         <div className="album-details-description-left">
           <img
+            alt="album-artist-prof"
             className="album-details-artist-profile"
             src={album.Artist.previewImage === null ?
               userProfileDefault : album.Artist.previewImage} />
@@ -67,7 +69,7 @@ export default function AlbumDetails({ setAudioUrl }) {
         {Object.values(album.Songs).map(song => {
           return (
             <div className="album-details-song-tile">
-              <img className="album-details-song-img" src={song.previewImage} />
+              <img alt="album-song-img" className="album-details-song-img" src={song.previewImage} />
               <button className="album-audio-btn" id="album-audio-btn"
                 onClick={(e) => {
                   e.preventDefault();
