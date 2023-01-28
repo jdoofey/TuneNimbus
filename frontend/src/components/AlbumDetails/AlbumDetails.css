@@ -95,6 +95,7 @@
   background-image: url(https://i.imgur.com/5vs8qrA.png);
   background-size: cover;
   opacity: .6;
+  left: 290px;
 }
 
 .album-audio-btn:hover {
@@ -117,4 +118,12 @@
 
 .album-details-created-at{
   margin-right: 10px;
+}
+
+.album-song-map-container{
+  padding-bottom: 100px;
+}
+
+.numeration-text{
+  margin-right: 20px;
 }

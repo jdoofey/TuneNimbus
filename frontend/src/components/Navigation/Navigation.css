@@ -46,13 +46,9 @@
   width:fit-content;
   font-size: 15px;
   cursor:pointer;
-
 }
+
 .nav-link {
-  /* border-left:black 1px solid;
-  border-right: black 1px solid;
-  border-top: none;
-  border-bottom: none; */
   cursor:pointer;
   align-items: center;
   align-content: center;
@@ -88,6 +84,7 @@ test{
   color: #f50;
   cursor: pointer;
 }
+
 .profile-dropdown {
   display: flex;
   background-color: #fff;

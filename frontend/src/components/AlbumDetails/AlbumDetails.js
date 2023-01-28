@@ -14,8 +14,6 @@ export default function AlbumDetails({ setAudioUrl }) {
 
   const sessionUser = useSelector(state => state.session.user)
 
-
-
   useEffect(() => {
     dispatch(getSingleAlbumThunk(albumId))
       .then(() => setIsLoaded(true))
@@ -61,14 +59,12 @@ export default function AlbumDetails({ setAudioUrl }) {
 
           <span className="album-details-album-description">{album.description}</span>
         </div>
-        {/* <div className="album-details-description-right">
-          <button className="album-edit-btn">Edit Album</button>
-        </div> */}
       </div>
-      <div>
-        {Object.values(album.Songs).map(song => {
+      <div className="album-song-map-container">
+        {Object.values(album.Songs).map((song, i)  => {
           return (
             <div className="album-details-song-tile">
+              <div className="numeration-text">{i+1}</div>
               <img alt="album-song-img" className="album-details-song-img" src={song.previewImage} />
               <button className="album-audio-btn" id="album-audio-btn"
                 onClick={(e) => {
