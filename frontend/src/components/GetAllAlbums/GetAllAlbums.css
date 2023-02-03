@@ -19,9 +19,11 @@
   border: 1px solid rgb(202, 202, 202);
   padding: 10px;
   border-radius: 4px;
+  font-size: 13px;
   background-color: transparent;
   text-align: center;
   width: fit-content;
+  color: #C0C0CC;
 }
 
 .album-card-image{
