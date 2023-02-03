@@ -40,7 +40,7 @@ const AddSongForm = () => {
   }
   useEffect(()=> {
     if(displayErrors)validations()
-  }, [title, description, url])
+  }, [title, description, url, displayErrors ])
   const handleSubmit = async (e) => {
     e.preventDefault();
     setDisplayErrors(false)
