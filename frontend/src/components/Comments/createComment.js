@@ -8,11 +8,10 @@ export default function CreateComment ({song, songId}) {
 
   const [comment, setComment] = useState("")
   const [valErrs, setValErrs] = useState([])
-  
+
   useEffect(() => {
     dispatch(getComments(songId))
   }, [dispatch, songId])
-
 
   useEffect(() => {
     const errs = []
@@ -22,20 +21,15 @@ export default function CreateComment ({song, songId}) {
 
   const onSubmit = async e => {
     e.preventDefault()
-
     if (!comment.length || !comment.trim().length) {
       valErrs.push("*Please type out a comment")
 
     }
     const payload = { comment: comment }
-
-
     const newComment = await dispatch(submitComment(payload, song.id))
-
     if (newComment) setComment('')
     // await dispatch(getComments(songId))
   }
-   // zaka temori was here thanks man ur so big and true
 
   return (
     <div id="comments-submission">
