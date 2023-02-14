@@ -20,17 +20,13 @@ export default function Comments() {
       .then(setIsLoaded(true));
   }, [dispatch, songId])
 
-
-
   const deleteCommentHandler = async (comment) => {
     await window.confirm('Are you sure you want to delete this comment')
     let something = await dispatch(removeComment(comment))
     if (something){
-
       await dispatch(getComments(songId))
     }
   }
-
 
   return isLoaded && (
     <div id="comments-container">
@@ -47,7 +43,6 @@ export default function Comments() {
                   <span>{comment?.User?.username}</span>
                   {comment?.User?.username === sessionUser.username && (
                     <span>
-
                       <button
                       className='comment-delete-btn'
                       onClick={() => deleteCommentHandler(comment)}
@@ -68,7 +63,6 @@ export default function Comments() {
           <div>No reviews yet</div>
         </div>
       )}
-
     </div>
   )
 }
