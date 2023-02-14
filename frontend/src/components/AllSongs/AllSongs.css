@@ -1,12 +1,14 @@
 #list-ele {
   width:fit-content;
 }
+
 #allsongs-master-container{
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex;
 }
+
 #allsongs-header {
   display: flex;
   flex-direction: column;
@@ -20,10 +22,8 @@
 
 #list-container {
   display: grid;
-  /* border: 1px red solid; */
   grid-template-columns: repeat(6, 190px);
   grid-row-gap: 30px;
-  /* grid-column-gap: 20px; */
   justify-items: center;
   margin-left: 150px;
   margin-right: 150px;
@@ -32,6 +32,7 @@
   justify-content: center;
 
 }
+
 #play-button {
   display:none;
   width:50px;
@@ -75,9 +76,11 @@
 #play-button:active {
   offset-position: bottom 5px;
 }
+
 #add-to-playlist-tbn {
   display:none;
 }
+
 #list-ele:hover #add-to-playlist-tbn{
   display: flex;
   position:static;
@@ -92,9 +95,11 @@
   color:grey;
   z-index:0
 }
+
 #list-ele #add-to-playlist-tbn:hover{
   color:white;
 }
+
 #add-song-list-ele{
   height:100px;
   list-style-type: none;

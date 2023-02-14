@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllSongs, resetSongs } from "../../store/songs";
 import { Modal } from "../../context/Modal";
 import Song from "../Song/song";
-// import SinglePlaylist from "../Playlists/SinglePlaylist/SinglePlaylist";
 import { getPlaylistsByCurrentUser } from "../../store/playlist";
 import { addSongToPlaylist } from "../../store/playlist";
 import defaultSong from "../../assets/default.png"
