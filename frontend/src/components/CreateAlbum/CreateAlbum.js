@@ -53,8 +53,6 @@ export default function CreateAlbum() {
 
   const currentSongs = useSelector(state => state.song.allSongs)
 
-
-
   const handleSubmit = async e => {
     e.preventDefault()
     if (validationErrs.length) setShowErrors(true)

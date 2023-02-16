@@ -5,7 +5,6 @@ import { editAlbumThunk, getSingleAlbumThunk, resetAlbums, deleteAlbumThunk } fr
 import { Modal } from '../../context/Modal'
 import "./EditAlbumModal.css"
 
-
 export default function EditAlbumModal({album}) {
   const history = useHistory();
   const dispatch = useDispatch();
