@@ -25,6 +25,7 @@ export default function EditAlbumModal({album}) {
   const updateAlbumImage = (e) => setAlbumImage(e.target.value);
 
   useEffect(() => {
+    
     const errors = []
     if (albumTitle.length > 40 || albumTitle.length < 2 || !albumTitle.trim().length) {
       errors.push('Title must be between 2 and 40 characters')
@@ -83,7 +84,6 @@ export default function EditAlbumModal({album}) {
             <form onSubmit={handleEditSubmit}>
               <div className="create-album-form-container">
                 <h1 style={{ justifySelf: "center", alignSelf: "center" }}>Create Your New Album</h1>
-
                 <span className="label-error-container">
                   <label className="album-title-label">Title
                   </label>
@@ -113,9 +113,7 @@ export default function EditAlbumModal({album}) {
                   onChange={updateAlbumDescript}
                   required
                 />
-
                 <span className="label-error-container">
-
                   <label className="album-image-label">Preview Image
                   </label>
                   {!!showErrors && !!imageErr.length && (
