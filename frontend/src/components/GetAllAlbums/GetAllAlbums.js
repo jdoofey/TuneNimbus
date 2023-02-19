@@ -19,6 +19,7 @@ export default function GetAllAlbums() {
     e.preventDefault()
     history.push('/createalbum')
   }
+
   if (!Object.values(albums).length)
     return (
       <div>
@@ -28,7 +29,9 @@ export default function GetAllAlbums() {
         </div>
       </div>
     );
+
   return (
+
     <div>
       <div className="albums-header-container">
       <h1>Albums</h1>
@@ -45,12 +48,12 @@ export default function GetAllAlbums() {
                   className="album-card-image"
                   src={album.previewImage === null ? "https://images.unsplash.com/photo-1599508704512-2f19efd1e35f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" : album.previewImage} />
                 <div style={{marginTop:"6px"}}>{album.title}</div>
-
               </div>
             </NavLink>
           )
         })}
       </div>
     </div>
+
   )
 }
