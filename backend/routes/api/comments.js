@@ -1,6 +1,6 @@
 const express = require('express')
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song, Album, Comment } = require('../../db/models');
+const { User, Song,  Comment } = require('../../db/models');
 const router = express.Router();
 
 //delete comment

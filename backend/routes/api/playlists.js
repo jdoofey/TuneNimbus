@@ -1,6 +1,6 @@
 const express = require('express')
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song, Album, Playlist, PlaylistSong } = require('../../db/models');
+const { Song, Playlist, PlaylistSong } = require('../../db/models');
 const router = express.Router();
 
 //this route is unnecessary :c
