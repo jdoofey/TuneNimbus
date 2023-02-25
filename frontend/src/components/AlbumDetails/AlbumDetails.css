@@ -103,6 +103,7 @@
   animation: fade-in .5s;
   background-image:url(https://i.imgur.com/O0N9ZpT.png)
 }
+
 @keyframes fade-in {
   0%    { opacity: .6; }
   100%  { opacity: .9; }

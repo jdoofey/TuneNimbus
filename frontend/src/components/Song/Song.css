@@ -18,14 +18,11 @@
 }
 
 #title-box {
-
-
   font-size: 13px;
   width:150px;
   overflow: none;
   white-space: nowrap;
   text-overflow: ellipsis;
-
 }
 
 #title{
