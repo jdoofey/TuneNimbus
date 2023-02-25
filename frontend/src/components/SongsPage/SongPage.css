@@ -2,14 +2,12 @@
   list-style-type: none;
   display:flex;
   flex-direction: column;
-  /* border:blue 1px solid; */
   width: fit-content;
 }
 
 @media screen and (max-width:1200px){
   #list-container {
     display: grid;
-  /* border: 1px red solid; */
   grid-template-columns: repeat(6, 1fr);
   grid-row-gap: 20px;
   grid-column-gap: 10px;
@@ -23,7 +21,6 @@
 }
 #curr-list-container {
   display: grid;
-  /* border: 1px red solid; */
   grid-template-columns: repeat(6, 190px);
   grid-row-gap: 30px;
   /* grid-column-gap: 20px; */

@@ -7,16 +7,12 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
 
-
-
-
   router.delete(
     '/',
     (_req, res) => {
       res.clearCookie('token');
       return res.json({ message: 'success' });
-    }
-    );
+    });
 
     // Restore session user
     router.get(
@@ -29,8 +25,7 @@ const router = express.Router();
             user.toSafeObject()
           );
         } else return res.json(null);
-      }
-      );
+      });
 
       const validateLogin = [
         check('credential')
