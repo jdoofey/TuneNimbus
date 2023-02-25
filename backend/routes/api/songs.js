@@ -4,8 +4,6 @@ const { User, Song, Album, Comment } = require('../../db/models');
 const router = express.Router();
 const { Op } = require('sequelize')
 
-
-
 router.get('/:songId/comments', async (req, res) => {
   // const song = await Song.findByPk(req.params.songId)
   const comment = await Comment.findAll({
@@ -46,7 +44,6 @@ router.post('/:songId/comments', async (req, res) => {
     User: { id: user.id, username: user.username }
   })
 })
-
 
 router.post('/', requireAuth, restoreUser, async (req, res) => {
   const user = req.user;
