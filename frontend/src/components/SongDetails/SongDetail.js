@@ -80,24 +80,3 @@ export default function SongDetails({ setAudioUrl }) {
   );
 }
 
-//   <img id="preview"
-//   style={{width:"300px",
-//           height:"300px"
-// }}
-//   src={
-//     song.previewImage!==null && song.previewImage!==""
-//     ? song.previewImage
-//     : "https://i.imgur.com/QwtY70m.jpg"
-//   }
-//   alt="404"
-//   ></img>
-// </div>
-
-//   <h1>{song.title}</h1>
-//   <h3>By: {song?.Artist?.username}</h3>
-//   <h4>Album: {song?.Album?.title}</h4>
-//   <h4>Description: {song.description}</h4>
-//   <h4>
-//     Date Uploaded:{"   "}{new Date(song.createdAt).toString().slice(4, 16)}{"  "}
-
-//   </h4>
