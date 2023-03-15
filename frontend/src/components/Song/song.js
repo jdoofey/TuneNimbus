@@ -39,7 +39,6 @@ function Song(song) {
   else return (
     <NavLink
         to={`/`}
-
         style={{ textDecoration: "none", cursor:"default" }}
         // activeStyle={(isActive) => ({
         //   color: isActive ? "black" : "black",
